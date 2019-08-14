@@ -69,6 +69,7 @@ all: mkbuilddir mkzip addzip $(BUILDPATH)$(BIN) $(BUILDPATH)$(PREVIEW_BIN)
 
 $(BUILDPATH)$(BIN): $(_SRC_FILES)
 	$(CC) $(CFLAGS) $(OBJ) $(RES_O_PATH) -o $(BUILDPATH)$(BIN) $(INCLUDEDIR) $(USED_LIBSDIR) $(USED_LIBS) $(debug) $(release)
+	ldd $(BUILDPATH)$(BIN) | grep '\/mingw.*\.dll' -o | xargs -I{} cp "{}" $(BUILDPATH)
 
 $(_SRC_FILES):
 	$(CC) $(CFLAGS) -c src/$@.c -o $(BUILDPATH)$@.o $(INCLUDEDIR) $(debug)
