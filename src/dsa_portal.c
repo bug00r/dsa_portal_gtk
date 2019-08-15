@@ -1,14 +1,29 @@
 #include <gtk/gtk.h>
 
 static void
+print_hello (GtkWidget *widget,
+             gpointer   data)
+{
+  g_print ("Hello World\n");
+}
+
+static void
 activate (GtkApplication* app,
           gpointer        user_data)
 {
-  GtkWidget *window;
 
-  window = gtk_application_window_new (app);
+  GtkWidget * window = gtk_application_window_new (app);
   gtk_window_set_title (GTK_WINDOW (window), "Window");
   gtk_window_set_default_size (GTK_WINDOW (window), 200, 200);
+
+  GtkWidget *btn_box = gtk_button_box_new(GTK_ORIENTATION_HORIZONTAL);
+  gtk_container_add(GTK_CONTAINER(window), btn_box);
+
+  GtkWidget *btn = gtk_button_new_with_label("test button");
+  g_signal_connect(btn, "clicked", G_CALLBACK(print_hello), NULL);
+  g_signal_connect_swapped(btn, "clicked", G_CALLBACK(gtk_widget_destroy), window);
+  gtk_container_add(GTK_CONTAINER(btn_box), btn);
+
   gtk_widget_show_all (window);
 }
 

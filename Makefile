@@ -5,10 +5,10 @@ CFLAGS+=-std=c11 -Wall
 #-ggdb  -mwindows
 #-pg for profiling 
 
-GTK_LIBDIR:=`pkg-config --libs-only-L gtk+-3.0`
-GTK_LIBS:=`pkg-config --libs-only-l --libs-only-other gtk+-3.0`
-GTK_INCLUDE:=`pkg-config --cflags-only-I gtk+-3.0`
-CFLAGS+=`pkg-config --cflags-only-other gtk+-3.0`
+GTK_LIBDIR:=$(shell pkg-config --libs-only-L gtk+-3.0)
+GTK_LIBS:=$(shell pkg-config --libs-only-l --libs-only-other gtk+-3.0)
+GTK_INCLUDE:=$(shell pkg-config --cflags-only-I gtk+-3.0)
+CFLAGS+=$(shell pkg-config --cflags-only-other gtk+-3.0)
 
 
 INCLUDEDIR=-I./src -I../utils/src -I../collections/dl_list
@@ -42,13 +42,12 @@ ONW_LIBS=dl_list utils
 #THIRD_PARTY_LIBS=exslt xslt xml2 archive crypto nettle regex zstd lzma z lz4 bz2 bcrypt freetype6 iconv
 #REGEX_LIBS=pcre2-8
 #this c flags is used by regex lib
-CFLAGS+=-DPCRE2_STATIC
+#CFLAGS+=-DPCRE2_STATIC
 
 #OS_LIBS=kernel32 user32 gdi32 winspool comdlg32 advapi32 shell32 uuid ole32 oleaut32 comctl32 ws2_32
 
 USED_LIBS=$(patsubst %,-l%, $(ONW_LIBS) )
 USED_LIBS+=$(GTK_LIBS)
-USED_LIBS+=
 
 USED_LIBSDIR=$(GTK_LIBDIR)
 USED_LIBSDIR+=
@@ -65,7 +64,7 @@ ZIP=7z
 ZIP_ARGS=a -t7z
 ZIP_CMD=$(ZIP) $(ZIP_ARGS)
 
-all: mkbuilddir mkzip addzip $(BUILDPATH)$(BIN) $(BUILDPATH)$(PREVIEW_BIN)
+all: mkbuilddir mkzip addzip $(BUILDPATH)$(BIN)
 
 $(BUILDPATH)$(BIN): $(_SRC_FILES)
 	$(CC) $(CFLAGS) $(OBJ) $(RES_O_PATH) -o $(BUILDPATH)$(BIN) $(INCLUDEDIR) $(USED_LIBSDIR) $(USED_LIBS) $(debug) $(release)

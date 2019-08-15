@@ -1,0 +1,3 @@
+There no need to use my own resource mechanism because GTK has one :( :
+    https://stackoverflow.com/questions/28855850/gtk-c-and-gtkbuilder-to-make-a-single-executable
+    https://github.com/GNOME/gtk/tree/master/examples/application6
