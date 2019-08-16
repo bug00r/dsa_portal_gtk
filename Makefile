@@ -12,10 +12,10 @@ CFLAGS+=$(shell pkg-config --cflags-only-other gtk+-3.0)
 
 
 INCLUDEDIR=-I./src -I../utils/src -I../collections/dl_list
-INCLUDEDIR+=$(patsubst %,-I./src/%, lexicon taw_calc main hgen utils)
+#INCLUDEDIR+=$(patsubst %,-I./src/%, lexicon taw_calc main hgen utils)
 INCLUDEDIR+=$(GTK_INCLUDE)
 
-_SRC_FILES=dsa_portal
+_SRC_FILES=run_alveran alveran_app alveran_app_win
 
 #_SRC_UTILS=utils/iup_std_callbacks utils/iup_tab_utils utils/iup_dlg_utils
 #_SRC_PLUGIN_MAIN=main/plugin_main
@@ -50,43 +50,29 @@ USED_LIBS=$(patsubst %,-l%, $(ONW_LIBS) )
 USED_LIBS+=$(GTK_LIBS)
 
 USED_LIBSDIR=$(GTK_LIBDIR)
-USED_LIBSDIR+=
+
 #ownlibs
 USED_LIBSDIR+=-L./../collections/dl_list/$(BUILDPATH)
 USED_LIBSDIR+=-L./../utils/$(BUILDPATH) 
 
-RES=zip_ui_resource
-RES_O=$(RES).o
-RES_O_PATH=$(BUILDPATH)$(RES_O)
-RES_7Z=$(RES).7z
-RES_FILES_PATTERN=./data/*
-ZIP=7z
-ZIP_ARGS=a -t7z
-ZIP_CMD=$(ZIP) $(ZIP_ARGS)
-
-all: mkbuilddir mkzip addzip $(BUILDPATH)$(BIN)
+all: mkbuilddir $(BUILDPATH)$(BIN)
 
 $(BUILDPATH)$(BIN): $(_SRC_FILES)
-	$(CC) $(CFLAGS) $(OBJ) $(RES_O_PATH) -o $(BUILDPATH)$(BIN) $(INCLUDEDIR) $(USED_LIBSDIR) $(USED_LIBS) $(debug) $(release)
+	$(CC) $(CFLAGS) $(OBJ) -o $(BUILDPATH)$(BIN) $(INCLUDEDIR) $(USED_LIBSDIR) $(USED_LIBS) $(debug) $(release)
 	ldd $(BUILDPATH)$(BIN) | grep '\/mingw.*\.dll' -o | xargs -I{} cp "{}" $(BUILDPATH)
 
 $(_SRC_FILES):
 	$(CC) $(CFLAGS) -c src/$@.c -o $(BUILDPATH)$@.o $(INCLUDEDIR) $(debug)
 
-.PHONY: clean mkbuilddir small
-
-addzip:
-	cd $(BUILDPATH); \
-	ld -r -b binary $(RES_7Z) -o $(RES_O)
-
-mkzip:
-	-$(ZIP_CMD) $(BUILDPATH)$(RES_7Z) $(RES_FILES_PATTERN)
+.PHONY: clean mkbuilddir small smaller
 
 mkbuilddir:
 	mkdir -p $(BUILDDIR)
 
 small:
 	-strip $(BUILDPATH)$(BIN)
+
+smaller:
 	-upx $(BUILDPATH)$(BIN)
 	
 clean:
