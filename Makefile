@@ -10,8 +10,11 @@ GTK_LIBS:=$(shell pkg-config --libs-only-l --libs-only-other gtk+-3.0)
 GTK_INCLUDE:=$(shell pkg-config --cflags-only-I gtk+-3.0)
 CFLAGS+=$(shell pkg-config --cflags-only-other gtk+-3.0)
 
+GLIB_COMPILE_RESOURCES:=$(shell pkg-config --variable=glib_compile_resources gio-2.0)
+RESFILENAME:=gtk_resource
+RESRC:=$(patsubst %,$(BUILDPATH)/%,$(patsubst %,%.c, $(RESFILENAME)))
 
-INCLUDEDIR=-I./src -I../utils/src -I../collections/dl_list
+INCLUDEDIR=-I./src -I../utils/src -I../collections/dl_list -I./$(BUILDPATH)
 #INCLUDEDIR+=$(patsubst %,-I./src/%, lexicon taw_calc main hgen utils)
 INCLUDEDIR+=$(GTK_INCLUDE)
 
@@ -34,7 +37,8 @@ _SRC_FILES=run_alveran alveran_app alveran_app_win
 #_SRC_FILES+=$(_SRC_PLUGIN_FILES)
 
 SRC+=$(patsubst %,src/%,$(patsubst %,%.c,$(_SRC_FILES)))
-OBJ=$(patsubst %,$(BUILDPATH)/%,$(patsubst %,%.o,$(_SRC_FILES)))
+OBJ=$(patsubst %,$(BUILDPATH)/%,$(patsubst %,%.o, $(RESFILENAME) $(_SRC_FILES)))
+
 BINNAME=dsa_portal
 BIN=$(BINNAME).exe
 
@@ -57,17 +61,23 @@ USED_LIBSDIR+=-L./../utils/$(BUILDPATH)
 
 all: mkbuilddir $(BUILDPATH)$(BIN)
 
-$(BUILDPATH)$(BIN): $(_SRC_FILES)
+$(BUILDPATH)$(BIN): $(RESRC) $(_SRC_FILES)
 	$(CC) $(CFLAGS) $(OBJ) -o $(BUILDPATH)$(BIN) $(INCLUDEDIR) $(USED_LIBSDIR) $(USED_LIBS) $(debug) $(release)
 	ldd $(BUILDPATH)$(BIN) | grep '\/mingw.*\.dll' -o | xargs -I{} cp "{}" $(BUILDPATH)
 
 $(_SRC_FILES):
 	$(CC) $(CFLAGS) -c src/$@.c -o $(BUILDPATH)$@.o $(INCLUDEDIR) $(debug)
 
+$(RESRC): src/resource/alveranapp.gresource.xml src/resource/ui/window.ui
+	cd src/resource; \
+	$(GLIB_COMPILE_RESOURCES) alveranapp.gresource.xml --target=./../../$@ --sourcedir=. --generate-source; \
+	$(GLIB_COMPILE_RESOURCES) alveranapp.gresource.xml --target=./../../$(patsubst %.c,%.h,$@) --sourcedir=. --generate-header;
+	$(CC) $(CFLAGS) -c $@ -o $(RESRC:.c=.o) $(INCLUDEDIR) $(debug)
+
 .PHONY: clean mkbuilddir small smaller
 
 mkbuilddir:
-	mkdir -p $(BUILDDIR)
+	-mkdir -p $(BUILDDIR)
 
 small:
 	-strip $(BUILDPATH)$(BIN)

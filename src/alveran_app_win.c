@@ -11,12 +11,15 @@ static void
 alveran_app_window_init (AlveranAppWindow *win)
 {
     g_message("Alveran Main Window init:");
+    gtk_widget_init_template(GTK_WIDGET (win));
 }
 
 static void
 alveran_app_window_class_init (AlveranAppWindowClass *class)
 {
     g_message("Alveran Main Window Class init:");
+
+    gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (class),"/de/bug0r/alveran/ui/window.ui");
 }
 
 AlveranAppWindow *
