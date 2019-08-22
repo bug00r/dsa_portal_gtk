@@ -19,3 +19,24 @@ There is a resource way to define standard icon themes :):
 
     gtk_icon_theme_add_resource_path (gtk_icon_theme_get_default (),
                                         "/my/resources/icons");
+
+Communication between widget in same template:
+    https://developer.gnome.org/gtk3/stable/ch01s04.html#id-1.2.3.12.6
+
+    https://developer.gnome.org/gtk3/stable/GtkWidget.html#gtk-widget-class-bind-template-child-full
+    GObject *	gtk_widget_get_template_child ()
+    #define	gtk_widget_class_bind_template_child()
+    #define	gtk_widget_class_bind_template_child_internal()
+    #define	gtk_widget_class_bind_template_child_private()
+    #define	gtk_widget_class_bind_template_child_internal_private()
+    void	gtk_widget_class_bind_template_child_full ()
+    #define	gtk_widget_class_bind_template_callback()
+    void	gtk_widget_class_bind_template_callback_full ()
+    void	gtk_widget_class_set_connect_func ()
+
+Setting Application based data and giving this data to different widgets could be as g object data:
+    g_object_get_data ()
+    g_object_set_data ()
+
+    or by settings them only to the Application or Application window as pointer
+    

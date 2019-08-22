@@ -89,8 +89,11 @@ mkbuilddir:
 small:
 	-strip $(BUILDPATH)$(BIN)
 
-smaller:
+smaller: small
 	-upx $(BUILDPATH)$(BIN)
+
+smallest: small
+	-upx --best --ultra-brute $(BUILDPATH)$(BIN)
 	
 clean:
 	-rm -r $(BUILDPATH)*.c $(BUILDPATH)*.o $(BUILDPATH)*.exe $(BUILDPATH)*.h

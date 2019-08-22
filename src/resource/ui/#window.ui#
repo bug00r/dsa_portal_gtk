@@ -187,9 +187,6 @@
                 <property name="label" translatable="yes">test</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">image1</property>
-                <accessibility>
-                  <relation type="controller-for" target="tool_stack"/>
-                </accessibility>
               </object>
               <packing>
                 <property name="expand">False</property>
