@@ -1,3 +1,21 @@
 There no need to use my own resource mechanism because GTK has one :( :
     https://stackoverflow.com/questions/28855850/gtk-c-and-gtkbuilder-to-make-a-single-executable
     https://github.com/GNOME/gtk/tree/master/examples/application6
+There is a resource way to define standard icon themes :):
+    https://wiki.gnome.org/HowDoI/ThemedIcons
+
+    To do so, place your icons in a resource directory structure that matches the hicolor icon theme:
+
+    <gresources>
+    <gresource prefix="/my/resources/icons/16x16/actions">
+        <file>icon1.png</file>
+        <file>icon2.png</file>
+        ...
+    </gresource>
+    </gresources>
+    Note that in contrast to the search path example, we don't include 'hicolor' in the path.
+
+    Then, tell GtkIconTheme about the resource path where your icons are located:
+
+    gtk_icon_theme_add_resource_path (gtk_icon_theme_get_default (),
+                                        "/my/resources/icons");

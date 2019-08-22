@@ -1,5 +1,10 @@
 include ../make_config
 
+COPYDLLS:=
+ifeq ($(DLLS),1)
+	COPYDLLS:=copydlls
+endif
+
 CFLAGS+=-std=c11 -Wall
 
 #-ggdb  -mwindows
@@ -59,10 +64,12 @@ USED_LIBSDIR=$(GTK_LIBDIR)
 USED_LIBSDIR+=-L./../collections/dl_list/$(BUILDPATH)
 USED_LIBSDIR+=-L./../utils/$(BUILDPATH) 
 
-all: mkbuilddir $(BUILDPATH)$(BIN)
+all: mkbuilddir $(BUILDPATH)$(BIN) $(COPYDLLS)
 
 $(BUILDPATH)$(BIN): $(RESRC) $(_SRC_FILES)
 	$(CC) $(CFLAGS) $(OBJ) -o $(BUILDPATH)$(BIN) $(INCLUDEDIR) $(USED_LIBSDIR) $(USED_LIBS) $(debug) $(release)
+
+$(COPYDLLS):
 	ldd $(BUILDPATH)$(BIN) | grep '\/mingw.*\.dll' -o | xargs -I{} cp "{}" $(BUILDPATH)
 
 $(_SRC_FILES):
@@ -74,7 +81,7 @@ $(RESRC): src/resource/alveranapp.gresource.xml src/resource/ui/window.ui
 	$(GLIB_COMPILE_RESOURCES) alveranapp.gresource.xml --target=./../../$(patsubst %.c,%.h,$@) --sourcedir=. --generate-header;
 	$(CC) $(CFLAGS) -c $@ -o $(RESRC:.c=.o) $(INCLUDEDIR) $(debug)
 
-.PHONY: clean mkbuilddir small smaller
+.PHONY: cleanall clean mkbuilddir small smaller
 
 mkbuilddir:
 	-mkdir -p $(BUILDDIR)
@@ -86,5 +93,8 @@ smaller:
 	-upx $(BUILDPATH)$(BIN)
 	
 clean:
+	-rm -r $(BUILDPATH)*.c $(BUILDPATH)*.o $(BUILDPATH)*.exe $(BUILDPATH)*.h
+
+cleanall:
 	-rm -dr $(BUILDROOT)
 	

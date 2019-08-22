@@ -8,10 +8,24 @@ struct _AlveranApp {
 
 G_DEFINE_TYPE(AlveranApp, alveran_app, GTK_TYPE_APPLICATION);
 
+static void
+quit_cb (GSimpleAction *action,
+         GVariant      *parameter,
+         gpointer       user_data)
+{
+  g_message("quit app:");
+  g_application_quit(user_data);
+}
+
+const GActionEntry app_actions[] = {
+  { "quit", quit_cb }
+};
+
 static void 
 alveran_app_init (AlveranApp *app) 
 {
     g_message("Alveran App init:");
+    g_action_map_add_action_entries (G_ACTION_MAP (app), app_actions, G_N_ELEMENTS (app_actions), app);
 }
 
 static void
