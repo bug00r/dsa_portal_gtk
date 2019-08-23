@@ -21,15 +21,9 @@ const GActionEntry app_actions[] = {
   { "quit", quit_cb }
 };
 
-static void 
-alveran_app_init (AlveranApp *app) 
-{
-    g_message("Alveran App init:");
-    g_action_map_add_action_entries (G_ACTION_MAP (app), app_actions, G_N_ELEMENTS (app_actions), app);
-}
-
 static void
-alveran_app_activate (GApplication *app) 
+alveran_app_activate (GApplication *app,
+                      gpointer      user_data) 
 {
     g_message("Alveran App activate:");
 
@@ -42,7 +36,8 @@ static void
 alveran_app_open (GApplication *app,
                   GFile       **files,
                   gint          n_files,
-                  const gchar  *hint) 
+                  const gchar  *hint,
+                  gpointer      user_data) 
 {
     g_message("Alveran APP open:");
 
@@ -60,11 +55,36 @@ alveran_app_open (GApplication *app,
     gtk_window_present (GTK_WINDOW (win));
 }
 
+static void 
+alveran_app_shutdown(GApplication *application,
+                     gpointer      user_data) {
+    g_message("Alveran APP shutdown:");
+    guint32 *number = (guint32*)g_object_steal_data(G_OBJECT(application), "number");
+    g_message("found number: %i", *number);
+    g_free(number);
+}
+
+
+static void 
+alveran_app_init (AlveranApp *app) 
+{
+    g_message("Alveran App init:");
+    g_action_map_add_action_entries (G_ACTION_MAP (app), app_actions, G_N_ELEMENTS (app_actions), app);
+
+    g_signal_connect (app, "shutdown", G_CALLBACK (alveran_app_shutdown), NULL);
+    g_signal_connect (app, "open", G_CALLBACK (alveran_app_open), NULL);
+    g_signal_connect (app, "activate", G_CALLBACK (alveran_app_activate), NULL);
+
+    guint32 *anumber = g_malloc(sizeof(guint32));
+    *anumber = (guint32)666;
+    g_object_set_data(G_OBJECT(app), "number", anumber);
+}
+
 static void
 alveran_app_class_init (AlveranAppClass *class)
 {
-    G_APPLICATION_CLASS (class)->activate = alveran_app_activate;
-    G_APPLICATION_CLASS (class)->open = alveran_app_open;
+    //G_APPLICATION_CLASS (class)->activate = alveran_app_activate;
+    //G_APPLICATION_CLASS (class)->open = alveran_app_open;
 }
 
 AlveranApp *

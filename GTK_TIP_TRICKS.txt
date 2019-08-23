@@ -39,4 +39,15 @@ Setting Application based data and giving this data to different widgets could b
     g_object_set_data ()
 
     or by settings them only to the Application or Application window as pointer
-    
+
+    (http://www.mit.edu/afs.new/sipb/user/kolya/gtk/gtk+-1.2.10/docs/html/gtkfaq-1.html)
+    (http://www.mit.edu/afs.new/sipb/user/kolya/gtk/gtk+-1.2.10/docs/html/gtkfaq-5.html)
+    5.16 How do I remove the data I have attached to an object?
+    When attaching the data to the object, you can use the gtk_object_set_data_full() function. The three first arguments of the function are the same as in gtk_object_set_data(). The fourth one is a pointer to a callback function which is called when the data is destroyed. The data is destroyed when you:
+
+    destroy the object
+    replace the data with a new one (with the same key)
+    replace the data with NULL (with the same key)
+
+Get Application window from callback:
+    gtk_widget_get_toplevel ()

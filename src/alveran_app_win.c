@@ -7,6 +7,23 @@ struct _AlveranAppWindow
 
 G_DEFINE_TYPE(AlveranAppWindow, alveran_app_window, GTK_TYPE_APPLICATION_WINDOW);
 
+void
+test_btn (GtkToolButton *toolbutton, gpointer data)
+{
+    GtkApplication *app = gtk_window_get_application (GTK_WINDOW(data));
+    guint32 *number = (guint32*)g_object_get_data(G_OBJECT(app), "number");
+    g_message("Acallback test with app: %p with number %i", app, *number);
+    *number += 1;
+}
+
+void
+test2_btn (GtkToolButton *toolbutton, gpointer data)
+{
+    GtkApplication *app = gtk_window_get_application (GTK_WINDOW(data));
+    guint32 *number = (guint32*)g_object_get_data(G_OBJECT(app), "number");
+    g_message("Acallback test2 with app: %p with number %i", app, *number);
+}
+
 static void
 apply_css (GtkWidget *widget, GtkStyleProvider *provider)
 {
@@ -25,6 +42,7 @@ alveran_app_window_init (AlveranAppWindow *win)
     gtk_css_provider_load_from_resource (GTK_CSS_PROVIDER (provider), "/de/bug0r/alveran/css/default.css");
 
     apply_css (GTK_WIDGET(win), provider);
+
 }
 
 static void
@@ -33,6 +51,9 @@ alveran_app_window_class_init (AlveranAppWindowClass *class)
     g_message("Alveran Main Window Class init:");
 
     gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (class),"/de/bug0r/alveran/ui/window.ui");
+    gtk_widget_class_bind_template_callback_full (GTK_WIDGET_CLASS (class), "test_btn", G_CALLBACK(test_btn));
+    gtk_widget_class_bind_template_callback_full (GTK_WIDGET_CLASS (class), "test2_btn", G_CALLBACK(test2_btn));
+
 }
 
 AlveranAppWindow *
