@@ -200,8 +200,8 @@
                 <property name="events">GDK_BUTTON_RELEASE_MASK | GDK_STRUCTURE_MASK</property>
                 <property name="label" translatable="yes">toolbutton</property>
                 <property name="use_underline">True</property>
-                <signal name="clicked" handler="test2_btn" object="AlveranAppWindow" after="yes" swapped="no"/>
-                <signal name="clicked" handler="test_btn" object="AlveranAppWindow" swapped="no"/>
+                <signal name="clicked" handler="test2_btn" after="yes" swapped="no"/>
+                <signal name="clicked" handler="test_btn" after="yes" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
