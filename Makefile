@@ -23,7 +23,7 @@ INCLUDEDIR=-I./src -I../utils/src -I../collections/dl_list -I./$(BUILDPATH)
 #INCLUDEDIR+=$(patsubst %,-I./src/%, lexicon taw_calc main hgen utils)
 INCLUDEDIR+=$(GTK_INCLUDE)
 
-_SRC_FILES=run_alveran alveran_app alveran_app_win
+_SRC_FILES=run_alveran alveran_app alveran_app_win alveran_tools
 
 #_SRC_UTILS=utils/iup_std_callbacks utils/iup_tab_utils utils/iup_dlg_utils
 #_SRC_PLUGIN_MAIN=main/plugin_main

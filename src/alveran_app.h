@@ -3,6 +3,8 @@
 
 #include <gtk/gtk.h>
 
+#include "alveran_tools.h"
+
 #define ALVERAN_APP_TYPE (alveran_app_get_type ())
 G_DECLARE_FINAL_TYPE(AlveranApp, alveran_app, ALVERAN, APP, GtkApplication);
 
