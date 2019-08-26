@@ -10,7 +10,7 @@ G_DEFINE_TYPE(AlveranAppWindow, alveran_app_window, GTK_TYPE_APPLICATION_WINDOW)
 void
 test_btn (GtkToolButton *toolbutton, gpointer data)
 {
-    GtkApplication *app = gtk_window_get_application (GTK_WINDOW(data));
+    GtkApplication *app = GTK_APPLICATION(g_application_get_default());
     guint32 *number = (guint32*)g_object_get_data(G_OBJECT(app), "number");
     g_message("Acallback test with app: %p with number %i", app, *number);
     *number += 1;
@@ -19,7 +19,7 @@ test_btn (GtkToolButton *toolbutton, gpointer data)
 void
 test2_btn (GtkToolButton *toolbutton, gpointer data)
 {
-    GtkApplication *app = gtk_window_get_application (GTK_WINDOW(data));
+    GtkApplication *app = GTK_APPLICATION(g_application_get_default());
     guint32 *number = (guint32*)g_object_get_data(G_OBJECT(app), "number");
     g_message("Acallback test2 with app: %p with number %i", app, *number);
 }

@@ -49,5 +49,6 @@ Setting Application based data and giving this data to different widgets could b
     replace the data with a new one (with the same key)
     replace the data with NULL (with the same key)
 
-Get Application window from callback:
-    gtk_widget_get_toplevel ()
+  =>>  The common way to store application wide data is the g_object_[s|g]et_data inside of the application instance.
+       in every callback we can access this application and its bdata with: 
+            g_application_get_default()
