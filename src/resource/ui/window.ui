@@ -187,6 +187,7 @@
                 <property name="label" translatable="yes">test</property>
                 <property name="use_underline">True</property>
                 <property name="icon_widget">image1</property>
+                <signal name="clicked" handler="open_taw_cb" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -194,14 +195,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolButton" id="toolbtn">
+              <object class="GtkToolButton">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="events">GDK_BUTTON_RELEASE_MASK | GDK_STRUCTURE_MASK</property>
-                <property name="label" translatable="yes">toolbutton</property>
+                <property name="label" translatable="yes">test2</property>
                 <property name="use_underline">True</property>
-                <signal name="clicked" handler="test2_btn" after="yes" swapped="no"/>
-                <signal name="clicked" handler="test_btn" after="yes" swapped="no"/>
+                <signal name="clicked" handler="taw_open_cb" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -216,9 +215,10 @@
           </packing>
         </child>
         <child>
-          <object class="GtkStackSwitcher">
+          <object class="GtkStackSwitcher" id="stack_switch">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="icon_size">3</property>
             <property name="stack">tool_stack</property>
           </object>
           <packing>
@@ -234,42 +234,7 @@
             <property name="transition_type">slide-left</property>
             <property name="interpolate_size">True</property>
             <child>
-              <object class="GtkButton">
-                <property name="label" translatable="yes">button</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-              </object>
-              <packing>
-                <property name="name">page0</property>
-                <property name="title" translatable="yes">page0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton">
-                <property name="label" translatable="yes">button</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-              </object>
-              <packing>
-                <property name="name">page1</property>
-                <property name="title" translatable="yes">page1</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton">
-                <property name="label" translatable="yes">button</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-              </object>
-              <packing>
-                <property name="name">page2</property>
-                <property name="title" translatable="yes">page2</property>
-                <property name="position">2</property>
-              </packing>
+              <placeholder/>
             </child>
           </object>
           <packing>
