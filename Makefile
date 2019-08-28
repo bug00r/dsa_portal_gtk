@@ -19,11 +19,11 @@ GLIB_COMPILE_RESOURCES:=$(shell pkg-config --variable=glib_compile_resources gio
 RESFILENAME:=gtk_resource
 RESRC:=$(patsubst %,$(BUILDPATH)/%,$(patsubst %,%.c, $(RESFILENAME)))
 
-INCLUDEDIR=-I./src -I../utils/src -I../collections/dl_list -I./$(BUILDPATH)
+INCLUDEDIR=-I./src -I../utils/src -I../collections/dl_list -I../dsa_core/src -I./$(BUILDPATH)
 #INCLUDEDIR+=$(patsubst %,-I./src/%, lexicon taw_calc main hgen utils)
 INCLUDEDIR+=$(GTK_INCLUDE)
 
-_SRC_FILES=run_alveran alveran_app alveran_app_win alveran_tools
+_SRC_FILES=run_alveran alveran_app alveran_app_win alveran_tools alveran_taw_widget
 
 #_SRC_UTILS=utils/iup_std_callbacks utils/iup_tab_utils utils/iup_dlg_utils
 #_SRC_PLUGIN_MAIN=main/plugin_main
@@ -47,7 +47,7 @@ OBJ=$(patsubst %,$(BUILDPATH)/%,$(patsubst %,%.o, $(RESFILENAME) $(_SRC_FILES)))
 BINNAME=dsa_portal
 BIN=$(BINNAME).exe
 
-ONW_LIBS=dl_list utils
+ONW_LIBS=dl_list utils dsa_core
 #THIRD_PARTY_LIBS=exslt xslt xml2 archive crypto nettle regex zstd lzma z lz4 bz2 bcrypt freetype6 iconv
 #REGEX_LIBS=pcre2-8
 #this c flags is used by regex lib
@@ -63,6 +63,7 @@ USED_LIBSDIR=$(GTK_LIBDIR)
 #ownlibs
 USED_LIBSDIR+=-L./../collections/dl_list/$(BUILDPATH)
 USED_LIBSDIR+=-L./../utils/$(BUILDPATH) 
+USED_LIBSDIR+=-L./../dsa_core/$(BUILDPATH)
 
 all: mkbuilddir $(BUILDPATH)$(BIN) $(COPYDLLS)
 

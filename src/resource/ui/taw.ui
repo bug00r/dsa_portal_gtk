@@ -2,6 +2,7 @@
 <!-- Generated with glade 3.22.1 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
+  <object class="GtkListStore"/>
   <object class="GtkWindow" id="taw_window">
     <property name="can_focus">False</property>
     <child>
@@ -30,17 +31,22 @@
               </packing>
             </child>
             <child>
-              <object class="GtkComboBox">
+              <object class="GtkComboBoxText" id="taw_category">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="has_entry">True</property>
-                <child internal-child="entry">
-                  <object class="GtkEntry">
-                    <property name="can_focus">True</property>
-                    <property name="editable">False</property>
-                    <property name="placeholder_text" translatable="yes">Kategorie wählen</property>
-                  </object>
-                </child>
+                <property name="active">0</property>
+                <items>
+                  <item translatable="yes">A*</item>
+                  <item translatable="yes">A</item>
+                  <item translatable="yes">B</item>
+                  <item translatable="yes">C</item>
+                  <item translatable="yes">D</item>
+                  <item translatable="yes">E</item>
+                  <item translatable="yes">F</item>
+                  <item translatable="yes">G</item>
+                  <item translatable="yes">H</item>
+                </items>
+                <signal name="changed" handler="alveran_taw_changed_cb" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -61,18 +67,48 @@
               </packing>
             </child>
             <child>
-              <object class="GtkComboBox">
-                <property name="name">start</property>
+              <object class="GtkComboBoxText" id="taw_start">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="has_entry">True</property>
-                <child internal-child="entry">
-                  <object class="GtkEntry">
-                    <property name="can_focus">True</property>
-                    <property name="editable">False</property>
-                    <property name="placeholder_text" translatable="yes">Startspalte wählen</property>
-                  </object>
-                </child>
+                <property name="active">0</property>
+                <items>
+                  <item translatable="yes">-3</item>
+                  <item translatable="yes">-2</item>
+                  <item translatable="yes">-1</item>
+                  <item translatable="yes">0</item>
+                  <item translatable="yes">1</item>
+                  <item translatable="yes">2</item>
+                  <item translatable="yes">3</item>
+                  <item translatable="yes">4</item>
+                  <item translatable="yes">5</item>
+                  <item translatable="yes">6</item>
+                  <item translatable="yes">7</item>
+                  <item translatable="yes">8</item>
+                  <item translatable="yes">9</item>
+                  <item translatable="yes">10</item>
+                  <item translatable="yes">11</item>
+                  <item translatable="yes">12</item>
+                  <item translatable="yes">13</item>
+                  <item translatable="yes">14</item>
+                  <item translatable="yes">15</item>
+                  <item translatable="yes">16</item>
+                  <item translatable="yes">17</item>
+                  <item translatable="yes">18</item>
+                  <item translatable="yes">19</item>
+                  <item translatable="yes">20</item>
+                  <item translatable="yes">21</item>
+                  <item translatable="yes">22</item>
+                  <item translatable="yes">23</item>
+                  <item translatable="yes">24</item>
+                  <item translatable="yes">25</item>
+                  <item translatable="yes">26</item>
+                  <item translatable="yes">27</item>
+                  <item translatable="yes">28</item>
+                  <item translatable="yes">29</item>
+                  <item translatable="yes">30</item>
+                  <item translatable="yes">31+</item>
+                </items>
+                <signal name="changed" handler="alveran_taw_changed_cb" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -93,17 +129,48 @@
               </packing>
             </child>
             <child>
-              <object class="GtkComboBox">
+              <object class="GtkComboBoxText" id="taw_end">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="has_entry">True</property>
-                <child internal-child="entry">
-                  <object class="GtkEntry">
-                    <property name="can_focus">True</property>
-                    <property name="editable">False</property>
-                    <property name="placeholder_text" translatable="yes">Endspalte wählen</property>
-                  </object>
-                </child>
+                <property name="active">0</property>
+                <items>
+                  <item translatable="yes">-3</item>
+                  <item translatable="yes">-2</item>
+                  <item translatable="yes">-1</item>
+                  <item translatable="yes">0</item>
+                  <item translatable="yes">1</item>
+                  <item translatable="yes">2</item>
+                  <item translatable="yes">3</item>
+                  <item translatable="yes">4</item>
+                  <item translatable="yes">5</item>
+                  <item translatable="yes">6</item>
+                  <item translatable="yes">7</item>
+                  <item translatable="yes">8</item>
+                  <item translatable="yes">9</item>
+                  <item translatable="yes">10</item>
+                  <item translatable="yes">11</item>
+                  <item translatable="yes">12</item>
+                  <item translatable="yes">13</item>
+                  <item translatable="yes">14</item>
+                  <item translatable="yes">15</item>
+                  <item translatable="yes">16</item>
+                  <item translatable="yes">17</item>
+                  <item translatable="yes">18</item>
+                  <item translatable="yes">19</item>
+                  <item translatable="yes">20</item>
+                  <item translatable="yes">21</item>
+                  <item translatable="yes">22</item>
+                  <item translatable="yes">23</item>
+                  <item translatable="yes">24</item>
+                  <item translatable="yes">25</item>
+                  <item translatable="yes">26</item>
+                  <item translatable="yes">27</item>
+                  <item translatable="yes">28</item>
+                  <item translatable="yes">29</item>
+                  <item translatable="yes">30</item>
+                  <item translatable="yes">31+</item>
+                </items>
+                <signal name="changed" handler="alveran_taw_changed_cb" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -119,7 +186,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="ap1">
+          <object class="GtkLabel" id="taw_result">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">0 AP</property>
