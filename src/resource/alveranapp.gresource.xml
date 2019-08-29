@@ -3,6 +3,7 @@
   <gresource prefix="/de/bug0r/alveran">
     <file preprocess="xml-stripblanks">ui/window.ui</file>
     <file preprocess="xml-stripblanks">ui/taw.ui</file>
+    <file preprocess="xml-stripblanks">ui/lexicon.ui</file>
     <file preprocess="to-pixdata">icon/test.png</file>
     <file>css/default.css</file>
   </gresource>

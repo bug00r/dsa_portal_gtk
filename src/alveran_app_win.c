@@ -38,6 +38,25 @@ open_taw_cb (GtkToolButton *toolbutton, gpointer data)
 }
 
 static void
+open_lexicon_cb (GtkToolButton *toolbutton, gpointer data)
+{
+
+    GtkStack *stack = alveran_app_get_stack(GTK_WIDGET(toolbutton));
+
+    if (stack) {
+        GtkWidget *taw_widget = GTK_WIDGET(gtk_stack_get_child_by_name(stack,(const gchar*)"lexicon"));
+        g_message("found taw_calc %p", taw_widget);
+        if (taw_widget == NULL) {
+            alveran_lexicon_init_app(GTK_APPLICATION(g_application_get_default()));
+            GtkWidget *taw_widget = alveran_lexicon_widget_new();
+            gtk_stack_add_titled (stack, taw_widget, (const gchar*)"lexicon", (const gchar*)"lexicon");
+        }
+        gtk_stack_set_visible_child_name(stack, (const gchar*)"lexicon");
+    }
+
+}
+
+static void
 apply_css (GtkWidget *widget, GtkStyleProvider *provider)
 {
   gtk_style_context_add_provider (gtk_widget_get_style_context (widget), provider, G_MAXUINT);
@@ -65,6 +84,7 @@ alveran_app_window_class_init (AlveranAppWindowClass *class)
 
     gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (class),"/de/bug0r/alveran/ui/window.ui");
     gtk_widget_class_bind_template_callback_full (GTK_WIDGET_CLASS (class), "open_taw_cb", G_CALLBACK(open_taw_cb));
+    gtk_widget_class_bind_template_callback_full (GTK_WIDGET_CLASS (class), "open_lexicon_cb", G_CALLBACK(open_lexicon_cb));
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), AlveranAppWindow, tool_stack);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), AlveranAppWindow, stack_switch);
 }

@@ -15,31 +15,41 @@ GTK_LIBS:=$(shell pkg-config --libs-only-l --libs-only-other gtk+-3.0)
 GTK_INCLUDE:=$(shell pkg-config --cflags-only-I gtk+-3.0)
 CFLAGS+=$(shell pkg-config --cflags-only-other gtk+-3.0)
 
+XSLT_LIBS:=$(shell xslt-config --libs)
+XSLT_INCLUDE:=$(shell xslt-config --cflags)
+
+XML2_LIBS:=$(shell xml2-config --libs)
+XML2_INCLUDE:=$(shell xml2-config --cflags)
+
+#ICU_LIBS:=$(shell icu-config --ldflags)
+ICU_INCLUDE:=$(shell icu-config --cppflags)
+
+ICONV_LIBS:=$(shell pkg-config --libs iconv)
+ICONV_INCLUDE:=$(shell pkg-config --cflags iconv)
+
+FREETYPE_LIBS:=$(shell pkg-config --libs freetype2)
+FREETYPE_INCLUDE:=$(shell pkg-config --cflags freetype2)
+
+ARCHIVE_LIBS:=$(shell pkg-config --libs --static libarchive)
+ARCHIVE_INCLUDE:=$(shell pkg-config --cflags libarchive)
+
+PCRE2_LIBS:=$(shell pcre2-config --libs8)
+
 GLIB_COMPILE_RESOURCES:=$(shell pkg-config --variable=glib_compile_resources gio-2.0)
 RESFILENAME:=gtk_resource
 RESRC:=$(patsubst %,$(BUILDPATH)/%,$(patsubst %,%.c, $(RESFILENAME)))
 
-INCLUDEDIR=-I./src -I../utils/src -I../collections/dl_list -I../dsa_core/src -I./$(BUILDPATH)
-#INCLUDEDIR+=$(patsubst %,-I./src/%, lexicon taw_calc main hgen utils)
-INCLUDEDIR+=$(GTK_INCLUDE)
+INCLUDEDIR=$(GTK_INCLUDE) $(XSLT_INCLUDE) $(XML2_INCLUDE) $(ICU_INCLUDE) $(ICONV_INCLUDE) $(FREETYPE_INCLUDE) \
+			$(ARCHIVE_INCLUDE)
+INCLUDEDIR+=-I./src -I../utils/src -I../collections/dl_list -I../dsa_core/src -I./$(BUILDPATH)
+INCLUDEDIR+=$(patsubst %,-I./src/%, lexicon taw)
 
-_SRC_FILES=run_alveran alveran_app alveran_app_win alveran_tools alveran_taw_widget
 
-#_SRC_UTILS=utils/iup_std_callbacks utils/iup_tab_utils utils/iup_dlg_utils
-#_SRC_PLUGIN_MAIN=main/plugin_main
-#_SRC_PLUGIN_LEXICON=lexicon/plugin_lexicon lexicon/plugin_lexicon_ui lexicon/plugin_lexicon_ui_callback lexicon/plugin_lexicon_ui_search
-#_SRC_PLUGIN_TAW_CALC=taw_calc/plugin_taw_calc
-#_SRC_PLUGIN_HGEN=hgen/plugin_hgen hgen/plugin_hgen_ui \
-				 hgen/plugin_hgen_ui_callback \
-				 hgen/plugin_hgen_ui_hero_details \
-				 hgen/plugin_hgen_ui_funcs \
-				 hgen/plugin_hgen_ui_utils
-				 
 
-#_SRC_PLUGIN_FILES=$(_SRC_PLUGIN_MAIN) $(_SRC_PLUGIN_LEXICON) $(_SRC_PLUGIN_TAW_CALC) $(_SRC_PLUGIN_HGEN) $(_SRC_UTILS)
-#$(_SRC_PLUGIN_MAIN) $(_SRC_PLUGIN_LEXICON) $(_SRC_PLUGIN_TAW_CALC) $(_SRC_PLUGIN_HGEN)
 
-#_SRC_FILES+=$(_SRC_PLUGIN_FILES)
+_SRC_FILES=run_alveran alveran_app alveran_app_win alveran_tools taw/alveran_taw_widget \
+		   lexicon/alveran_lexicon lexicon/alveran_lexicon_search lexicon/alveran_lexicon_callback
+
 
 SRC+=$(patsubst %,src/%,$(patsubst %,%.c,$(_SRC_FILES)))
 OBJ=$(patsubst %,$(BUILDPATH)/%,$(patsubst %,%.o, $(RESFILENAME) $(_SRC_FILES)))
@@ -48,15 +58,9 @@ BINNAME=dsa_portal
 BIN=$(BINNAME).exe
 
 ONW_LIBS=dl_list utils dsa_core
-#THIRD_PARTY_LIBS=exslt xslt xml2 archive crypto nettle regex zstd lzma z lz4 bz2 bcrypt freetype6 iconv
-#REGEX_LIBS=pcre2-8
-#this c flags is used by regex lib
-#CFLAGS+=-DPCRE2_STATIC
 
-#OS_LIBS=kernel32 user32 gdi32 winspool comdlg32 advapi32 shell32 uuid ole32 oleaut32 comctl32 ws2_32
-
-USED_LIBS=$(patsubst %,-l%, $(ONW_LIBS) )
-USED_LIBS+=$(GTK_LIBS)
+USED_LIBS=$(patsubst %,-l%, $(ONW_LIBS))
+USED_LIBS+=$(GTK_LIBS) $(XSLT_LIBS) $(XML2_LIBS) $(ICU_LIBS) $(FREETYPE_LIBS) $(ARCHIVE_LIBS) $(PCRE2_LIBS)
 
 USED_LIBSDIR=$(GTK_LIBDIR)
 
@@ -86,6 +90,8 @@ $(RESRC): src/resource/alveranapp.gresource.xml src/resource/ui/window.ui
 
 mkbuilddir:
 	-mkdir -p $(BUILDDIR)
+	-mkdir -p $(BUILDPATH)$(PS)taw
+	-mkdir -p $(BUILDPATH)$(PS)lexicon
 
 small:
 	-strip $(BUILDPATH)$(BIN)
@@ -97,7 +103,8 @@ smallest: small
 	-upx --best --ultra-brute $(BUILDPATH)$(BIN)
 	
 clean:
-	-rm -r $(BUILDPATH)*.c $(BUILDPATH)*.o $(BUILDPATH)*.exe $(BUILDPATH)*.h
+	-rm -r $(BUILDPATH)*.c $(BUILDPATH)*.o $(BUILDPATH)$(PS)taw$(PS)*.o $(BUILDPATH)*.exe $(BUILDPATH)*.h \
+	$(BUILDPATH)$(PS)lexicon$(PS)*.o
 
 cleanall:
 	-rm -dr $(BUILDROOT)
