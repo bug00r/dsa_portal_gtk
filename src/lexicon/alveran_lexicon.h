@@ -43,6 +43,7 @@ EXTERN_BLOB(zip_resource, 7z);
 //NEW Interface
 void 		alveran_lexicon_init_app(GtkApplication *app);	
 GtkWidget*	alveran_lexicon_widget_new(); 
+void 		alveran_lexicon_widget_init(GtkWidget* widget); 
 void 		alveran_lexicon_remove_from_app(GtkApplication *app);	
 
 #endif

@@ -64,17 +64,6 @@ alveran_lexicon_reset_search_selection(lexicon_search_selection_t	*lss)
 	}
 }
 
-lexicon_search_selection_t* 
-alveran_lexicon_create_search_selection() 
-{
-		
-	lexicon_search_selection_t *lss = malloc(sizeof(lexicon_search_selection_t));
-	
-	alveran_lexicon_reset_search_selection(lss);
-	
-	return lss;
-}
-
 void 
 alveran_lexicon_reset_search_result_selection(lexicon_search_result_selection_t	*lsrs) 
 {
@@ -89,10 +78,10 @@ alveran_lexicon_reset_search_result_selection(lexicon_search_result_selection_t	
 	}
 }
 
-lexicon_search_result_selection_t* 
-alveran_lexicon_create_search_result_selection(unsigned int cnt_file_cache) 
+void
+alveran_lexicon_create_search_result_selection(lexicon_search_result_selection_t *lsrs, unsigned int cnt_file_cache) 
 {
-	lexicon_search_result_selection_t *lsrs = malloc(sizeof(lexicon_search_result_selection_t));
+
 	lsrs->xpath_result = malloc(cnt_file_cache * sizeof(xmlXPathObjectPtr));
 	lsrs->cnt_cache = cnt_file_cache;
 	
@@ -102,7 +91,6 @@ alveran_lexicon_create_search_result_selection(unsigned int cnt_file_cache)
 	
 	alveran_lexicon_reset_search_result_selection(lsrs);
 	
-	return lsrs;
 }
 
 lexicon_ctx_t*
@@ -112,6 +100,8 @@ alveran_lexicon_ctx_new()
 
 	if (new_ctx) {
 		new_ctx->ctxs  = NULL;
+		new_ctx->lsrs = malloc(sizeof(lexicon_search_result_selection_t));
+		new_ctx->lss = malloc(sizeof(lexicon_search_selection_t));
 	}
 
 	return new_ctx;

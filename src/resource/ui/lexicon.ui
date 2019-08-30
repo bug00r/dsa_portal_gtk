@@ -20,6 +20,7 @@
               <object class="GtkEntry" id="lexicon_search_input">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <signal name="activate" handler="search_input_key_callback" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -43,6 +44,7 @@
               <object class="GtkComboBoxText" id="lexicon_categories">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <signal name="changed" handler="on_category_changed_cb" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -66,6 +68,7 @@
               <object class="GtkComboBoxText" id="lexicon_groups">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <signal name="changed" handler="on_group_changed_cb" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -116,6 +119,7 @@
                       <object class="GtkListBox" id="lexicon_list">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <signal name="row-selected" handler="on_result_list_changed_cb" swapped="no"/>
                       </object>
                     </child>
                   </object>

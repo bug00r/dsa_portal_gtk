@@ -29,10 +29,9 @@ static void _lexicon_prepare_(lexicon_ctx_t *_lctx) {
 
 	//IupSetAttribute(categories, "VALUE", "1");
 	gtk_combo_box_set_active (GTK_COMBO_BOX(categories), 0);
-
-	lctx->lss = alveran_lexicon_create_search_selection();	
 	
-	lctx->lsrs = alveran_lexicon_create_search_result_selection(result->cnt);	
+	alveran_lexicon_reset_search_selection(lctx->lss);
+	alveran_lexicon_create_search_result_selection(lctx->lsrs, result->cnt);	
 	
 	update_cat_and_group_selections(lctx);
 	update_group_list(lctx);
@@ -112,8 +111,15 @@ GtkWidget* alveran_lexicon_widget_new() {
 	lctx->ctrls.groups = GTK_WIDGET(gtk_builder_get_object (builder, "lexicon_groups"));
 	lctx->ctrls.search_input = GTK_WIDGET(gtk_builder_get_object (builder, "lexicon_search_input"));
 	lctx->ctrls.result_text = GTK_WIDGET(gtk_builder_get_object (builder, "lexicon_result_text"));
-
-	_lexicon_prepare_(lctx);
 	
     return lexicon_widget;
+}
+
+void alveran_lexicon_widget_init(GtkWidget* widget) 
+{
+
+	GtkApplication *app = GTK_APPLICATION(g_application_get_default());
+	lexicon_ctx_t * lctx = g_object_get_data(G_OBJECT(app), "lctx");
+
+	_lexicon_prepare_(lctx);
 }

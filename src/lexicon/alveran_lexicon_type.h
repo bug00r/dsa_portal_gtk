@@ -59,13 +59,13 @@ alveran_lexicon_ctx_free(lexicon_ctx_t **lctx);
 void 
 alveran_lexicon_reset_search_selection(lexicon_search_selection_t	*lss);
 
-lexicon_search_selection_t* 
-alveran_lexicon_create_search_selection();
+void
+alveran_lexicon_create_search_selection(lexicon_search_selection_t* lss);
 
 void 
 alveran_lexicon_reset_search_result_selection(lexicon_search_result_selection_t	*lsrs);
 
-lexicon_search_result_selection_t* 
-alveran_lexicon_create_search_result_selection(unsigned int cnt_file_cache);
+void 
+alveran_lexicon_create_search_result_selection(lexicon_search_result_selection_t *lsrs, unsigned int cnt_file_cache);
 
 #endif

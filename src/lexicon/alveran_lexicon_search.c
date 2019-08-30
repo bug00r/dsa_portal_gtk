@@ -87,7 +87,7 @@ void update_group_list(lexicon_ctx_t *lctx) {
 			
 			xmlXPathObjectPtr xpathObj = xml_ctx_xpath(xml_ctx, "//group");
 			
-			add_node_attrs_to_combo(GTK_CONTAINER(groups), xpathObj);
+			add_node_attrs_to_combo(GTK_COMBO_BOX_TEXT(groups), xpathObj);
 
 			xmlXPathFreeObject(xpathObj);
 			
@@ -104,6 +104,7 @@ void add_node_as_string(GtkWidget *text, xmlNodePtr node) {
 	//IupSetAttribute(text, "VALUE", "");
 	GtkTextBuffer * buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW(text));
 	gtk_text_buffer_set_text(buffer, "", 0);
+	
 	xmlAttr * attr = node->properties;
 
 	GtkTextIter iter;
@@ -111,7 +112,7 @@ void add_node_as_string(GtkWidget *text, xmlNodePtr node) {
 	while(attr != NULL) {
 		xmlChar *sattr = xmlGetProp(node, attr->name);
 		//IupSetStrf(text, "APPEND", "%s:\t\t%s", attr->name, sattr);
-		gchar *result = g_strdup_printf("%s:\t\t%s", attr->name, sattr);
+		gchar *result = g_strdup_printf("%s:\t\t%s\n", attr->name, sattr);
 		gtk_text_buffer_insert (buffer, &iter, result, -1);
 		
 		g_free(result);
@@ -155,9 +156,9 @@ void update_result_display(lexicon_ctx_t *lctx, int sel_list_idx) {
 					
 						g_message("selected item is inside current cache %i < %i\n", sel_list_idx, cnt_global_cache);
 					
-						int cur_cache_index = sel_list_idx - (cnt_global_cache - size) - 1;
+						int cur_cache_index = sel_list_idx - (cnt_global_cache - size);
 						
-						g_message("selected item cache index %i = %i - %i - 1\n", cur_cache_index, cnt_global_cache, sel_list_idx);
+						g_message("selected item cache index %i = %i - %i\n", cur_cache_index, cnt_global_cache, sel_list_idx);
 						
 						add_node_as_string(lctx->ctrls.result_text, nodes->nodeTab[cur_cache_index]);
 						
@@ -194,9 +195,8 @@ void refresh_search_result_list(lexicon_ctx_t *lctx) {
 	}
 	
 	//IupSetAttribute(result_list, "VALUE", "1");
-	;
 	gtk_list_box_select_row (GTK_LIST_BOX(result_list), 
-			GTK_LIST_BOX_ROW(g_list_nth_data(gtk_container_get_children (result_list), 1)));
+			GTK_LIST_BOX_ROW(g_list_nth_data(gtk_container_get_children (result_list), 0)));
 
 	update_result_display(lctx , 0);
 	
