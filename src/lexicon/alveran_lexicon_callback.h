@@ -24,4 +24,7 @@ int on_group_changed_cb(Ihandle *ih, char *text, int item, int state);
 int on_result_list_changed_cb(Ihandle *ih, char *text, int item, int state);
 */
 
+void
+alveran_lexicon_register_callbacks(GtkBuilder *builder);
+
 #endif

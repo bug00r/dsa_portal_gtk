@@ -78,3 +78,36 @@ int on_result_list_changed_cb(Ihandle *ih, char *text, int item, int state) {
 }
 
 */
+
+static void
+lexicon_search_cb (GtkButton *button, gpointer user_data) {
+
+	g_message("trigger search");
+
+	GtkApplication *app = GTK_APPLICATION(g_application_get_default());
+	lexicon_ctx_t * lctx = g_object_get_data(G_OBJECT(app), "lctx");
+
+	search(lctx);
+
+	/*GtkApplication *app = GTK_APPLICATION(g_application_get_default());
+    GtkContainer *list = GTK_CONTAINER(g_object_get_data(G_OBJECT(app), "lexicon_list"));
+
+	for (int i = 0; i < 1000; ++i ) {
+		GtkWidget *entry = gtk_label_new ("test");
+		gtk_widget_show(entry);
+		gtk_container_add(list, entry);
+	}*/
+}
+
+
+
+void
+alveran_lexicon_register_callbacks(GtkBuilder *_builder) {
+	
+	GtkBuilder *builder = GTK_BUILDER(_builder);
+	
+	if (builder) {
+		gtk_builder_add_callback_symbol (builder, "lexicon_search_cb", G_CALLBACK(lexicon_search_cb));
+	}
+}
+

@@ -59,9 +59,9 @@ static void
 alveran_app_shutdown(GApplication *application,
                      gpointer      user_data) {
     g_message("Alveran APP shutdown:");
-    guint32 *number = (guint32*)g_object_steal_data(G_OBJECT(application), "number");
-    g_message("found number: %i", *number);
-    g_free(number);
+
+    alveran_lexicon_remove_from_app(GTK_APPLICATION(application));
+
 }
 
 
