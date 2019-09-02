@@ -47,7 +47,7 @@ INCLUDEDIR+=$(patsubst %,-I./src/%, lexicon taw)
 
 
 
-_SRC_FILES=run_alveran alveran_app alveran_app_win alveran_tools taw/alveran_taw_widget \
+_SRC_FILES=run_alveran alveran_app alveran_app_win taw/alveran_taw_widget \
 		   lexicon/alveran_lexicon lexicon/alveran_lexicon_search lexicon/alveran_lexicon_callback lexicon/alveran_lexicon_type
 
 

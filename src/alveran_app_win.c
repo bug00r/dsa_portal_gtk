@@ -43,10 +43,12 @@ open_lexicon_cb (GtkToolButton *toolbutton, gpointer data)
 
     GtkStack *stack = alveran_app_get_stack(GTK_WIDGET(toolbutton));
 
-    if (stack) {
+    if (stack) 
+    {
         GtkWidget *lexicon_widget = GTK_WIDGET(gtk_stack_get_child_by_name(stack,(const gchar*)"lexicon"));
         g_message("found taw_calc %p", lexicon_widget);
-        if (lexicon_widget == NULL) {
+        if (lexicon_widget == NULL) 
+        {
             alveran_lexicon_init_app(GTK_APPLICATION(g_application_get_default()));
             GtkWidget *lexicon_widget = alveran_lexicon_widget_new();
             gtk_stack_add_titled (stack, lexicon_widget, (const gchar*)"lexicon", (const gchar*)"lexicon");

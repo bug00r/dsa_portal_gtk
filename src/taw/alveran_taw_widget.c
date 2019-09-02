@@ -16,8 +16,8 @@ alveran_taw_changed_cb (GtkComboBox *widget,
     taw_col_t column = (taw_col_t)category;
 	taw_result_t *taw_result = taw_calc(&column, start-4, end-3);
 
-	if(taw_result->complete) {
-        
+	if(taw_result->complete) 
+    {    
         gchar *result = g_strdup_printf("%i AP", taw_result->complete->ap);
         gtk_label_set_text (GTK_LABEL(g_object_get_data(G_OBJECT(app), "taw_result")), result);
 		g_free(result);
@@ -28,7 +28,8 @@ alveran_taw_changed_cb (GtkComboBox *widget,
 
 }
 
-GtkWidget * alveran_taw_widget_new() {
+GtkWidget * alveran_taw_widget_new() 
+{
     GtkBuilder *builder = gtk_builder_new_from_resource ("/de/bug0r/alveran/ui/taw.ui");
     gtk_builder_add_callback_symbol (builder, "alveran_taw_changed_cb", G_CALLBACK(alveran_taw_changed_cb));
     gtk_builder_connect_signals(builder, NULL);
