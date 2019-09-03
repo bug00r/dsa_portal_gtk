@@ -1,6 +1,6 @@
 #include "alveran_lexicon_callback.h"
 
-static void
+G_MODULE_EXPORT void
 lexicon_search_cb (GtkButton *button, gpointer user_data) 
 {
 
@@ -11,7 +11,7 @@ lexicon_search_cb (GtkButton *button, gpointer user_data)
 
 }
 
-void 
+G_MODULE_EXPORT void 
 search_input_key_callback(GtkEntry *entry, gpointer user_data) 
 {
 
@@ -22,7 +22,7 @@ search_input_key_callback(GtkEntry *entry, gpointer user_data)
 
 }
 
-void
+G_MODULE_EXPORT void
 on_category_changed_cb (GtkComboBox *widget, gpointer user_data) 
 {
 
@@ -34,7 +34,7 @@ on_category_changed_cb (GtkComboBox *widget, gpointer user_data)
 
 }
 
-void
+G_MODULE_EXPORT void
 on_group_changed_cb (GtkComboBox *widget, gpointer user_data) 
 {
 		
@@ -48,7 +48,7 @@ on_group_changed_cb (GtkComboBox *widget, gpointer user_data)
 
 }
 
-void
+G_MODULE_EXPORT void
 on_result_list_changed_cb (GtkListBox *box, GtkListBoxRow *row, gpointer user_data)
 {
 	
@@ -58,17 +58,24 @@ on_result_list_changed_cb (GtkListBox *box, GtkListBoxRow *row, gpointer user_da
 	update_result_display_by_selection(lctx);
 }
 
-void
-alveran_lexicon_register_callbacks(GtkBuilder *_builder) {
-	
-	GtkBuilder *builder = GTK_BUILDER(_builder);
-	
-	if (builder) {
-		gtk_builder_add_callback_symbol (builder, "lexicon_search_cb", G_CALLBACK(lexicon_search_cb));
-		gtk_builder_add_callback_symbol (builder, "on_category_changed_cb", G_CALLBACK(on_category_changed_cb));
-		gtk_builder_add_callback_symbol (builder, "on_group_changed_cb", G_CALLBACK(on_group_changed_cb));
-		gtk_builder_add_callback_symbol (builder, "on_result_list_changed_cb", G_CALLBACK(on_result_list_changed_cb));
-		gtk_builder_add_callback_symbol (builder, "search_input_key_callback", G_CALLBACK(search_input_key_callback));
+#if 0
+/**
+ *  This usage has to check against G_MODULE_EXPORT based on error prone parts or security pitfalls, 
+ *  but it look more elegant.
+ * 
+	void
+	alveran_lexicon_register_callbacks(GtkBuilder *_builder) {
+		
+		GtkBuilder *builder = GTK_BUILDER(_builder);
+		
+		if (builder) {
+			gtk_builder_add_callback_symbol (builder, "lexicon_search_cb", G_CALLBACK(lexicon_search_cb));
+			gtk_builder_add_callback_symbol (builder, "on_category_changed_cb", G_CALLBACK(on_category_changed_cb));
+			gtk_builder_add_callback_symbol (builder, "on_group_changed_cb", G_CALLBACK(on_group_changed_cb));
+			gtk_builder_add_callback_symbol (builder, "on_result_list_changed_cb", G_CALLBACK(on_result_list_changed_cb));
+			gtk_builder_add_callback_symbol (builder, "search_input_key_callback", G_CALLBACK(search_input_key_callback));
+		
+		}
 	}
-}
-
+*/
+#endif

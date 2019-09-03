@@ -1,12 +1,13 @@
 #include "alveran_taw_widget.h"
 
 
-
-static void
+#if 0
+//gtk_builder_add_callback_symbol (builder, "alveran_taw_changed_cb", G_CALLBACK(alveran_taw_changed_cb));
+#endif
+G_MODULE_EXPORT void
 alveran_taw_changed_cb (GtkComboBox *widget,
                gpointer     user_data) 
 {
-
     GtkApplication *app = GTK_APPLICATION(g_application_get_default());
 
     gint category = gtk_combo_box_get_active (GTK_COMBO_BOX(g_object_get_data(G_OBJECT(app), "taw_category")));
@@ -25,13 +26,12 @@ alveran_taw_changed_cb (GtkComboBox *widget,
 	}
 	
 	taw_result_free(&taw_result);
-
 }
 
 GtkWidget * alveran_taw_widget_new() 
 {
     GtkBuilder *builder = gtk_builder_new_from_resource ("/de/bug0r/alveran/ui/taw.ui");
-    gtk_builder_add_callback_symbol (builder, "alveran_taw_changed_cb", G_CALLBACK(alveran_taw_changed_cb));
+    
     gtk_builder_connect_signals(builder, NULL);
     GtkWidget *taw_widget = GTK_WIDGET(gtk_builder_get_object (builder, "taw_box"));
     GtkContainer *taw_window = GTK_CONTAINER(gtk_builder_get_object (builder, "taw_window"));

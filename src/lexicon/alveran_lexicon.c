@@ -59,8 +59,11 @@ void alveran_lexicon_remove_from_app(GtkApplication *app)
 GtkWidget* alveran_lexicon_widget_new() 
 {
 	GtkBuilder *builder = gtk_builder_new_from_resource ("/de/bug0r/alveran/ui/lexicon.ui");
+	#if 0
+	//This has to be checked against error prone or security pitfalls
 	alveran_lexicon_register_callbacks(builder);
-    gtk_builder_connect_signals(builder, NULL);
+	#endif
+	gtk_builder_connect_signals(builder, NULL);
     GtkWidget *lexicon_widget = GTK_WIDGET(gtk_builder_get_object (builder, "lexicon_box"));
     GtkContainer *lexicon_window = GTK_CONTAINER(gtk_builder_get_object (builder, "lexicon_window"));
     gtk_container_remove(GTK_CONTAINER(lexicon_window),lexicon_widget);
