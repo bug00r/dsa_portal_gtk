@@ -20,6 +20,14 @@ alveran_app_get_stack(GtkWidget *widget) {
 }  
 
 static void
+apply_css (GtkWidget *widget, GtkStyleProvider *provider)
+{
+    gtk_style_context_add_provider (gtk_widget_get_style_context (widget), provider, G_MAXUINT);
+    if (GTK_IS_CONTAINER (widget))
+        gtk_container_forall (GTK_CONTAINER (widget), (GtkCallback) apply_css, provider);
+}
+
+static void
 open_taw_cb (GtkToolButton *toolbutton, gpointer data)
 {
 
@@ -31,6 +39,11 @@ open_taw_cb (GtkToolButton *toolbutton, gpointer data)
         if (taw_widget == NULL) {
             GtkWidget *taw_widget = alveran_taw_widget_new();
             gtk_stack_add_titled (stack, taw_widget, (const gchar*)"taw-calc", (const gchar*)"taw-calc");
+            
+            GtkStyleProvider *provider = GTK_STYLE_PROVIDER (gtk_css_provider_new ());
+            gtk_css_provider_load_from_resource (GTK_CSS_PROVIDER (provider), "/de/bug0r/alveran/css/default.css");
+
+            apply_css (GTK_WIDGET(taw_widget), provider);
         }
         gtk_stack_set_visible_child_name(stack, (const gchar*)"taw-calc");
     }
@@ -52,19 +65,15 @@ open_lexicon_cb (GtkToolButton *toolbutton, gpointer data)
             alveran_lexicon_init_app(GTK_APPLICATION(g_application_get_default()));
             GtkWidget *lexicon_widget = alveran_lexicon_widget_new();
             gtk_stack_add_titled (stack, lexicon_widget, (const gchar*)"lexicon", (const gchar*)"lexicon");
+            GtkStyleProvider *provider = GTK_STYLE_PROVIDER (gtk_css_provider_new ());
+            gtk_css_provider_load_from_resource (GTK_CSS_PROVIDER (provider), "/de/bug0r/alveran/css/default.css");
+
+            apply_css (GTK_WIDGET(lexicon_widget), provider);
+            alveran_lexicon_widget_init(lexicon_widget);
         }
         gtk_stack_set_visible_child_name(stack, (const gchar*)"lexicon");
-        alveran_lexicon_widget_init(lexicon_widget);
     }
 
-}
-
-static void
-apply_css (GtkWidget *widget, GtkStyleProvider *provider)
-{
-  gtk_style_context_add_provider (gtk_widget_get_style_context (widget), provider, G_MAXUINT);
-  if (GTK_IS_CONTAINER (widget))
-    gtk_container_forall (GTK_CONTAINER (widget), (GtkCallback) apply_css, provider);
 }
 
 static void
