@@ -45,8 +45,6 @@ INCLUDEDIR+=-I./src -I../utils/src -I../collections/dl_list -I../dsa_core/src -I
 INCLUDEDIR+=$(patsubst %,-I./src/%, lexicon taw)
 
 
-
-
 _SRC_FILES=run_alveran alveran_app alveran_app_win taw/alveran_taw_widget \
 		   lexicon/alveran_lexicon lexicon/alveran_lexicon_search lexicon/alveran_lexicon_callback lexicon/alveran_lexicon_type
 
@@ -85,6 +83,9 @@ $(RESRC): src/resource/alveranapp.gresource.xml src/resource/ui/window.ui
 	$(GLIB_COMPILE_RESOURCES) alveranapp.gresource.xml --target=./../../$@ --sourcedir=. --generate-source; \
 	$(GLIB_COMPILE_RESOURCES) alveranapp.gresource.xml --target=./../../$(patsubst %.c,%.h,$@) --sourcedir=. --generate-header;
 	$(CC) $(CFLAGS) -c $@ -o $(RESRC:.c=.o) $(INCLUDEDIR) $(debug)
+
+hero_ui_xslt:
+	xsltproc --stringparam text "really fancy text!!" --stringparam talents ../../../../dsa_core/data/xml/talents.xml src/resource/xslt/hgen.ui.xslt src/resource/ui/hgen_raw.ui
 
 .PHONY: cleanall clean mkbuilddir small smaller
 
