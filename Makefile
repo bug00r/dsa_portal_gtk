@@ -85,7 +85,12 @@ $(RESRC): src/resource/alveranapp.gresource.xml src/resource/ui/window.ui
 	$(CC) $(CFLAGS) -c $@ -o $(RESRC:.c=.o) $(INCLUDEDIR) $(debug)
 
 hero_ui_xslt:
-	xsltproc --stringparam text "really fancy text!!" --stringparam talents ../../../../dsa_core/data/xml/talents.xml src/resource/xslt/hgen.ui.xslt src/resource/ui/hgen_raw.ui
+	xsltproc -o src/resource/ui/hgen_xslt.ui --stringparam talents ../../../../dsa_core/data/xml/talents.xml \
+	--stringparam breeds ../../../../dsa_core/data/xml/breeds.xml --stringparam cultures ../../../../dsa_core/data/xml/cultures.xml \
+	--stringparam basehero ../../../../dsa_core/data/xml/bsehero.xml src/resource/xslt/hgen.ui.xslt src/resource/ui/hgen_raw.ui
+
+hero_ui_xslt2:
+	xsltproc -o $(BUILDPATH)$(PS)test_hgenui.ui src/resource/ui/hgen_xslt.ui ../dsa_core/data/xml/breeds.xml
 
 .PHONY: cleanall clean mkbuilddir small smaller
 
