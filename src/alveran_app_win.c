@@ -77,6 +77,33 @@ open_lexicon_cb (GtkToolButton *toolbutton, gpointer data)
 }
 
 static void
+open_hgen_cb (GtkToolButton *toolbutton, gpointer data)
+{
+
+    GtkStack *stack = alveran_app_get_stack(GTK_WIDGET(toolbutton));
+
+    if (stack) 
+    {
+        GtkWidget *hgen_widget = GTK_WIDGET(gtk_stack_get_child_by_name(stack,(const gchar*)"hgen"));
+        g_message("found taw_calc %p", hgen_widget);
+        if (hgen_widget == NULL) 
+        {
+            alveran_hgen_init_app(GTK_APPLICATION(g_application_get_default()));
+            GtkWidget *hgen_widget = alveran_hgen_widget_new();
+            gtk_stack_add_titled (stack, hgen_widget, (const gchar*)"hgen", (const gchar*)"hgen");
+            GtkStyleProvider *provider = GTK_STYLE_PROVIDER (gtk_css_provider_new ());
+            gtk_css_provider_load_from_resource (GTK_CSS_PROVIDER (provider), "/de/bug0r/alveran/css/default.css");
+
+            apply_css (GTK_WIDGET(hgen_widget), provider);
+            alveran_hgen_widget_init(hgen_widget);
+        }
+        gtk_stack_set_visible_child_name(stack, (const gchar*)"hgen");
+    }
+
+}
+
+
+static void
 alveran_app_window_init (AlveranAppWindow *win)
 {
     g_message("Alveran Main Window init:");
@@ -97,6 +124,7 @@ alveran_app_window_class_init (AlveranAppWindowClass *class)
     gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (class),"/de/bug0r/alveran/ui/window.ui");
     gtk_widget_class_bind_template_callback_full (GTK_WIDGET_CLASS (class), "open_taw_cb", G_CALLBACK(open_taw_cb));
     gtk_widget_class_bind_template_callback_full (GTK_WIDGET_CLASS (class), "open_lexicon_cb", G_CALLBACK(open_lexicon_cb));
+    gtk_widget_class_bind_template_callback_full (GTK_WIDGET_CLASS (class), "open_hgen_cb", G_CALLBACK(open_hgen_cb));
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), AlveranAppWindow, tool_stack);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), AlveranAppWindow, stack_switch);
 }

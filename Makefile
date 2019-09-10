@@ -41,12 +41,13 @@ RESRC:=$(patsubst %,$(BUILDPATH)/%,$(patsubst %,%.c, $(RESFILENAME)))
 
 INCLUDEDIR=$(GTK_INCLUDE) $(XSLT_INCLUDE) $(XML2_INCLUDE) $(ICU_INCLUDE) $(ICONV_INCLUDE) $(FREETYPE_INCLUDE) \
 			$(ARCHIVE_INCLUDE)
-INCLUDEDIR+=-I./src -I../utils/src -I../collections/dl_list -I../dsa_core/src -I./$(BUILDPATH)
-INCLUDEDIR+=$(patsubst %,-I./src/%, lexicon taw)
+INCLUDEDIR+=-I./src -I../collections/dl_list -I../utils/src -I../dsa_core/src -I./$(BUILDPATH)
+INCLUDEDIR+=$(patsubst %,-I./src/%, lexicon taw hgen)
 
 
 _SRC_FILES=run_alveran alveran_app alveran_app_win taw/alveran_taw_widget \
-		   lexicon/alveran_lexicon lexicon/alveran_lexicon_search lexicon/alveran_lexicon_callback lexicon/alveran_lexicon_type
+		   lexicon/alveran_lexicon lexicon/alveran_lexicon_search lexicon/alveran_lexicon_callback lexicon/alveran_lexicon_type \
+		   hgen/alveran_hgen hgen/alveran_hgen_type
 
 
 SRC+=$(patsubst %,src/%,$(patsubst %,%.c,$(_SRC_FILES)))
@@ -55,7 +56,7 @@ OBJ=$(patsubst %,$(BUILDPATH)/%,$(patsubst %,%.o, $(RESFILENAME) $(_SRC_FILES)))
 BINNAME=dsa_portal
 BIN=$(BINNAME).exe
 
-ONW_LIBS=dl_list utils dsa_core
+ONW_LIBS=dsa_core utils dl_list
 
 USED_LIBS=$(patsubst %,-l%, $(ONW_LIBS))
 USED_LIBS+=$(GTK_LIBS) $(XSLT_LIBS) $(XML2_LIBS) $(ICU_LIBS) $(FREETYPE_LIBS) $(ARCHIVE_LIBS) $(PCRE2_LIBS)
@@ -67,7 +68,7 @@ USED_LIBSDIR+=-L./../collections/dl_list/$(BUILDPATH)
 USED_LIBSDIR+=-L./../utils/$(BUILDPATH) 
 USED_LIBSDIR+=-L./../dsa_core/$(BUILDPATH)
 
-all: mkbuilddir $(BUILDPATH)$(BIN) $(COPYDLLS)
+all: mkbuilddir hero_ui_xslt $(BUILDPATH)$(BIN) $(COPYDLLS)
 
 $(BUILDPATH)$(BIN): $(RESRC) $(_SRC_FILES)
 	$(CC) $(CFLAGS) $(OBJ) -o $(BUILDPATH)$(BIN) $(INCLUDEDIR) $(USED_LIBSDIR) $(USED_LIBS) $(debug) $(release)
@@ -98,6 +99,7 @@ mkbuilddir:
 	-mkdir -p $(BUILDDIR)
 	-mkdir -p $(BUILDPATH)$(PS)taw
 	-mkdir -p $(BUILDPATH)$(PS)lexicon
+	-mkdir -p $(BUILDPATH)$(PS)hgen
 
 small:
 	-strip $(BUILDPATH)$(BIN)
@@ -110,7 +112,7 @@ smallest: small
 	
 clean:
 	-rm -r $(BUILDPATH)*.c $(BUILDPATH)*.o $(BUILDPATH)$(PS)taw$(PS)*.o $(BUILDPATH)*.exe $(BUILDPATH)*.h \
-	$(BUILDPATH)$(PS)lexicon$(PS)*.o
+	$(BUILDPATH)$(PS)lexicon$(PS)*.o $(BUILDPATH)$(PS)hgen$(PS)*.o
 
 cleanall:
 	-rm -dr $(BUILDROOT)

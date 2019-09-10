@@ -13,7 +13,8 @@
   <xsl:element name="xsl:stylesheet" >
     <xsl:attribute name="version"><xsl:value-of select="'1.0'" /></xsl:attribute>
     <xsl:attribute namespace="xmlns" name="fo"><xsl:value-of select="'http://www.w3.org/1999/XSL/Format'" /></xsl:attribute>
-    
+    <xsl:attribute name="exclude-result-prefixes"><xsl:value-of select="'ns_1'" /></xsl:attribute>
+
     <xsl:element name="xsl:param" ><xsl:attribute name="name"><xsl:value-of select="'breeds'" /></xsl:attribute></xsl:element>
     <xsl:element name="xsl:param" ><xsl:attribute name="name"><xsl:value-of select="'cultures'" /></xsl:attribute></xsl:element>
     <xsl:element name="xsl:param" ><xsl:attribute name="name"><xsl:value-of select="'talents'" /></xsl:attribute></xsl:element>

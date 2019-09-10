@@ -61,7 +61,7 @@ alveran_app_shutdown(GApplication *application,
     g_message("Alveran APP shutdown:");
 
     alveran_lexicon_remove_from_app(GTK_APPLICATION(application));
-
+    alveran_hgen_remove_from_app(GTK_APPLICATION(application));
 }
 
 

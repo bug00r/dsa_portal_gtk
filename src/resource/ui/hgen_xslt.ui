@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns_1="xmlns" version="1.0" ns_1:fo="http://www.w3.org/1999/XSL/Format">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns_1="xmlns" version="1.0" ns_1:fo="http://www.w3.org/1999/XSL/Format" exclude-result-prefixes="ns_1">
+  <xsl:param name="breeds"/>
+  <xsl:param name="cultures"/>
   <xsl:param name="talents"/>
-  <xsl:param name="text"/>
+  <xsl:param name="basehero"/>
   <xsl:template match="/">
     <!-- Generated with glade 3.22.1 -->
     <interface>
@@ -12,13 +14,13 @@
       <column type="gchararray"/>
     </columns>
   <data><xsl:for-each select="//hero"><row><col id="0" translatable="yes"><xsl:value-of select="@name"/></col></row></xsl:for-each></data></object>
-  <object class="GtkWindow">
+  <object class="GtkWindow" id="hgen_window">
     <property name="can_focus">False</property>
     <child>
       <placeholder/>
     </child>
     <child>
-      <object class="GtkPaned">
+      <object class="GtkPaned" id="hgen_box">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="position">100</property>
