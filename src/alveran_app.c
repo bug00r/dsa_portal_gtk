@@ -69,6 +69,9 @@ static void
 alveran_app_init (AlveranApp *app) 
 {
     g_message("Alveran App init:");
+
+    //gtk_icon_theme_add_resource_path (gtk_icon_theme_get_default (),"/de/bug0r/alveran/icons");
+
     g_action_map_add_action_entries (G_ACTION_MAP (app), app_actions, G_N_ELEMENTS (app_actions), app);
 
     g_signal_connect (app, "shutdown", G_CALLBACK (alveran_app_shutdown), NULL);

@@ -6,17 +6,17 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="events">GDK_BUTTON_RELEASE_MASK | GDK_STRUCTURE_MASK</property>
-    <property name="resource">/de/bug0r/alveran/icon/test.png</property>
+    <property name="resource">/de/bug0r/alveran/icons/test.png</property>
   </object>
   <object class="GtkImage" id="image2">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="resource">/de/bug0r/alveran/icon/test.png</property>
+    <property name="resource">/de/bug0r/alveran/icons/test.png</property>
   </object>
   <object class="GtkImage" id="image3">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="resource">/de/bug0r/alveran/icon/test.png</property>
+    <property name="resource">/de/bug0r/alveran/icons/test.png</property>
   </object>
   <template class="AlveranAppWindow" parent="GtkApplicationWindow">
     <property name="can_focus">False</property>

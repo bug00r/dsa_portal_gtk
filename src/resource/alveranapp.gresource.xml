@@ -5,7 +5,24 @@
     <file preprocess="xml-stripblanks">ui/taw.ui</file>
     <file preprocess="xml-stripblanks">ui/lexicon.ui</file>
     <file preprocess="xml-stripblanks">ui/hgen_xslt.ui</file>
-    <file preprocess="to-pixdata">icon/test.png</file>
+    <file preprocess="to-pixdata">icons/test.png</file>
     <file>css/default.css</file>
   </gresource>
+  <gresource prefix="/de/bug0r/alveran/icons/16x16/status" >
+    <file alias="image-missing.png" preprocess="to-pixdata">icons/16x16/status/image-missing.png</file>
+  </gresource>
+  <gresource prefix="/de/bug0r/alveran/icons/24x24/status" >
+    <file alias="image-missing.png" preprocess="to-pixdata">icons/24x24/status/image-missing.png</file>
+  </gresource>
+  <gresource prefix="/de/bug0r/alveran/icons/16x16/actions" >
+    <file alias="list-add-symbolic.png" preprocess="to-pixdata">icons/16x16/actions/list-add-symbolic.symbolic.png</file>
+    <file alias="list-remove-symbolic.png" preprocess="to-pixdata">icons/16x16/actions/list-remove-symbolic.symbolic.png</file>
+    <file alias="go-down-symbolic.png" preprocess="to-pixdata">icons/16x16/actions/go-down-symbolic.symbolic.png</file>
+    <file alias="document-edit-symbolic.png" preprocess="to-pixdata">icons/16x16/actions/document-edit-symbolic.symbolic.png</file>
+    <file alias="edit-find-replace-symbolic.png" preprocess="to-pixdata">icons/16x16/actions/edit-find-replace-symbolic.symbolic.png</file>
+    <file alias="edit-delete-symbolic.png" preprocess="to-pixdata">icons/16x16/actions/edit-delete-symbolic.symbolic.png</file>
+    <file alias="contact-new-symbolic.png" preprocess="to-pixdata">icons/16x16/actions/contact-new-symbolic.symbolic.png</file>
+  </gresource>
+  
+  
 </gresources>

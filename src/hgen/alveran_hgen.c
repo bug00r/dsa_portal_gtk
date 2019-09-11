@@ -19,8 +19,6 @@ static xmlBuffer* __alveran_hgen_get_and_translate_ui(hgen_ctx_t * hctx)
 	
 	xmlDocPtr result = do_xslt(&xslt_ctx);
 
-	xmlSaveFileEnc("-", result,"UTF-8");
-
 	xmlBuffer *buffer = xmlBufferCreate();
 	xmlOutputBuffer *outputBuffer = xmlOutputBufferCreateBuffer( buffer, NULL );
 	xmlSaveFormatFileTo( outputBuffer, result, "utf-8", 1 );
