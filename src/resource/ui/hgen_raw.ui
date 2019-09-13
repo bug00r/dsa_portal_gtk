@@ -218,7 +218,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkSpinButton" id="gp">
+                      <object class="GtkSpinButton" id="hgen_gp">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="width_chars">3</property>
@@ -243,7 +243,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkEntry">
+                      <object class="GtkEntry" id="hgen_name">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                       </object>
@@ -276,16 +276,6 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBoxText">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">2</property>
-                      </packing>
-                    </child>
-                    <child>
                       <object class="GtkButton">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -305,16 +295,6 @@
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">3</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkComboBoxText">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
                         <property name="top_attach">3</property>
                       </packing>
                     </child>
@@ -343,16 +323,6 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBoxText">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">4</property>
-                      </packing>
-                    </child>
-                    <child>
                       <object class="GtkButton">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -376,7 +346,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkSpinButton">
+                      <object class="GtkSpinButton" id="hgen_height">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="primary_icon_activatable">False</property>
@@ -419,7 +389,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel">
+                      <object class="GtkLabel" id="hgen_weight">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">-</property>
@@ -441,7 +411,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBoxText">
+                      <object class="GtkComboBoxText" id="hgen_hair_color">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                       </object>
@@ -475,7 +445,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBoxText">
+                      <object class="GtkComboBoxText" id="hgen_eye_color">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                       </object>
@@ -495,6 +465,39 @@
                       <packing>
                         <property name="left_attach">2</property>
                         <property name="top_attach">8</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="hgen_breed">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="active">0</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="hgen_culture">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="active">0</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="hgen_profession">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="active">0</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">4</property>
                       </packing>
                     </child>
                     <child>

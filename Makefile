@@ -88,6 +88,7 @@ $(RESRC): src/resource/alveranapp.gresource.xml src/resource/ui/window.ui
 hero_ui_xslt:
 	xsltproc -o src/resource/ui/hgen_xslt.ui --stringparam talents ../../../../dsa_core/data/xml/talents.xml \
 	--stringparam breeds ../../../../dsa_core/data/xml/breeds.xml --stringparam cultures ../../../../dsa_core/data/xml/cultures.xml \
+	--stringparam professions ../../../../dsa_core/data/xml/professions.xml \
 	--stringparam basehero ../../../../dsa_core/data/xml/bsehero.xml src/resource/xslt/hgen.ui.xslt src/resource/ui/hgen_raw.ui
 
 hero_ui_xslt2:
