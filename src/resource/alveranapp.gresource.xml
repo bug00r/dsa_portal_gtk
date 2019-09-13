@@ -22,6 +22,8 @@
     <file alias="edit-find-replace-symbolic.png" preprocess="to-pixdata">icons/16x16/actions/edit-find-replace-symbolic.symbolic.png</file>
     <file alias="edit-delete-symbolic.png" preprocess="to-pixdata">icons/16x16/actions/edit-delete-symbolic.symbolic.png</file>
     <file alias="contact-new-symbolic.png" preprocess="to-pixdata">icons/16x16/actions/contact-new-symbolic.symbolic.png</file>
+    <file alias="find-location.png" preprocess="to-pixdata">icons/16x16/actions/find-location-symbolic.symbolic.png</file>
+    <file alias="edit-delete.png" preprocess="to-pixdata">icons/16x16/actions/edit-delete-symbolic.symbolic.png</file>
   </gresource>
   
   

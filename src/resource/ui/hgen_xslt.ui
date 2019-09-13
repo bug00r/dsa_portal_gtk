@@ -38,6 +38,21 @@
     <property name="can_focus">False</property>
     <property name="icon_name">document-edit-symbolic</property>
   </object>
+  <object class="GtkImage" id="image11">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">document-open-symbolic</property>
+  </object>
+  <object class="GtkImage" id="image12">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">document-edit-symbolic</property>
+  </object>
+  <object class="GtkImage" id="image13">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">edit-delete-symbolic</property>
+  </object>
   <object class="GtkImage" id="image2">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -87,8 +102,8 @@
       <object class="GtkPaned" id="hgen_box">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
-        <property name="position">100</property>
-        <property name="position_set">True</property>
+        <property name="position">120</property>
+        <property name="wide_handle">True</property>
         <child>
           <object class="GtkBox">
             <property name="visible">True</property>
@@ -204,6 +219,32 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkToolbar">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="valign">baseline</property>
+                <property name="show_arrow">False</property>
+                <child>
+                  <object class="GtkToolButton">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="is_important">True</property>
+                    <property name="label" translatable="yes">prüfen</property>
+                    <property name="icon_name">find-location-symbolic</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
             <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
@@ -478,6 +519,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="active">0</property>
+                        <property name="popup_fixed_width">False</property>
                       <items><item translatable="yes">Die Mittelländer</item><item translatable="yes">Die Tulamiden</item><item translatable="yes">Die Thorwaler</item><item translatable="yes">Die Nivesen</item><item translatable="yes">Die Norbarden</item><item translatable="yes">Die Trollzacker</item><item translatable="yes">Die Rochshaz-Trollzacker</item><item translatable="yes">Die Waldmenschen</item><item translatable="yes">Die Tocamuyac-Waldmenschen</item><item translatable="yes">Die Utulus</item><item translatable="yes">Die Auelfen</item><item translatable="yes">Die Waldelfen</item><item translatable="yes">Die Firnelfen</item><item translatable="yes">Die Halbelfen</item><item translatable="yes">Die Firnelfen-Halbelfen</item><item translatable="yes">Die Nivesen-Halbelfen</item><item translatable="yes">Die Thorwaler-Halbelfen</item><item translatable="yes">Die Erz- und Hügelzwerge</item><item translatable="yes">Die Brillantzwerge</item><item translatable="yes">Die Ambosszwerge</item><item translatable="yes">Die Wilden-Zwerge</item><item translatable="yes">Die Orks</item><item translatable="yes">Die Orks(Orkfrauen)</item><item translatable="yes">Die Halborks</item><item translatable="yes">Die Goblins</item><item translatable="yes">Die Goblins(Goblinfrau)</item><item translatable="yes">Die Achaz(Echsensumpf und Regenwald)</item><item translatable="yes">Die Achaz(Orkland)</item><item translatable="yes">Die Achaz(Waldinsel)</item><item translatable="yes">Die Achaz(Maraskan)</item></items></object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -489,6 +531,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="active">0</property>
+                        <property name="popup_fixed_width">False</property>
                       <items><item translatable="yes">Mittelländische Städte</item><item translatable="yes">Mittelländische Städte(Hafenstädte und Städte an großen Flüssen)</item><item translatable="yes">Mittelländische Städte(Tempel/Pilgerstätte)</item><item translatable="yes">Mittelländische Städte(Siedlerstädte des Nordens)</item><item translatable="yes">Mittelländische Städte(Städtischer Adel)</item><item translatable="yes">Mittelländische Städte(Kannemünde/Mhanerhaven)</item><item translatable="yes">Mittelländische Städte(Flüchtling)</item><item translatable="yes">Mittelländische Landbevölkerung</item><item translatable="yes">Mittelländische Landbevölkerung (Küstengebiete / große Flüsse)</item><item translatable="yes">Mittelländische Landbevölkerung (Handelsroute / Reichsstraße)</item><item translatable="yes">Mittelländische Landbevölkerung (Weiden / Greifenfurt)</item><item translatable="yes">Mittelländische Landbevölkerung (Fern der Zivilisation)</item><item translatable="yes">Mittelländische Landbevölkerung (Landadel)</item><item translatable="yes">Mittelländische Landbevölkerung (Jilaskan)</item><item translatable="yes">Mittelländische Landbevölkerung (Besetzte Gebiete)</item><item translatable="yes">Andergast und Nostria</item><item translatable="yes">Andergast und Nostria (Stadt)</item><item translatable="yes">Andergast und Nostria (Landadel)</item><item translatable="yes">Andergast und Nostria (Gebirge)</item><item translatable="yes">Andergast und Nostria (Küstengebiete)</item><item translatable="yes">Andergast und Nostria (Teshkalien)</item><item translatable="yes">Bornland</item><item translatable="yes">Bornland (Landstädte)</item><item translatable="yes">Bornland (Küstengebiete)</item><item translatable="yes">Bornland (Landadel)</item><item translatable="yes">Svellttal und Nordlande</item><item translatable="yes">Svellttal und Nordlande (Stadt)</item><item translatable="yes">Svellttal und Nordlande (Kleinstädte)</item><item translatable="yes">Svellttal und Nordlande (Küstengebiete / große Flüsse)</item><item translatable="yes">Svellttal und Nordlande (Fern der Zivilisation)</item><item translatable="yes">Svellttal und Nordlande (Flüchtling aus Glorania)</item><item translatable="yes">Almada</item><item translatable="yes">Almada (Städte am Yaquir)</item><item translatable="yes">Almada (Tempel / Pilgerstätte)</item><item translatable="yes">Almada (Städtischer Adel)</item><item translatable="yes">Almada (Handelsrouten)</item><item translatable="yes">Almada (Gebirge)</item><item translatable="yes">Almada (Landadel)</item><item translatable="yes">Horasreich</item><item translatable="yes">Horasreich (Hafenstädte / große Flüsse)</item><item translatable="yes">Horasreich (Tempel / Pilgerstätte)</item><item translatable="yes">Horasreich (Städtischer Adel)</item><item translatable="yes">Horasreich (Dörfer an Küste / Flüsse)</item><item translatable="yes">Horasreich (Handelsroute)</item><item translatable="yes">Horasreich (Gebirge)</item><item translatable="yes">Horasreich (Fernab der Zivilisation)</item><item translatable="yes">Horasreich (Landadel)</item><item translatable="yes">Zyklopeninseln</item><item translatable="yes">Zyklopeninseln(Landadel)</item><item translatable="yes">Amazonenburg</item><item translatable="yes">Aranien</item><item translatable="yes">Aranien(Stadt/Barun-Ulah)</item><item translatable="yes">Aranien(Adel)</item><item translatable="yes">Mhanadistan</item><item translatable="yes">Mhanadistan(Handelsroute)</item><item translatable="yes">Mhanadistan(Fern der zivilisation)</item><item translatable="yes">Mhanadistan(Küstengebiete/Flüsse)</item><item translatable="yes">Mhanadistan(Tulamidische Nomadenstämme)</item><item translatable="yes">Mhanadistan(Kasimiten)</item><item translatable="yes">Tulamidische Stadtstaaten</item><item translatable="yes">Tulamidische Stadtstaaten(See- oder Mhanadihafen)</item><item translatable="yes">Tulamidische Stadtstaaten(Maraskanische Exilanten)</item><item translatable="yes">Tulamidische Stadtstaaten(Kasimiten)</item><item translatable="yes">Novadi(Männer oder Achmad-Sunni)</item><item translatable="yes">Novadi(Frauen)</item><item translatable="yes">Novadi(Männer oder Achmad-Sunni in Wüstenoase)</item><item translatable="yes">Novadi(Frauen in Wüstenoase)</item><item translatable="yes">Ferkina</item><item translatable="yes">Zahori</item><item translatable="yes">Thorwal</item><item translatable="yes">Thorwal(Binnenland)</item><item translatable="yes">Gjalskerland</item><item translatable="yes">Fjarninger</item><item translatable="yes">Dschungelstämme</item><item translatable="yes">Dschungelstämme(Tschopukikuha)</item><item translatable="yes">Dschungelstämme(Bergstämme)</item><item translatable="yes">Dschungelstämme(Haipu)</item><item translatable="yes">Dschungelstämme(Die Darna)</item><item translatable="yes">Verlorene Stämme</item><item translatable="yes">Verlorene Stämme(Shokubunga)</item><item translatable="yes">Verlorene Stämme(Chirakah)</item><item translatable="yes">Waldinsel-Utulus</item><item translatable="yes">Miniwatu</item><item translatable="yes">Tocamuyac</item><item translatable="yes">Maraskan</item><item translatable="yes">Maraskan(Dschungel)</item><item translatable="yes">Maraskan(Küstengebiete)</item><item translatable="yes">Maraskan(Städte)</item><item translatable="yes">Südaventurien</item><item translatable="yes">Südaventurien(Stadtstaaten)</item><item translatable="yes">Südaventurien(Kolonialhäfen)</item><item translatable="yes">Südaventurien(Dschungeldorf/Plantage)</item><item translatable="yes">Südaventurien(Selem)</item><item translatable="yes">Südaventurien(Maraskanische Exilanten)</item><item translatable="yes">Bukanier</item><item translatable="yes">Nivesenstämme</item><item translatable="yes">Nivesenstämme(Halbsesshafte Küstenstämme)</item><item translatable="yes">Nuanaa-Lie</item><item translatable="yes">Nuanaa-Lie(Nauoke)</item><item translatable="yes">Norbardensippe</item><item translatable="yes">Trollzacken</item><item translatable="yes">Auelfische Sippe</item><item translatable="yes">Auelfische Sippe(Hoher Norden)</item><item translatable="yes">Elfische Siedlung</item><item translatable="yes">Elfische Siedlung(Südliche Mittellande)</item><item translatable="yes">Elfische Siedlung(Großstadt)</item><item translatable="yes">Elfische Siedlung(Firnelfische beeinflußte Siedlung)</item><item translatable="yes">Elfische Siedlung(Waldelfisch beeinflußte Siedlung)</item><item translatable="yes">Steppenelfische Siedlung</item><item translatable="yes">Waldelfische Sippe</item><item translatable="yes">Firnelfische Sippe</item><item translatable="yes">Firnelfische Sippe(Küste und Inseln)</item><item translatable="yes">Ambosszwerge</item><item translatable="yes">Erzzwerge</item><item translatable="yes">Hügelzwerge</item><item translatable="yes">Brillantzwerge</item><item translatable="yes">Brobim</item><item translatable="yes">Orkland(TODO Variantenkombination)</item><item translatable="yes">Yurach</item><item translatable="yes">Svellttal-Besatzer(TODO Variantenkombination)</item><item translatable="yes">Goblinstamm(TODO Varianten)</item><item translatable="yes">Goblinbande</item><item translatable="yes">Festumer Ghetto</item><item translatable="yes">Archaische Achaz</item><item translatable="yes">Stammes-Achaz</item><item translatable="yes">Stammes-Achaz(Maraskan)</item><item translatable="yes">Stammes-Achaz(Orkland)</item><item translatable="yes">Stammes-Achaz(Echsensümpfe)</item><item translatable="yes">Stammes-Achaz(Loch Harodrol)</item><item translatable="yes">Stammes-Achaz(Waldinseln/Südaventurien)</item></items></object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -500,6 +543,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="active">0</property>
+                        <property name="popup_fixed_width">False</property>
                       <items><item translatable="yes">Amazone</item><item translatable="yes">Fähnrich der Fußkämpfer(Al Anfa)</item><item translatable="yes">Botenreiter/in</item><item translatable="yes">Botenreiter/in (Beilunker Reiter)</item><item translatable="yes">Botenreiter/in (Blaue Pfeile)</item><item translatable="yes">Ausrufer/in</item><item translatable="yes">Barde/in</item><item translatable="yes">Bader/in</item><item translatable="yes">Bauer Erntehelfer/in</item><item translatable="yes">Alchemist/in</item><item translatable="yes">Magiebegabte Alchemist/in</item><item translatable="yes">Praios</item><item translatable="yes">Bannstrahler(ungeweiht)</item><item translatable="yes">Aves</item><item translatable="yes">Kor</item><item translatable="yes">Medizinmann Dschungelstämme</item><item translatable="yes">Medizinmann Verlorene Stämme</item></items></object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -520,13 +564,166 @@
                   </packing>
                 </child>
                 <child>
-                  <placeholder/>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="stock">gtk-missing-image</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButtonBox">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="layout_style">start</property>
+                        <child>
+                          <object class="GtkButton">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="image">image11</property>
+                            <property name="always_show_image">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">True</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="image">image12</property>
+                            <property name="always_show_image">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">True</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="image">image13</property>
+                            <property name="always_show_image">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">True</property>
+                            <property name="fill">True</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkStackSwitcher">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="stack">stack1</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkStack" id="stack1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <child>
+                          <object class="GtkTextView">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </object>
+                          <packing>
+                            <property name="name">page0</property>
+                            <property name="title" translatable="yes">Stand</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkTextView">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </object>
+                          <packing>
+                            <property name="name">page1</property>
+                            <property name="title" translatable="yes">Aussehen</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkTextView">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </object>
+                          <packing>
+                            <property name="name">page2</property>
+                            <property name="title" translatable="yes">Hintergrund</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkTextView">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </object>
+                          <packing>
+                            <property name="name">page3</property>
+                            <property name="title" translatable="yes">Titel</property>
+                            <property name="position">3</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
                 </child>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">0</property>
+                <property name="position">1</property>
               </packing>
             </child>
             <child>
