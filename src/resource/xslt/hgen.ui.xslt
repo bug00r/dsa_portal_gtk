@@ -7,6 +7,7 @@
 <xsl:param name="breeds" />
 <xsl:param name="cultures" />
 <xsl:param name="professions" />
+<xsl:param name="procontra" />
 <xsl:param name="talents" />
 <xsl:param name="basehero" />
 
@@ -55,6 +56,20 @@
     </xsl:copy>
 </xsl:template>
 
+<xsl:template match="object[@id = 'hgen_pro_liststore']">  
+    <xsl:call-template name="copy_node_and_add_rows">
+      <xsl:with-param name="nodes" select = "@*|node()" />
+      <xsl:with-param name="items" select = "document($procontra)//pro" />
+    </xsl:call-template>
+</xsl:template>
+
+<xsl:template match="object[@id = 'hgen_contra_liststore']">  
+    <xsl:call-template name="copy_node_and_add_rows">
+      <xsl:with-param name="nodes" select = "@*|node()" />
+      <xsl:with-param name="items" select = "document($procontra)//contra" />
+    </xsl:call-template>
+</xsl:template>
+
 <xsl:template match="object[@id = 'hgen_breed']">  
     <xsl:call-template name="copy_node_and_add_items">
       <xsl:with-param name="nodes" select = "@*|node()" />
@@ -86,6 +101,19 @@
             <item translatable="yes"><xsl:value-of select="@name" /></item>            
         </xsl:for-each>
         </items>
+    </xsl:copy>
+</xsl:template>
+
+<xsl:template name="copy_node_and_add_rows">
+    <xsl:param name = "nodes" />
+    <xsl:param name = "items" />
+    <xsl:copy>
+        <xsl:copy-of select="$nodes"/>
+        <data>
+        <xsl:for-each select="$items">   
+            <row><col id="0" translatable="yes"><xsl:value-of select="@name" /></col></row>         
+        </xsl:for-each>
+        </data>
     </xsl:copy>
 </xsl:template>
 
