@@ -70,6 +70,13 @@
     </xsl:call-template>
 </xsl:template>
 
+<xsl:template match="object[@id = 'hgen_sa_liststore']">  
+    <xsl:call-template name="copy_node_and_add_rows">
+      <xsl:with-param name="nodes" select = "@*|node()" />
+      <xsl:with-param name="items" select = "document($specialabilities)//specialability" />
+    </xsl:call-template>
+</xsl:template>
+
 <xsl:template match="object[@id = 'hgen_breed']">  
     <xsl:call-template name="copy_node_and_add_items">
       <xsl:with-param name="nodes" select = "@*|node()" />
@@ -98,6 +105,7 @@
         <xsl:copy-of select="$nodes"/>
         <items>
         <xsl:for-each select="$items">   
+            <xsl:sort select="@name"/>
             <item translatable="yes"><xsl:value-of select="@name" /></item>            
         </xsl:for-each>
         </items>
@@ -111,6 +119,7 @@
         <xsl:copy-of select="$nodes"/>
         <data>
         <xsl:for-each select="$items">   
+            <xsl:sort select="@name"/>
             <row><col id="0" translatable="yes"><xsl:value-of select="@name" /></col></row>         
         </xsl:for-each>
         </data>

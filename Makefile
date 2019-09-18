@@ -68,6 +68,9 @@ USED_LIBSDIR+=-L./../collections/dl_list/$(BUILDPATH)
 USED_LIBSDIR+=-L./../utils/$(BUILDPATH) 
 USED_LIBSDIR+=-L./../dsa_core/$(BUILDPATH)
 
+XML_DIR:=../../../../dsa_core/data/xml/
+X_P=--stringparam
+
 all: mkbuilddir hero_ui_xslt $(BUILDPATH)$(BIN) $(COPYDLLS)
 
 $(BUILDPATH)$(BIN): $(RESRC) $(_SRC_FILES)
@@ -86,10 +89,10 @@ $(RESRC): src/resource/alveranapp.gresource.xml src/resource/ui/window.ui
 	$(CC) $(CFLAGS) -c $@ -o $(RESRC:.c=.o) $(INCLUDEDIR) $(debug)
 
 hero_ui_xslt:
-	xsltproc -o src/resource/ui/hgen_xslt.ui --stringparam talents ../../../../dsa_core/data/xml/talents.xml \
-	--stringparam breeds ../../../../dsa_core/data/xml/breeds.xml --stringparam cultures ../../../../dsa_core/data/xml/cultures.xml \
-	--stringparam professions ../../../../dsa_core/data/xml/professions.xml --stringparam procontra ../../../../dsa_core/data/xml/procontra.xml \
-	--stringparam basehero ../../../../dsa_core/data/xml/bsehero.xml src/resource/xslt/hgen.ui.xslt src/resource/ui/hgen_raw.ui
+	xsltproc -o src/resource/ui/hgen_xslt.ui $(X_P) talents $(XML_DIR)talents.xml $(X_P) breeds $(XML_DIR)breeds.xml \
+	$(X_P) cultures $(XML_DIR)cultures.xml $(X_P) professions $(XML_DIR)professions.xml \
+	$(X_P) procontra $(XML_DIR)procontra.xml $(X_P) basehero $(XML_DIR)bsehero.xml \
+	$(X_P) specialabilities $(XML_DIR)specialabilities.xml src/resource/xslt/hgen.ui.xslt src/resource/ui/hgen_raw.ui
 
 
 .PHONY: cleanall clean mkbuilddir small smaller
