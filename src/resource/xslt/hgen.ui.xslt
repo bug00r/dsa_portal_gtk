@@ -98,6 +98,62 @@
     </xsl:call-template>
 </xsl:template>
 
+<xsl:template match="object[@id = 'hgen_talent_fight']">  
+    <xsl:call-template name="copy_node_and_add_items">
+      <xsl:with-param name="nodes" select = "@*|node()" />
+      <xsl:with-param name="items" select = "document($talents)//group[@name = 'Kampf']/talent[@type='special' and not(@usage)]" />
+    </xsl:call-template>
+</xsl:template>
+
+<xsl:template match="object[@id = 'hgen_talent_fight_distance']">  
+    <xsl:call-template name="copy_node_and_add_items">
+      <xsl:with-param name="nodes" select = "@*|node()" />
+      <xsl:with-param name="items" select = "document($talents)//group[@name = 'Kampf']/talent[@type='special' and @usage]" />
+    </xsl:call-template>
+</xsl:template>
+
+<xsl:template match="object[@id = 'hgen_talent_body']">  
+    <xsl:call-template name="copy_node_and_add_items">
+      <xsl:with-param name="nodes" select = "@*|node()" />
+      <xsl:with-param name="items" select = "document($talents)//group[@name = 'Körper']/talent[@type='special']" />
+    </xsl:call-template>
+</xsl:template>
+
+<xsl:template match="object[@id = 'hgen_talent_body']">  
+    <xsl:call-template name="copy_node_and_add_items">
+      <xsl:with-param name="nodes" select = "@*|node()" />
+      <xsl:with-param name="items" select = "document($talents)//group[@name = 'Körper']/talent[@type='special']" />
+    </xsl:call-template>
+</xsl:template>
+
+<xsl:template match="object[@id = 'hgen_talent_society']">  
+    <xsl:call-template name="copy_node_and_add_items">
+      <xsl:with-param name="nodes" select = "@*|node()" />
+      <xsl:with-param name="items" select = "document($talents)//group[@name = 'Gesellschaft']/talent[@type='special']" />
+    </xsl:call-template>
+</xsl:template>
+
+<xsl:template match="object[@id = 'hgen_talent_nature']">  
+    <xsl:call-template name="copy_node_and_add_items">
+      <xsl:with-param name="nodes" select = "@*|node()" />
+      <xsl:with-param name="items" select = "document($talents)//group[@name = 'Natur']/talent[@type='special']" />
+    </xsl:call-template>
+</xsl:template>
+
+<xsl:template match="object[@id = 'hgen_talent_wisdom']">  
+    <xsl:call-template name="copy_node_and_add_items">
+      <xsl:with-param name="nodes" select = "@*|node()" />
+      <xsl:with-param name="items" select = "document($talents)//group[@name = 'Wissen']/talent[@type='special']" />
+    </xsl:call-template>
+</xsl:template>
+
+<xsl:template match="object[@id = 'hgen_talent_craft']">  
+    <xsl:call-template name="copy_node_and_add_items">
+      <xsl:with-param name="nodes" select = "@*|node()" />
+      <xsl:with-param name="items" select = "document($talents)//group[@name = 'Handwerk']/talent[@type='special']" />
+    </xsl:call-template>
+</xsl:template>
+
 <xsl:template name="copy_node_and_add_items">
     <xsl:param name = "nodes" />
     <xsl:param name = "items" />
