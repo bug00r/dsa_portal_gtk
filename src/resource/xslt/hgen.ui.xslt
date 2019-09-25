@@ -163,6 +163,55 @@
     </xsl:call-template>
 </xsl:template>
 
+<xsl:template match="object[@id = 'hgen_talent_fight_liststore']">  
+    <xsl:call-template name="copy_node_and_add_colums_talent_nf"><!-- nfk means nahkampf, fernkampf -->
+      <xsl:with-param name="nodes" select = "@*|node()" />
+      <xsl:with-param name="items" select = "$talents_doc//group[@name = 'Kampf']/talent[@type='base' and not(@usage)]" />
+    </xsl:call-template>
+</xsl:template>
+
+<xsl:template match="object[@id = 'hgen_talent_fight_melee_liststore']">  
+    <xsl:call-template name="copy_node_and_add_colums_talent_nf"><!-- nf means nahkampf, fernkampf -->
+      <xsl:with-param name="nodes" select = "@*|node()" />
+      <xsl:with-param name="items" select = "$talents_doc//group[@name = 'Kampf']/talent[@type='base' and @usage='distance']" />
+    </xsl:call-template>
+</xsl:template>
+
+<xsl:template match="object[@id = 'hgen_talent_body_liststore']">  
+    <xsl:call-template name="copy_node_and_add_colums_talent_b"><!-- b means Körper -->
+      <xsl:with-param name="nodes" select = "@*|node()" />
+      <xsl:with-param name="items" select = "$talents_doc//group[@name = 'Körper']/talent[@type='base']" />
+    </xsl:call-template>
+</xsl:template>
+
+<xsl:template match="object[@id = 'hgen_talent_society_liststore']">  
+    <xsl:call-template name="copy_node_and_add_colums_talent">
+      <xsl:with-param name="nodes" select = "@*|node()" />
+      <xsl:with-param name="items" select = "$talents_doc//group[@name = 'Gesellschaft']/talent[@type='base']" />
+    </xsl:call-template>
+</xsl:template>
+
+<xsl:template match="object[@id = 'hgen_talent_nature_liststore']">  
+    <xsl:call-template name="copy_node_and_add_colums_talent">
+      <xsl:with-param name="nodes" select = "@*|node()" />
+      <xsl:with-param name="items" select = "$talents_doc//group[@name = 'Natur']/talent[@type='base']" />
+    </xsl:call-template>
+</xsl:template>
+
+<xsl:template match="object[@id = 'hgen_talent_wisdom_liststore']">  
+    <xsl:call-template name="copy_node_and_add_colums_talent">
+      <xsl:with-param name="nodes" select = "@*|node()" />
+      <xsl:with-param name="items" select = "$talents_doc//group[@name = 'Wissen']/talent[@type='base']" />
+    </xsl:call-template>
+</xsl:template>
+
+<xsl:template match="object[@id = 'hgen_talent_craft_liststore']">  
+    <xsl:call-template name="copy_node_and_add_colums_talent">
+      <xsl:with-param name="nodes" select = "@*|node()" />
+      <xsl:with-param name="items" select = "$talents_doc//group[@name = 'Handwerk']/talent[@type='base']" />
+    </xsl:call-template>
+</xsl:template>
+
 <xsl:template name="copy_node_and_add_items">
     <xsl:param name = "nodes" />
     <xsl:param name = "items" />
@@ -186,6 +235,62 @@
         <xsl:for-each select="$items">   
             <xsl:sort select="@name"/>
             <row><col id="0" translatable="yes"><xsl:value-of select="@name" /></col></row>         
+        </xsl:for-each>
+        </data>
+    </xsl:copy>
+</xsl:template>
+
+<xsl:template name="copy_node_and_add_colums_talent_nf">
+    <xsl:param name = "nodes" />
+    <xsl:param name = "items" />
+    <xsl:copy>
+        <xsl:copy-of select="$nodes"/>
+        <data>
+        <xsl:for-each select="$items">   
+            <xsl:sort select="@name"/>
+            <row>
+              <col id="0" translatable="yes"><xsl:value-of select="@name" /></col>
+              <col id="1" translatable="yes"><xsl:value-of select="@inc" /></col>
+              <col id="2" translatable="yes"><xsl:value-of select="@be" /></col>
+              <col id="3" translatable="yes"><xsl:value-of select="@value" /></col>
+            </row>         
+        </xsl:for-each>
+        </data>
+    </xsl:copy>
+</xsl:template>
+
+<xsl:template name="copy_node_and_add_colums_talent_b">
+    <xsl:param name = "nodes" />
+    <xsl:param name = "items" />
+    <xsl:copy>
+        <xsl:copy-of select="$nodes"/>
+        <data>
+        <xsl:for-each select="$items">   
+            <xsl:sort select="@name"/>
+            <row>
+              <col id="0" translatable="yes"><xsl:value-of select="@name" /></col>
+              <col id="1" translatable="yes"><xsl:value-of select="@test" /></col>
+              <col id="2" translatable="yes"><xsl:value-of select="@be" /></col>
+              <col id="3" translatable="yes"><xsl:value-of select="@value" /></col>
+            </row>         
+        </xsl:for-each>
+        </data>
+    </xsl:copy>
+</xsl:template>
+
+<xsl:template name="copy_node_and_add_colums_talent">
+    <xsl:param name = "nodes" />
+    <xsl:param name = "items" />
+    <xsl:copy>
+        <xsl:copy-of select="$nodes"/>
+        <data>
+        <xsl:for-each select="$items">   
+            <xsl:sort select="@name"/>
+            <row>
+              <col id="0" translatable="yes"><xsl:value-of select="@name" /></col>
+              <col id="1" translatable="yes"><xsl:value-of select="@test" /></col>
+              <col id="2" translatable="yes"><xsl:value-of select="@value" /></col>
+            </row>         
         </xsl:for-each>
         </data>
     </xsl:copy>
