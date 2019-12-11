@@ -38,7 +38,7 @@ void alveran_hgen_init_app(GtkApplication *app)
 
 	hgen_ctx_t *hctx = alveran_hgen_ctx_new(ar);
 
-	g_object_set_data(G_OBJECT(app), "hctx", hctx);
+	g_object_set_data(G_OBJECT(app), HGEN_CTX, hctx);
 
 	archive_resource_free(&ar);
 
@@ -46,7 +46,7 @@ void alveran_hgen_init_app(GtkApplication *app)
 
 void alveran_hgen_remove_from_app(GtkApplication *app) 
 {
-	hgen_ctx_t *hctx = g_object_get_data(G_OBJECT(app), "hctx");
+	hgen_ctx_t *hctx = g_object_get_data(G_OBJECT(app), HGEN_CTX);
 	
 	alveran_hgen_ctx_free(&hctx);
 }
@@ -54,7 +54,7 @@ void alveran_hgen_remove_from_app(GtkApplication *app)
 GtkWidget* alveran_hgen_widget_new() 
 {
 	GtkApplication *app = GTK_APPLICATION(g_application_get_default());
-	hgen_ctx_t * hctx = g_object_get_data(G_OBJECT(app), "hctx");
+	hgen_ctx_t * hctx = g_object_get_data(G_OBJECT(app), HGEN_CTX);
 
 	xmlBuffer *buffer = __alveran_hgen_get_and_translate_ui(hctx);
 

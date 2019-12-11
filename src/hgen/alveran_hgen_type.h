@@ -7,6 +7,8 @@
 #include "resource.h"
 #include "hero.h"
 
+extern const char * const HGEN_CTX;
+
 typedef struct {
 	GtkWidget *hero_list;
 	GtkWidget *hero_rem_button;

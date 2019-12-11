@@ -1,5 +1,7 @@
 #include "alveran_hgen_type.h"
 
+const char * const HGEN_CTX = "hctx";
+
 hgen_ctx_t*
 alveran_hgen_ctx_new(archive_resource_t * ar) 
 {
