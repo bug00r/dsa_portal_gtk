@@ -126,6 +126,8 @@
     <columns>
       <!-- column-name Helden -->
       <column type="gchararray"/>
+      <!-- column-name hero_data -->
+      <column type="gpointer"/>
     </columns>
   <data><xsl:for-each select="//hero"><row><col id="0" translatable="yes"><xsl:value-of select="@name"/></col></row></xsl:for-each></data></object>
   <object class="GtkListStore" id="hgen_contra_liststore">
@@ -432,7 +434,7 @@
                     <property name="receives_default">True</property>
                     <property name="image">image8</property>
                     <property name="always_show_image">True</property>
-                    <signal name="clicked" handler="alveran_hgen_hero_add_cb" swapped="no"/>
+                    <signal name="clicked" handler="alveran_hgen_hero_add_new_cb" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -447,6 +449,7 @@
                     <property name="receives_default">True</property>
                     <property name="image">image9</property>
                     <property name="always_show_image">True</property>
+                    <signal name="clicked" handler="alveran_hgen_hero_remove_sel_cb" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -485,7 +488,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkTreeView">
+                      <object class="GtkTreeView" id="hero_list">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="model">hero_list_store</property>

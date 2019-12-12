@@ -70,8 +70,8 @@ GtkWidget* alveran_hgen_widget_new()
     gtk_container_remove(GTK_CONTAINER(hgen_window),hgen_widget);
     g_object_unref(hgen_window);
 
+	hctx->ctrls.hero_list = GTK_WIDGET(gtk_builder_get_object (builder, "hero_list"));
 	/*
-	
     lctx->ctrls.result_list = GTK_WIDGET(gtk_builder_get_object (builder, "lexicon_list"));
 	lctx->ctrls.categories = GTK_WIDGET(gtk_builder_get_object (builder, "lexicon_categories"));
 	lctx->ctrls.groups = GTK_WIDGET(gtk_builder_get_object (builder, "lexicon_groups"));

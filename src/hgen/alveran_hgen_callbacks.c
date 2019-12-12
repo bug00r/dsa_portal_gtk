@@ -10,7 +10,13 @@ _alveran_hgen_get_context()
 }
 
 G_MODULE_EXPORT void
-alveran_hgen_hero_add_cb (GtkButton *button, gpointer user_data) 
+alveran_hgen_hero_add_new_cb (GtkButton *button, gpointer user_data) 
 {
-    alveran_hgen_hero_add(_alveran_hgen_get_context());
+    alveran_hgen_hero_add_new(_alveran_hgen_get_context());
+}
+
+G_MODULE_EXPORT void
+alveran_hgen_hero_remove_sel_cb (GtkButton *button, gpointer user_data) 
+{
+    alveran_hgen_hero_remove_sel(_alveran_hgen_get_context());
 }

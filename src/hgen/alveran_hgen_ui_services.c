@@ -1,3 +1,59 @@
 #include "alveran_hgen_ui_services.h"
 
-int dummy_2 = 1;
+void 
+alveran_uis_add_hero_new(GtkWidget *hero_tree_view, dsa_hero_t *new_hero)
+{
+    GtkListStore *hero_list_store = GTK_LIST_STORE(gtk_tree_view_get_model (GTK_TREE_VIEW(hero_tree_view)));
+    
+    GtkTreeIter iter;
+    gtk_list_store_append(hero_list_store, &iter);
+    gtk_list_store_set(hero_list_store, &iter, 
+                       0, "New Hero",
+                       1, new_hero,
+                       -1);
+}
+
+void 
+alveran_uis_get_tv_selection(GtkWidget *hero_tree_view, a_uis_selection_t *selection)
+{
+    selection->treeview = GTK_TREE_VIEW(hero_tree_view);
+    selection->selction = gtk_tree_view_get_selection(selection->treeview);
+    selection->model = gtk_tree_view_get_model (GTK_TREE_VIEW(selection->treeview));
+    selection->sel_did = gtk_tree_selection_get_selected(selection->selction, &selection->model, &selection->iter);
+}
+
+dsa_hero_t * 
+alveran_uis_get_sel_hero(a_uis_selection_t *selection)
+{
+    dsa_hero_t *found = NULL;
+    if(selection->sel_did)
+    {
+        gtk_tree_model_get(selection->model, &selection->iter, 1, &found, -1);   
+    }
+    return found;
+}
+
+void
+alveran_uis_rem_sel_hero(a_uis_selection_t *selection)
+{
+    if(selection->sel_did)
+    {
+        gtk_list_store_remove(GTK_LIST_STORE(selection->model), &selection->iter);
+    }
+}
+
+int 
+alveran_uis_get_yn_modal(const char *message)
+{
+     GtkDialog *dialog = GTK_DIALOG(gtk_message_dialog_new (NULL,
+                                 GTK_DIALOG_MODAL,
+                                 GTK_MESSAGE_QUESTION,
+                                 GTK_BUTTONS_YES_NO,
+                                 message));
+
+    gint result = gtk_dialog_run (GTK_DIALOG (dialog));
+    
+    gtk_widget_destroy (GTK_WIDGET(dialog));
+
+    return result;
+}
