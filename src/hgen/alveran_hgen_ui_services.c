@@ -57,3 +57,39 @@ alveran_uis_get_yn_modal(const char *message)
 
     return result;
 }
+
+void 
+alveran_uis_activate_if_not(uint32_t count, ...)
+{
+    va_list widgets;
+	va_start(widgets, count);
+
+    for ( int curWidget = count; curWidget--; )
+    {
+        GtkWidget *widget = GTK_WIDGET(va_arg(widgets, GtkWidget*));
+        if(!gtk_widget_is_sensitive(widget))
+        {
+            gtk_widget_set_sensitive (widget, TRUE);
+        }
+    }
+
+    va_end(widgets);
+}
+
+void 
+alveran_uis_deactivate_if_not(uint32_t count, ...)
+{
+    va_list widgets;
+	va_start(widgets, count);
+
+    for ( int curWidget = count; curWidget--; )
+    {
+        GtkWidget *widget = GTK_WIDGET(va_arg(widgets, GtkWidget*));
+        if(gtk_widget_is_sensitive(widget))
+        {
+            gtk_widget_set_sensitive (widget, FALSE);
+        }
+    }
+
+    va_end(widgets);
+}

@@ -71,13 +71,10 @@ GtkWidget* alveran_hgen_widget_new()
     g_object_unref(hgen_window);
 
 	hctx->ctrls.hero_list = GTK_WIDGET(gtk_builder_get_object (builder, "hero_list"));
-	/*
-    lctx->ctrls.result_list = GTK_WIDGET(gtk_builder_get_object (builder, "lexicon_list"));
-	lctx->ctrls.categories = GTK_WIDGET(gtk_builder_get_object (builder, "lexicon_categories"));
-	lctx->ctrls.groups = GTK_WIDGET(gtk_builder_get_object (builder, "lexicon_groups"));
-	lctx->ctrls.search_input = GTK_WIDGET(gtk_builder_get_object (builder, "lexicon_search_input"));
-	lctx->ctrls.result_text = GTK_WIDGET(gtk_builder_get_object (builder, "lexicon_result_text"));
-	*/
+	hctx->ctrls.hero_details = GTK_WIDGET(gtk_builder_get_object (builder, "hero_details"));
+	hctx->ctrls.hero_delete_btn = GTK_WIDGET(gtk_builder_get_object (builder, "hero_delete_btn"));
+	hctx->ctrls.hero_edit_btn = GTK_WIDGET(gtk_builder_get_object (builder, "hero_edit_btn"));
+	hctx->ctrls.hero_edit_done_btn = GTK_WIDGET(gtk_builder_get_object (builder, "hero_edit_done_btn"));
 
     return hgen_widget;
 }
@@ -86,7 +83,7 @@ void alveran_hgen_widget_init(GtkWidget* widget)
 {
 
 	GtkApplication *app = GTK_APPLICATION(g_application_get_default());
-	//lexicon_ctx_t * lctx = g_object_get_data(G_OBJECT(app), "lctx");
+	hgen_ctx_t * hctx = g_object_get_data(G_OBJECT(app), "hctx");
 
-	//_lexicon_prepare_(lctx);
+	//Todo init last hero file entries
 }

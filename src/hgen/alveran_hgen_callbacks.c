@@ -20,3 +20,9 @@ alveran_hgen_hero_remove_sel_cb (GtkButton *button, gpointer user_data)
 {
     alveran_hgen_hero_remove_sel(_alveran_hgen_get_context());
 }
+
+G_MODULE_EXPORT void
+alveran_hgen_hero_select_cb (GtkTreeView *hero_list, gpointer user_data) 
+{
+    alveran_hgen_hero_select(_alveran_hgen_get_context());
+}

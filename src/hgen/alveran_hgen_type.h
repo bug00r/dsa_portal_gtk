@@ -10,9 +10,12 @@
 extern const char * const HGEN_CTX;
 
 typedef struct {
+	GtkWidget *hero_edit_done_btn;
+	GtkWidget *hero_details;
 	GtkWidget *hero_list;
-	GtkWidget *hero_rem_button;
-	GtkWidget *hero_save_button;
+	GtkWidget *hero_delete_btn;
+	GtkWidget *hero_edit_btn;
+	GtkWidget *hero_save_btn;
 	GtkWidget *hero_tabs;
 } hgen_ui_ctrls_t;
 

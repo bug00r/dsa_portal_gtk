@@ -22,4 +22,7 @@ dsa_hero_t* alveran_uis_get_sel_hero(a_uis_selection_t *selection);
 
 int alveran_uis_get_yn_modal(const char *message);
 
+void alveran_uis_activate_if_not(uint32_t count, ...);
+void alveran_uis_deactivate_if_not(uint32_t count, ...);
+
 #endif

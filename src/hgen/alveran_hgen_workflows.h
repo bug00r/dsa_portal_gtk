@@ -9,5 +9,6 @@
 
 void    alveran_hgen_hero_add_new(hgen_ctx_t *hgen);
 void    alveran_hgen_hero_remove_sel(hgen_ctx_t *hgen);
+void    alveran_hgen_hero_select(hgen_ctx_t *hgen);
 
 #endif

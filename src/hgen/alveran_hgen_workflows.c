@@ -23,9 +23,29 @@ alveran_hgen_hero_remove_sel(hgen_ctx_t *hgen)
     if (alveran_uis_get_yn_modal(message) == GTK_RESPONSE_YES) 
     {
         alveran_uis_rem_sel_hero(&selection);
+        
         dsa_heros_delete_hero_obj(hgen->heros, sel_hero);
+        
+        alveran_uis_get_tv_selection(hgen->ctrls.hero_list, &selection);
+
+        if(!selection.sel_did)
+        {
+            hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
+            alveran_uis_deactivate_if_not(3, ctrls->hero_delete_btn, 
+                                             ctrls->hero_edit_btn,
+                                             ctrls->hero_edit_done_btn);
+        }
     }
 
     xmlFree(name);
     free(message);
+}
+
+void    
+alveran_hgen_hero_select(hgen_ctx_t *hgen)
+{
+    hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
+    alveran_uis_activate_if_not(3, ctrls->hero_delete_btn, 
+                                   ctrls->hero_edit_btn,
+                                   ctrls->hero_edit_done_btn);
 }

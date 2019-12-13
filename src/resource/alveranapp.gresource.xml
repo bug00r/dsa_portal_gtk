@@ -24,6 +24,7 @@
     <file alias="contact-new-symbolic.png" preprocess="to-pixdata">icons/16x16/actions/contact-new-symbolic.symbolic.png</file>
     <file alias="find-location.png" preprocess="to-pixdata">icons/16x16/actions/find-location-symbolic.symbolic.png</file>
     <file alias="edit-delete.png" preprocess="to-pixdata">icons/16x16/actions/edit-delete-symbolic.symbolic.png</file>
+    <file alias="object-select.png" preprocess="to-pixdata">icons/16x16/actions/object-select-symbolic.symbolic.png</file>
   </gresource>
   
   
