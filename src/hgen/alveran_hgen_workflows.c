@@ -31,9 +31,8 @@ alveran_hgen_hero_remove_sel(hgen_ctx_t *hgen)
         if(!selection.sel_did)
         {
             hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
-            alveran_uis_deactivate_if_not(3, ctrls->hero_delete_btn, 
-                                             ctrls->hero_edit_btn,
-                                             ctrls->hero_edit_done_btn);
+            alveran_uis_deactivate_if_not(2, ctrls->hero_delete_btn, 
+                                             ctrls->hero_edit_btn);
         }
     }
 
@@ -45,7 +44,29 @@ void
 alveran_hgen_hero_select(hgen_ctx_t *hgen)
 {
     hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
-    alveran_uis_activate_if_not(3, ctrls->hero_delete_btn, 
-                                   ctrls->hero_edit_btn,
-                                   ctrls->hero_edit_done_btn);
+    alveran_uis_activate_if_not(2, ctrls->hero_delete_btn, 
+                                   ctrls->hero_edit_btn);
 }
+
+void    
+alveran_hgen_hero_edit(hgen_ctx_t *hgen)
+{
+    hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
+    alveran_uis_deactivate_if_not(3, ctrls->hero_delete_btn, 
+                                     ctrls->hero_edit_btn,
+                                     ctrls->hero_list);
+    alveran_uis_activate_if_not(2,  ctrls->hero_edit_done_btn,
+                                    ctrls->hero_details);
+}
+
+void    
+alveran_hgen_hero_edit_done(hgen_ctx_t *hgen)
+{
+    hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
+    alveran_uis_activate_if_not(3, ctrls->hero_delete_btn, 
+                                     ctrls->hero_edit_btn,
+                                     ctrls->hero_list);
+    alveran_uis_deactivate_if_not(2,  ctrls->hero_edit_done_btn,
+                                      ctrls->hero_details);
+}
+

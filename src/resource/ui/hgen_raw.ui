@@ -465,6 +465,7 @@
                     <property name="receives_default">True</property>
                     <property name="image">image10</property>
                     <property name="always_show_image">True</property>
+                    <signal name="clicked" handler="alveran_hgen_hero_edit_cb" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -479,6 +480,7 @@
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="image">image32</property>
+                    <signal name="clicked" handler="alveran_hgen_hero_edit_done_cb" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>

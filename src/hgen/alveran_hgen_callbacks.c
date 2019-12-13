@@ -26,3 +26,15 @@ alveran_hgen_hero_select_cb (GtkTreeView *hero_list, gpointer user_data)
 {
     alveran_hgen_hero_select(_alveran_hgen_get_context());
 }
+
+G_MODULE_EXPORT void
+alveran_hgen_hero_edit_cb (GtkButton *button, gpointer user_data) 
+{
+    alveran_hgen_hero_edit(_alveran_hgen_get_context());
+}
+
+G_MODULE_EXPORT void
+alveran_hgen_hero_edit_done_cb (GtkButton *button, gpointer user_data) 
+{
+    alveran_hgen_hero_edit_done(_alveran_hgen_get_context());
+}
