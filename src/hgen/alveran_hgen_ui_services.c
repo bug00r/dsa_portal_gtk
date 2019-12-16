@@ -33,6 +33,17 @@ alveran_uis_get_sel_hero(a_uis_selection_t *selection)
     return found;
 }
 
+dsa_hero_t* 
+alveran_uis_get_sel_hero_direct(GtkTreeView *hero_list)
+{
+    a_uis_selection_t selection;
+    alveran_uis_get_tv_selection(GTK_WIDGET(hero_list), &selection);
+
+    dsa_hero_t * selected_hero = alveran_uis_get_sel_hero(&selection);
+
+    return selected_hero;
+}
+
 void
 alveran_uis_rem_sel_hero(a_uis_selection_t *selection)
 {

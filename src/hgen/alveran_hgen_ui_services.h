@@ -19,6 +19,7 @@ void alveran_uis_rem_sel_hero(a_uis_selection_t *selection);
 void alveran_uis_get_tv_selection(GtkWidget *hero_tree_view, a_uis_selection_t *selection);
 
 dsa_hero_t* alveran_uis_get_sel_hero(a_uis_selection_t *selection);
+dsa_hero_t* alveran_uis_get_sel_hero_direct(GtkTreeView *hero_list);
 
 int alveran_uis_get_yn_modal(const char *message);
 

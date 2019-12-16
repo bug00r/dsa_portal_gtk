@@ -70,3 +70,42 @@ alveran_hgen_hero_edit_done(hgen_ctx_t *hgen)
                                       ctrls->hero_details);
 }
 
+void    
+alveran_hgen_hero_gp_changed(hgen_ctx_t *hgen)
+{
+    hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
+    gdouble gp = gtk_spin_button_get_value (GTK_SPIN_BUTTON(ctrls->hgen_gp));
+
+    dsa_hero_t * sel_hero = alveran_uis_get_sel_hero_direct(GTK_TREE_VIEW(ctrls->hero_list));
+
+    char * gp_str = format_string_new("%i", (gint)gp);
+
+    dsa_heros_set_gp(sel_hero, (const unsigned char *)gp_str);
+
+    free(gp_str);
+}
+
+void    
+alveran_hgen_hero_name_changed(hgen_ctx_t *hgen)
+{
+    hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
+
+    a_uis_selection_t selection;
+    alveran_uis_get_tv_selection(hgen->ctrls.hero_list, &selection);
+
+    dsa_hero_t * sel_hero = alveran_uis_get_sel_hero(&selection);
+    
+    const gchar * new_name = gtk_entry_get_text (GTK_ENTRY(ctrls->hgen_name));
+
+    dsa_heros_set_name(sel_hero, (const unsigned char *)new_name);
+
+    //todo change tree view entry
+
+    xmlSaveFileEnc("-", sel_hero->xml->doc,"UTF-8");
+}
+
+/*
+const gchar *
+gtk_entry_get_text (GtkEntry *entry);
+*/
+//    xmlSaveFileEnc("-", sel_hero->xml->doc,"UTF-8");

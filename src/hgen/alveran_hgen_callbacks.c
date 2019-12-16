@@ -38,3 +38,15 @@ alveran_hgen_hero_edit_done_cb (GtkButton *button, gpointer user_data)
 {
     alveran_hgen_hero_edit_done(_alveran_hgen_get_context());
 }
+
+G_MODULE_EXPORT void
+alveran_hgen_hero_gp_changed_cb (GtkSpinButton *spin_button, gpointer user_data)
+{
+    alveran_hgen_hero_gp_changed(_alveran_hgen_get_context());
+}
+
+G_MODULE_EXPORT void
+alveran_hgen_hero_name_changed_cb (GtkEditable *editable, gpointer user_data)
+{
+    alveran_hgen_hero_name_changed(_alveran_hgen_get_context());
+}

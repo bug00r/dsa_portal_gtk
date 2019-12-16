@@ -636,6 +636,7 @@
                                         <property name="adjustment">adjustment1</property>
                                         <property name="climb_rate">1</property>
                                         <property name="value">110</property>
+                                        <signal name="value-changed" handler="alveran_hgen_hero_gp_changed_cb" swapped="no"/>
                                       </object>
                                       <packing>
                                         <property name="left_attach">1</property>
@@ -658,6 +659,7 @@
                                       <object class="GtkEntry" id="hgen_name">
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
+                                        <signal name="changed" handler="alveran_hgen_hero_name_changed_cb" swapped="no"/>
                                       </object>
                                       <packing>
                                         <property name="left_attach">1</property>
