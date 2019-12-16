@@ -104,3 +104,13 @@ alveran_uis_deactivate_if_not(uint32_t count, ...)
 
     va_end(widgets);
 }
+
+void 
+alveran_uis_set_hero_name(a_uis_selection_t *selection, const gchar * new_name)
+{
+    GtkListStore *hero_list_store = GTK_LIST_STORE(gtk_tree_view_get_model (GTK_TREE_VIEW(selection->treeview)));
+    
+    gtk_list_store_set(hero_list_store, &selection->iter, 
+                       0, new_name,
+                       -1);
+}

@@ -99,13 +99,5 @@ alveran_hgen_hero_name_changed(hgen_ctx_t *hgen)
 
     dsa_heros_set_name(sel_hero, (const unsigned char *)new_name);
 
-    //todo change tree view entry
-
-    xmlSaveFileEnc("-", sel_hero->xml->doc,"UTF-8");
+    alveran_uis_set_hero_name(&selection, new_name);
 }
-
-/*
-const gchar *
-gtk_entry_get_text (GtkEntry *entry);
-*/
-//    xmlSaveFileEnc("-", sel_hero->xml->doc,"UTF-8");
