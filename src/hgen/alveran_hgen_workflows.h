@@ -14,4 +14,5 @@ void    alveran_hgen_hero_edit(hgen_ctx_t *hgen);
 void    alveran_hgen_hero_edit_done(hgen_ctx_t *hgen);
 void    alveran_hgen_hero_gp_changed(hgen_ctx_t *hgen);
 void    alveran_hgen_hero_name_changed(hgen_ctx_t *hgen);
+void    alveran_hgen_hero_breed_changed(hgen_ctx_t *hgen);
 #endif

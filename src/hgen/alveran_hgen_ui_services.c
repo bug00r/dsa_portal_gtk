@@ -114,3 +114,20 @@ alveran_uis_set_hero_name(a_uis_selection_t *selection, const gchar * new_name)
                        0, new_name,
                        -1);
 }
+
+gchar * 
+alveran_uis_get_cb_value(GtkComboBox *_comboBox)
+{
+    GtkComboBox *combo = _comboBox; 
+    GtkTreeModel *model = gtk_combo_box_get_model(combo);
+
+    gchar *selected_value = NULL;
+
+    GtkTreeIter iter;
+    if (gtk_combo_box_get_active_iter(combo, &iter))
+    {
+        gtk_tree_model_get(model, &iter, 0, &selected_value, -1);
+    }
+
+    return selected_value;
+}

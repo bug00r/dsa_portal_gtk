@@ -50,3 +50,9 @@ alveran_hgen_hero_name_changed_cb (GtkEditable *editable, gpointer user_data)
 {
     alveran_hgen_hero_name_changed(_alveran_hgen_get_context());
 }
+
+G_MODULE_EXPORT void
+alveran_hgen_hero_breed_changed_cb( GtkComboBox *widget, gpointer user_data )
+{
+    alveran_hgen_hero_breed_changed(_alveran_hgen_get_context());
+}
