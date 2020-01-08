@@ -102,18 +102,47 @@ alveran_hgen_hero_name_changed(hgen_ctx_t *hgen)
     alveran_uis_set_hero_name(&selection, new_name);
 }
 
+static void 
+_alveran_hgen_hero_add_cb_to_sel_hero(GtkWidget *combobox, 
+                                      GtkWidget *hero_list, 
+                                      dsa_heros_t *heros,
+                                      void (*addingfunc)(dsa_heros_t*, dsa_hero_t*, const unsigned char*))
+{
+    gchar *sel_value = alveran_uis_get_cb_value_copy(GTK_COMBO_BOX(combobox));
+
+    dsa_hero_t * sel_hero = alveran_uis_get_sel_hero_direct(GTK_TREE_VIEW(hero_list));
+
+    addingfunc(heros, sel_hero, (const unsigned char*)sel_value);
+
+    g_free(sel_value);
+}
+
 void    
 alveran_hgen_hero_breed_changed(hgen_ctx_t *hgen)
 {
     hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
 
-    gchar *breed_name = alveran_uis_get_cb_value(GTK_COMBO_BOX(ctrls->hgen_breed));
-
-    dsa_hero_t * sel_hero = alveran_uis_get_sel_hero_direct(GTK_TREE_VIEW(ctrls->hero_list));
-
-    dsa_heros_add_breed(hgen->heros, sel_hero, (const unsigned char*)breed_name);
-
-    g_free(breed_name);
+    _alveran_hgen_hero_add_cb_to_sel_hero(ctrls->hgen_breed, ctrls->hero_list, hgen->heros,
+                dsa_heros_add_breed);
 }
+
+void    
+alveran_hgen_hero_culture_changed(hgen_ctx_t *hgen)
+{
+    hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
+
+    _alveran_hgen_hero_add_cb_to_sel_hero(ctrls->hgen_culture, ctrls->hero_list, hgen->heros,
+                dsa_heros_add_culture);
+}
+
+void    
+alveran_hgen_hero_profession_changed(hgen_ctx_t *hgen)
+{
+    hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
+
+    _alveran_hgen_hero_add_cb_to_sel_hero(ctrls->hgen_profession, ctrls->hero_list, hgen->heros,
+                dsa_heros_add_profession);
+}
+
 
   //xmlSaveFileEnc("-", sel_hero->xml->doc,"UTF-8");

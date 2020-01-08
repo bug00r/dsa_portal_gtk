@@ -78,7 +78,9 @@ GtkWidget* alveran_hgen_widget_new()
 	hctx->ctrls.hgen_gp = GTK_WIDGET(gtk_builder_get_object (builder, "hgen_gp"));
 	hctx->ctrls.hgen_name = GTK_WIDGET(gtk_builder_get_object (builder, "hgen_name"));
 	hctx->ctrls.hgen_breed = GTK_WIDGET(gtk_builder_get_object (builder, "hgen_breed"));
-	
+	hctx->ctrls.hgen_culture = GTK_WIDGET(gtk_builder_get_object (builder, "hgen_culture"));
+	hctx->ctrls.hgen_profession = GTK_WIDGET(gtk_builder_get_object (builder, "hgen_profession"));
+
     return hgen_widget;
 }
 

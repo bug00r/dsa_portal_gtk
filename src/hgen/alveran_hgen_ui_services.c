@@ -116,7 +116,7 @@ alveran_uis_set_hero_name(a_uis_selection_t *selection, const gchar * new_name)
 }
 
 gchar * 
-alveran_uis_get_cb_value(GtkComboBox *_comboBox)
+alveran_uis_get_cb_value_copy(GtkComboBox *_comboBox)
 {
     GtkComboBox *combo = _comboBox; 
     GtkTreeModel *model = gtk_combo_box_get_model(combo);

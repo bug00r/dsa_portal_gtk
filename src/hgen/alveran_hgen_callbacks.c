@@ -56,3 +56,16 @@ alveran_hgen_hero_breed_changed_cb( GtkComboBox *widget, gpointer user_data )
 {
     alveran_hgen_hero_breed_changed(_alveran_hgen_get_context());
 }
+
+G_MODULE_EXPORT void
+alveran_hgen_hero_culture_changed_cb( GtkComboBox *widget, gpointer user_data )
+{
+    alveran_hgen_hero_culture_changed(_alveran_hgen_get_context());
+}
+
+G_MODULE_EXPORT void
+alveran_hgen_hero_profession_changed_cb( GtkComboBox *widget, gpointer user_data )
+{
+    alveran_hgen_hero_profession_changed(_alveran_hgen_get_context());
+}
+

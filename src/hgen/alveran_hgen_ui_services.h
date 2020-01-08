@@ -28,6 +28,6 @@ void alveran_uis_deactivate_if_not(uint32_t count, ...);
 
 void alveran_uis_set_hero_name(a_uis_selection_t *selection, const gchar * new_name);
 
-gchar * alveran_uis_get_cb_value(GtkComboBox *comboBox);
+gchar * alveran_uis_get_cb_value_copy(GtkComboBox *comboBox);
 
 #endif

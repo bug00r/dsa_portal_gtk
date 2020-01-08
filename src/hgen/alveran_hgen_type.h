@@ -10,6 +10,8 @@
 extern const char * const HGEN_CTX;
 
 typedef struct {
+	GtkWidget *hgen_profession;
+	GtkWidget *hgen_culture;
 	GtkWidget *hgen_breed;
 	GtkWidget *hgen_name;
 	GtkWidget *hgen_gp;
