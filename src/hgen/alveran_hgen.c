@@ -80,8 +80,12 @@ GtkWidget* alveran_hgen_widget_new()
 	hctx->ctrls.hgen_breed = GTK_WIDGET(gtk_builder_get_object (builder, "hgen_breed"));
 	hctx->ctrls.hgen_culture = GTK_WIDGET(gtk_builder_get_object (builder, "hgen_culture"));
 	hctx->ctrls.hgen_profession = GTK_WIDGET(gtk_builder_get_object (builder, "hgen_profession"));
+	hctx->ctrls.hgen_height = GTK_WIDGET(gtk_builder_get_object (builder, "hgen_height"));
+    hctx->ctrls.hgen_eye_color = GTK_WIDGET(gtk_builder_get_object (builder, "hgen_eye_color"));
+	hctx->ctrls.hgen_hair_color = GTK_WIDGET(gtk_builder_get_object (builder, "hgen_hair_color"));
+	hctx->ctrls.hgen_weight = GTK_WIDGET(gtk_builder_get_object (builder, "hgen_weight"));
 
-    return hgen_widget;
+	return hgen_widget;
 }
 
 void alveran_hgen_widget_init(GtkWidget* widget) 

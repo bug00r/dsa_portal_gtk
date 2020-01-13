@@ -124,6 +124,13 @@ alveran_hgen_hero_breed_changed(hgen_ctx_t *hgen)
 
     _alveran_hgen_hero_add_cb_to_sel_hero(ctrls->hgen_breed, ctrls->hero_list, hgen->heros,
                 dsa_heros_add_breed);
+
+    dsa_hero_t * sel_hero = alveran_uis_get_sel_hero_direct(GTK_TREE_VIEW(ctrls->hero_list));
+
+    init_hair_colors(ctrls->hgen_hair_color, sel_hero);
+    init_eye_colors(ctrls->hgen_eye_color, sel_hero);
+
+    alveran_uis_init_height_limits(ctrls->hgen_height, sel_hero);
 }
 
 void    
@@ -144,5 +151,32 @@ alveran_hgen_hero_profession_changed(hgen_ctx_t *hgen)
                 dsa_heros_add_profession);
 }
 
+void    
+alveran_hgen_hero_height_changed_manual(hgen_ctx_t *hgen)
+{
+    hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
 
+    /** we need to port breed init first */
+    g_message("This will be realized after breed init was done!");
+
+    /*GtkSpinButton *hgen_height = GTK_SPIN_BUTTON(ctrls->hgen_height);
+
+    dsa_hero_t * sel_hero = alveran_uis_get_sel_hero_direct(GTK_TREE_VIEW(ctrls->hero_list));
+
+    gdouble height = gtk_spin_button_get_value(GTK_SPIN_BUTTON(hgen_height));
+
+    char * new_height = format_string_new("%.2f",height);
+
+    dsa_heros_set_height_weight_by_value(sel_hero, new_height);
+
+    xmlChar *val = dsa_heros_get_height(sel_hero);
+
+    g_message("ui height: %s, hero height: %s", new_height, val);
+
+    gtk_spin_button_set_value(hgen_height, (gdouble)atof((const char*)val));
+
+    free(new_height);
+    xmlFree(val);
+    */
+}
   //xmlSaveFileEnc("-", sel_hero->xml->doc,"UTF-8");

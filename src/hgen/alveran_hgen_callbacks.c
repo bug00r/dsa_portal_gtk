@@ -69,3 +69,8 @@ alveran_hgen_hero_profession_changed_cb( GtkComboBox *widget, gpointer user_data
     alveran_hgen_hero_profession_changed(_alveran_hgen_get_context());
 }
 
+G_MODULE_EXPORT void
+alveran_hgen_hero_height_changed_manual_cb(GtkSpinButton *spin_button, gpointer user_data)
+{
+    alveran_hgen_hero_height_changed_manual(_alveran_hgen_get_context());
+}

@@ -30,4 +30,9 @@ void alveran_uis_set_hero_name(a_uis_selection_t *selection, const gchar * new_n
 
 gchar * alveran_uis_get_cb_value_copy(GtkComboBox *comboBox);
 
+void alveran_uis_init_hair_colors(GtkWidget* haircol, dsa_hero_t *hero);
+void alveran_uis_init_eye_colors(GtkWidget* eyecol, dsa_hero_t *hero);
+
+void alveran_uis_init_height_limits(GtkSpinButton *heights, dsa_hero_t *hero);
+
 #endif

@@ -7,14 +7,15 @@
 #include "alveran_hgen_services.h"
 #include "alveran_hgen_ui_services.h"
 
-void    alveran_hgen_hero_add_new(hgen_ctx_t *hgen);
-void    alveran_hgen_hero_remove_sel(hgen_ctx_t *hgen);
-void    alveran_hgen_hero_select(hgen_ctx_t *hgen);
-void    alveran_hgen_hero_edit(hgen_ctx_t *hgen);
-void    alveran_hgen_hero_edit_done(hgen_ctx_t *hgen);
-void    alveran_hgen_hero_gp_changed(hgen_ctx_t *hgen);
-void    alveran_hgen_hero_name_changed(hgen_ctx_t *hgen);
-void    alveran_hgen_hero_breed_changed(hgen_ctx_t *hgen);
-void    alveran_hgen_hero_culture_changed(hgen_ctx_t *hgen);
-void    alveran_hgen_hero_profession_changed(hgen_ctx_t *hgen);
+void    alveran_hgen_hero_add_new               (hgen_ctx_t *hgen);
+void    alveran_hgen_hero_remove_sel            (hgen_ctx_t *hgen);
+void    alveran_hgen_hero_select                (hgen_ctx_t *hgen);
+void    alveran_hgen_hero_edit                  (hgen_ctx_t *hgen);
+void    alveran_hgen_hero_edit_done             (hgen_ctx_t *hgen);
+void    alveran_hgen_hero_gp_changed            (hgen_ctx_t *hgen);
+void    alveran_hgen_hero_name_changed          (hgen_ctx_t *hgen);
+void    alveran_hgen_hero_breed_changed         (hgen_ctx_t *hgen);
+void    alveran_hgen_hero_culture_changed       (hgen_ctx_t *hgen);
+void    alveran_hgen_hero_profession_changed    (hgen_ctx_t *hgen);
+void    alveran_hgen_hero_height_changed_manual (hgen_ctx_t *hgen);
 #endif
