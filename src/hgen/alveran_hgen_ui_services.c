@@ -182,6 +182,7 @@ init_eye_colors(GtkWidget* eyecol, dsa_hero_t *hero)
     __init_hero_cb_by_xpath_res(GTK_COMBO_BOX_TEXT(eyecol), hero, dsa_heros_get_eye_colors);
 }
 
+// TODO remove bugs hint: invalid set of weight and height based on iup ui
 void 
 alveran_uis_init_height_limits(GtkSpinButton *heights, dsa_hero_t *hero)
 {
