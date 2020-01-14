@@ -127,8 +127,8 @@ alveran_hgen_hero_breed_changed(hgen_ctx_t *hgen)
 
     dsa_hero_t * sel_hero = alveran_uis_get_sel_hero_direct(GTK_TREE_VIEW(ctrls->hero_list));
 
-    init_hair_colors(ctrls->hgen_hair_color, sel_hero);
-    init_eye_colors(ctrls->hgen_eye_color, sel_hero);
+    alveran_uis_init_hair_colors(ctrls->hgen_hair_color, sel_hero);
+    alveran_uis_init_eye_colors(ctrls->hgen_eye_color, sel_hero);
 
     alveran_uis_init_height_limits(ctrls->hgen_height, sel_hero);
 }
@@ -156,27 +156,43 @@ alveran_hgen_hero_height_changed_manual(hgen_ctx_t *hgen)
 {
     hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
 
-    /** we need to port breed init first */
-    g_message("This will be realized after breed init was done!");
+    GtkSpinButton *hgen_height = GTK_SPIN_BUTTON(ctrls->hgen_height);
 
-    /*GtkSpinButton *hgen_height = GTK_SPIN_BUTTON(ctrls->hgen_height);
+    int height_Addition = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(hgen_height));
+
+    char * new_height = format_string_new("%i",height_Addition);
 
     dsa_hero_t * sel_hero = alveran_uis_get_sel_hero_direct(GTK_TREE_VIEW(ctrls->hero_list));
 
-    gdouble height = gtk_spin_button_get_value(GTK_SPIN_BUTTON(hgen_height));
+    dsa_heros_set_height_weight_by_value(sel_hero, (const unsigned char*)new_height);
 
-    char * new_height = format_string_new("%.2f",height);
+    free(new_height);
+}
 
-    dsa_heros_set_height_weight_by_value(sel_hero, new_height);
+gboolean    
+alveran_hgen_hero_height_on_output(hgen_ctx_t *hgen)
+{
+    hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
+
+    dsa_hero_t * sel_hero = alveran_uis_get_sel_hero_direct(GTK_TREE_VIEW(ctrls->hero_list));
 
     xmlChar *val = dsa_heros_get_height(sel_hero);
 
-    g_message("ui height: %s, hero height: %s", new_height, val);
+    g_message("new height output %s", val);
 
-    gtk_spin_button_set_value(hgen_height, (gdouble)atof((const char*)val));
+    gtk_entry_set_text(GTK_ENTRY(ctrls->hgen_height), (gchar*)val);
 
-    free(new_height);
     xmlFree(val);
-    */
+
+    xmlChar *weight = dsa_heros_get_weight(sel_hero);
+    
+    gtk_label_set_text(GTK_LABEL(ctrls->hgen_weight),(const gchar*)weight);
+
+    xmlFree(weight);
+
+    return TRUE;
 }
+
+
+
   //xmlSaveFileEnc("-", sel_hero->xml->doc,"UTF-8");

@@ -135,16 +135,12 @@ alveran_uis_get_cb_value_copy(GtkComboBox *_comboBox)
 static void 
 __init_hero_cb_by_xpath_res(GtkComboBoxText *combobox, dsa_hero_t *hero, xmlXPathObjectPtr (*nodefunc)(dsa_hero_t *hero) ) 
 {
-	
-	g_message("try refresh iup list\n");
 
 	if ( combobox != NULL && hero != NULL && nodefunc != NULL ) {
 
         gtk_combo_box_text_remove_all(combobox);
 
 		xmlXPathObjectPtr _nodes = nodefunc(hero);
-
-		g_message("try finding  entry\n");
 
 		if ( xml_xpath_has_result(_nodes) ) {
 
@@ -153,8 +149,6 @@ __init_hero_cb_by_xpath_res(GtkComboBoxText *combobox, dsa_hero_t *hero, xmlXPat
 
 			for ( int cntentry = 0; cntentry < maxEntries; ++cntentry ) {
 				xmlChar *name = xmlGetProp(nodes[cntentry], (xmlChar*)"name");
-				
-				g_message("found entry: %s\n", name);
 
 				gtk_combo_box_text_append_text(combobox, (const gchar*)name);
 
@@ -171,33 +165,30 @@ __init_hero_cb_by_xpath_res(GtkComboBoxText *combobox, dsa_hero_t *hero, xmlXPat
 }
 
 void 
-init_hair_colors(GtkWidget* haircol, dsa_hero_t *hero)
+alveran_uis_init_hair_colors(GtkWidget* haircol, dsa_hero_t *hero)
 {
     __init_hero_cb_by_xpath_res(GTK_COMBO_BOX_TEXT(haircol), hero, dsa_heros_get_hair_colors);
 }
 
 void 
-init_eye_colors(GtkWidget* eyecol, dsa_hero_t *hero)
+alveran_uis_init_eye_colors(GtkWidget* eyecol, dsa_hero_t *hero)
 {
     __init_hero_cb_by_xpath_res(GTK_COMBO_BOX_TEXT(eyecol), hero, dsa_heros_get_eye_colors);
 }
 
-// TODO remove bugs hint: invalid set of weight and height based on iup ui
 void 
-alveran_uis_init_height_limits(GtkSpinButton *heights, dsa_hero_t *hero)
+alveran_uis_init_height_limits(GtkWidget *heights, dsa_hero_t *hero)
 {
-    GtkAdjustment *adjust = gtk_spin_button_get_adjustment(heights);
+    GtkSpinButton *spin = GTK_SPIN_BUTTON(heights);
 
     int height_min = dsa_heros_get_height_min(hero);
-    gdouble height_min_g = dsa_heros_get_height_min(hero)/100.0;
-    g_message("height min int: %i\n", height_min);
 
-    gtk_adjustment_set_lower(adjust, height_min_g);
-    gtk_adjustment_set_value(adjust, height_min_g);
-    gtk_adjustment_set_upper(adjust, dsa_heros_get_height_max(hero)/100.0);
+    char * new_height = format_string_new("%i",height_min);
+    dsa_heros_set_height_weight_by_value(hero, (const unsigned char*)new_height);
+    free(new_height);
 
-    char * h_min_chr = format_string_new("%i", height_min);
-    dsa_heros_set_height_weight_by_value(hero, (const unsigned char*)h_min_chr);
-
-    free(h_min_chr);
+    //the +1 is for increasement with outer bound included.
+    gtk_spin_button_set_range(spin,(gdouble)height_min, 
+                               (gdouble)(dsa_heros_get_height_max(hero) + 1));
+    gtk_spin_button_set_value(spin, (gdouble)height_min);
 }
