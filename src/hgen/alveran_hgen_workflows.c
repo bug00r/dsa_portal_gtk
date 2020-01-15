@@ -178,8 +178,6 @@ alveran_hgen_hero_height_on_output(hgen_ctx_t *hgen)
 
     xmlChar *val = dsa_heros_get_height(sel_hero);
 
-    g_message("new height output %s", val);
-
     gtk_entry_set_text(GTK_ENTRY(ctrls->hgen_height), (gchar*)val);
 
     xmlFree(val);

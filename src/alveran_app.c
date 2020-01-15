@@ -39,8 +39,6 @@ alveran_app_open (GApplication *app,
                   const gchar  *hint,
                   gpointer      user_data) 
 {
-    g_message("Alveran APP open:");
-
     GList *windows = gtk_application_get_windows (GTK_APPLICATION (app));
 
     AlveranAppWindow *win;
