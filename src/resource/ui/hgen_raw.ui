@@ -783,12 +783,13 @@
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkButton">
+                                      <object class="GtkButton" id="hgen_height_rnd_btn">
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="receives_default">True</property>
                                         <property name="image">image5</property>
                                         <property name="always_show_image">True</property>
+                                        <signal name="clicked" handler="alveran_hgen_hero_height_changed_rnd_cb" swapped="no"/>
                                       </object>
                                       <packing>
                                         <property name="left_attach">2</property>

@@ -169,6 +169,19 @@ alveran_hgen_hero_height_changed_manual(hgen_ctx_t *hgen)
     free(new_height);
 }
 
+void        
+alveran_hgen_hero_height_changed_rnd(hgen_ctx_t *hgen)
+{
+    hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
+
+    dsa_hero_t * sel_hero = alveran_uis_get_sel_hero_direct(GTK_TREE_VIEW(ctrls->hero_list));
+
+    int dice_result = dsa_heros_set_height_weight_by_dice(sel_hero);
+
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(ctrls->hgen_height), (gdouble)dice_result);
+
+}
+
 gboolean    
 alveran_hgen_hero_height_on_output(hgen_ctx_t *hgen)
 {
@@ -190,7 +203,5 @@ alveran_hgen_hero_height_on_output(hgen_ctx_t *hgen)
 
     return TRUE;
 }
-
-
 
   //xmlSaveFileEnc("-", sel_hero->xml->doc,"UTF-8");

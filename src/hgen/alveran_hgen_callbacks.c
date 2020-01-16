@@ -75,8 +75,15 @@ alveran_hgen_hero_height_changed_manual_cb(GtkSpinButton *spin_button, gpointer 
     alveran_hgen_hero_height_changed_manual(_alveran_hgen_get_context());
 }
 
+G_MODULE_EXPORT void
+alveran_hgen_hero_height_changed_rnd_cb(GtkButton *button, gpointer user_data)
+{
+    alveran_hgen_hero_height_changed_rnd(_alveran_hgen_get_context());
+}
+
 G_MODULE_EXPORT gboolean
 alveran_hgen_hero_height_on_output_cb(GtkSpinButton *spin_button, gpointer user_data)
 {
     return alveran_hgen_hero_height_on_output(_alveran_hgen_get_context());
 }
+

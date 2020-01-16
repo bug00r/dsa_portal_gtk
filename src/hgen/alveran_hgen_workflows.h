@@ -18,5 +18,7 @@ void        alveran_hgen_hero_breed_changed         (hgen_ctx_t *hgen);
 void        alveran_hgen_hero_culture_changed       (hgen_ctx_t *hgen);
 void        alveran_hgen_hero_profession_changed    (hgen_ctx_t *hgen);
 void        alveran_hgen_hero_height_changed_manual (hgen_ctx_t *hgen);
+void        alveran_hgen_hero_height_changed_rnd    (hgen_ctx_t *hgen);
 gboolean    alveran_hgen_hero_height_on_output      (hgen_ctx_t *hgen);
+
 #endif
