@@ -87,3 +87,26 @@ alveran_hgen_hero_height_on_output_cb(GtkSpinButton *spin_button, gpointer user_
     return alveran_hgen_hero_height_on_output(_alveran_hgen_get_context());
 }
 
+G_MODULE_EXPORT void
+alveran_hgen_hero_hair_color_changed_cb( GtkComboBox *widget, gpointer user_data )
+{
+    alveran_hgen_hero_hair_color_changed(_alveran_hgen_get_context());
+}
+
+G_MODULE_EXPORT void
+alveran_hgen_hero_hair_color_changed_rnd_cb(GtkButton *button, gpointer user_data)
+{
+    alveran_hgen_hero_hair_color_changed_rnd(_alveran_hgen_get_context());
+}
+
+G_MODULE_EXPORT void
+alveran_hgen_hero_eye_color_changed_cb( GtkComboBox *widget, gpointer user_data )
+{
+    alveran_hgen_hero_eye_color_changed(_alveran_hgen_get_context());
+}
+
+G_MODULE_EXPORT void
+alveran_hgen_hero_eye_color_changed_rnd_cb(GtkButton *button, gpointer user_data)
+{
+    alveran_hgen_hero_eye_color_changed_rnd(_alveran_hgen_get_context());
+}

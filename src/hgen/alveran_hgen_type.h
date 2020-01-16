@@ -11,6 +11,8 @@ extern const char * const HGEN_CTX;
 
 typedef struct {
 	GtkWidget *hgen_height_rnd_btn;
+	GtkWidget *hgen_eye_color_rnd_btn;
+	GtkWidget *hgen_hair_color_rnd_btn;
 	GtkWidget *hgen_eye_color;
 	GtkWidget *hgen_hair_color;
 	GtkWidget *hgen_height;
