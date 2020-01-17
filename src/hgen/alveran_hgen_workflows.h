@@ -24,5 +24,9 @@ void        alveran_hgen_hero_hair_color_changed    (hgen_ctx_t *hgen);
 void        alveran_hgen_hero_hair_color_changed_rnd(hgen_ctx_t *hgen);
 void        alveran_hgen_hero_eye_color_changed     (hgen_ctx_t *hgen);
 void        alveran_hgen_hero_eye_color_changed_rnd (hgen_ctx_t *hgen);
+void        alveran_hgen_hero_look_changed          (hgen_ctx_t *hgen);
+void        alveran_hgen_hero_status_changed        (hgen_ctx_t *hgen);
+void        alveran_hgen_hero_title_changed         (hgen_ctx_t *hgen);
+void        alveran_hgen_hero_story_changed         (hgen_ctx_t *hgen);
 
 #endif

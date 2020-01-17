@@ -262,7 +262,47 @@ alveran_hgen_hero_eye_color_changed_rnd(hgen_ctx_t *hgen)
     alveran_uis_combobox_search_and_set_active(GTK_COMBO_BOX(ctrls->hgen_eye_color), (const gchar*)eye_color);
 
     xmlFree(eye_color);
+    xmlSaveFileEnc("-", sel_hero->xml->doc,"UTF-8");
 }
 
+static void
+alveran_hgen_hero_bg_texts(GObject *txtBuffer, GtkWidget *hero_list, 
+                        void (*set_hgen_func)(dsa_hero_t*, const unsigned char *)) 
+{
+    gchar *text = alveran_ui_txtbuf_get_text_complete(GTK_TEXT_BUFFER(txtBuffer));
+
+    dsa_hero_t * sel_hero = alveran_uis_get_sel_hero_direct(GTK_TREE_VIEW(hero_list));
+    set_hgen_func(sel_hero, (const unsigned char *)text);
+
+    g_free(text);
+}
+
+void        
+alveran_hgen_hero_look_changed(hgen_ctx_t *hgen)
+{
+    hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
+    alveran_hgen_hero_bg_texts(ctrls->hgen_look_buffer, ctrls->hero_list, dsa_heros_set_look);
+}
+
+void        
+alveran_hgen_hero_status_changed(hgen_ctx_t *hgen)
+{
+    hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
+    alveran_hgen_hero_bg_texts(ctrls->hgen_status_buffer, ctrls->hero_list, dsa_heros_set_status);
+}
+
+void        
+alveran_hgen_hero_title_changed(hgen_ctx_t *hgen)
+{
+    hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
+    alveran_hgen_hero_bg_texts(ctrls->hgen_title_buffer, ctrls->hero_list, dsa_heros_set_title);
+}
+
+void        
+alveran_hgen_hero_story_changed(hgen_ctx_t *hgen)
+{
+    hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
+    alveran_hgen_hero_bg_texts(ctrls->hgen_story_buffer, ctrls->hero_list, dsa_heros_set_story);
+}
 
   //xmlSaveFileEnc("-", sel_hero->xml->doc,"UTF-8");

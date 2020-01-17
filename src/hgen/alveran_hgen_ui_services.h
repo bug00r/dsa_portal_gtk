@@ -37,4 +37,6 @@ void alveran_uis_init_height_limits(GtkWidget *heights, dsa_hero_t *hero);
 
 void alveran_uis_combobox_search_and_set_active(GtkComboBox *combobox, const gchar *search_value);
 
+gchar * alveran_ui_txtbuf_get_text_complete(GtkTextBuffer *buffer);
+
 #endif

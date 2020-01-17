@@ -129,6 +129,9 @@
       <column type="gchararray"/>
     </columns>
   </object>
+  <object class="GtkTextBuffer" id="hgen_look_buffer">
+    <signal name="changed" handler="alveran_hgen_hero_look_changed_cb" swapped="no"/>
+  </object>
   <object class="GtkListStore" id="hgen_pro_liststore">
     <columns>
       <!-- column-name gchararray1 -->
@@ -140,6 +143,12 @@
       <!-- column-name gchararray1 -->
       <column type="gchararray"/>
     </columns>
+  </object>
+  <object class="GtkTextBuffer" id="hgen_status_buffer">
+    <signal name="changed" handler="alveran_hgen_hero_status_changed_cb" swapped="no"/>
+  </object>
+  <object class="GtkTextBuffer" id="hgen_story_buffer">
+    <signal name="changed" handler="alveran_hgen_hero_story_changed_cb" swapped="no"/>
   </object>
   <object class="GtkListStore" id="hgen_talent_body_liststore">
     <columns>
@@ -242,6 +251,9 @@
       <!-- column-name TaW -->
       <column type="gchararray"/>
     </columns>
+  </object>
+  <object class="GtkTextBuffer" id="hgen_title_buffer">
+    <signal name="changed" handler="alveran_hgen_hero_title_changed_cb" swapped="no"/>
   </object>
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
@@ -1059,6 +1071,8 @@
                                       <object class="GtkTextView">
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
+                                        <property name="wrap_mode">word</property>
+                                        <property name="buffer">hgen_status_buffer</property>
                                       </object>
                                       <packing>
                                         <property name="name">page0</property>
@@ -1066,9 +1080,11 @@
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkTextView">
+                                      <object class="GtkTextView" id="hgen_look">
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
+                                        <property name="wrap_mode">word</property>
+                                        <property name="buffer">hgen_look_buffer</property>
                                       </object>
                                       <packing>
                                         <property name="name">page1</property>
@@ -1080,6 +1096,8 @@
                                       <object class="GtkTextView">
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
+                                        <property name="wrap_mode">word</property>
+                                        <property name="buffer">hgen_story_buffer</property>
                                       </object>
                                       <packing>
                                         <property name="name">page2</property>
@@ -1091,6 +1109,8 @@
                                       <object class="GtkTextView">
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
+                                        <property name="wrap_mode">word</property>
+                                        <property name="buffer">hgen_title_buffer</property>
                                       </object>
                                       <packing>
                                         <property name="name">page3</property>

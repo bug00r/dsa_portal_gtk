@@ -110,3 +110,27 @@ alveran_hgen_hero_eye_color_changed_rnd_cb(GtkButton *button, gpointer user_data
 {
     alveran_hgen_hero_eye_color_changed_rnd(_alveran_hgen_get_context());
 }
+
+G_MODULE_EXPORT void
+alveran_hgen_hero_look_changed_cb(GtkTextBuffer *textbuffer, gpointer user_data)
+{
+    alveran_hgen_hero_look_changed(_alveran_hgen_get_context());
+}
+
+G_MODULE_EXPORT void
+alveran_hgen_hero_status_changed_cb(GtkTextBuffer *textbuffer, gpointer user_data)
+{
+    alveran_hgen_hero_status_changed(_alveran_hgen_get_context());
+}
+
+G_MODULE_EXPORT void
+alveran_hgen_hero_title_changed_cb(GtkTextBuffer *textbuffer, gpointer user_data)
+{
+    alveran_hgen_hero_title_changed(_alveran_hgen_get_context());
+}
+
+G_MODULE_EXPORT void
+alveran_hgen_hero_story_changed_cb(GtkTextBuffer *textbuffer, gpointer user_data)
+{
+    alveran_hgen_hero_story_changed(_alveran_hgen_get_context());
+}

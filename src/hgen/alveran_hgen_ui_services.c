@@ -220,3 +220,20 @@ alveran_uis_combobox_search_and_set_active(GtkComboBox *combobox, const gchar *s
         while (gtk_tree_model_iter_next (model, &iter));
     }
 }
+
+gchar * 
+alveran_ui_txtbuf_get_text_complete(GtkTextBuffer *_buffer)
+{
+    GtkTextBuffer *buffer = _buffer;
+
+    GtkTextIter start_iter;
+    gtk_text_buffer_get_start_iter(buffer, &start_iter);
+
+    GtkTextIter end_iter;
+    gtk_text_buffer_get_end_iter(buffer, &end_iter);
+
+    gchar *text = gtk_text_buffer_get_text(buffer, &start_iter, &end_iter, FALSE);
+
+    return text;
+}
+

@@ -10,6 +10,10 @@
 extern const char * const HGEN_CTX;
 
 typedef struct {
+	GObject   *hgen_look_buffer;
+	GObject   *hgen_title_buffer;
+	GObject   *hgen_story_buffer;
+	GObject   *hgen_status_buffer;
 	GtkWidget *hgen_height_rnd_btn;
 	GtkWidget *hgen_eye_color_rnd_btn;
 	GtkWidget *hgen_hair_color_rnd_btn;
