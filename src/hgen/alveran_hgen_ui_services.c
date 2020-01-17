@@ -192,3 +192,31 @@ alveran_uis_init_height_limits(GtkWidget *heights, dsa_hero_t *hero)
                                (gdouble)(dsa_heros_get_height_max(hero) + 1));
     gtk_spin_button_set_value(spin, (gdouble)height_min);
 }
+
+void 
+alveran_uis_combobox_search_and_set_active(GtkComboBox *combobox, const gchar *search_value)
+{
+    GtkTreeModel *model = GTK_TREE_MODEL(gtk_combo_box_get_model(combobox));
+    GtkTreeIter iter;
+    GValue temp = G_VALUE_INIT;
+    if(gtk_tree_model_get_iter_first(model, &iter))
+    {
+        do 
+        {
+            gtk_tree_model_get_value (model, &iter, 0, &temp);
+
+            const gchar* temp_val = g_value_get_string(&temp);
+
+            int equals = g_strcmp0 (temp_val, search_value);
+
+            if (equals==0) {
+                gtk_combo_box_set_active_iter (combobox, &iter);
+                break;
+            }
+
+            g_value_unset (&temp);
+
+        } 
+        while (gtk_tree_model_iter_next (model, &iter));
+    }
+}

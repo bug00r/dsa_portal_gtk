@@ -35,4 +35,6 @@ void alveran_uis_init_eye_colors(GtkWidget* eyecol, dsa_hero_t *hero);
 
 void alveran_uis_init_height_limits(GtkWidget *heights, dsa_hero_t *hero);
 
+void alveran_uis_combobox_search_and_set_active(GtkComboBox *combobox, const gchar *search_value);
+
 #endif

@@ -207,8 +207,6 @@ alveran_hgen_hero_height_on_output(hgen_ctx_t *hgen)
 void        
 alveran_hgen_hero_hair_color_changed(hgen_ctx_t *hgen)
 {
-    g_message("hair changed manually");
-
     hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
 
     gchar *sel_value = alveran_uis_get_cb_value_copy(GTK_COMBO_BOX(ctrls->hgen_hair_color));
@@ -223,8 +221,6 @@ alveran_hgen_hero_hair_color_changed(hgen_ctx_t *hgen)
 void        
 alveran_hgen_hero_hair_color_changed_rnd(hgen_ctx_t *hgen)
 {
-    g_message("hair changed random");
-    
     hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
 
     dsa_hero_t * sel_hero = alveran_uis_get_sel_hero_direct(GTK_TREE_VIEW(ctrls->hero_list));
@@ -233,41 +229,14 @@ alveran_hgen_hero_hair_color_changed_rnd(hgen_ctx_t *hgen)
 
     xmlChar * hair_color = dsa_heros_get_hair_col(sel_hero);
 
-    GtkTreeModel *model = GTK_TREE_MODEL(gtk_combo_box_get_model(GTK_COMBO_BOX(ctrls->hgen_hair_color)));
-    GtkTreeIter iter;
-    GValue temp = G_VALUE_INIT;
-    if(gtk_tree_model_get_iter_first(model, &iter))
-    {
-        do 
-        {
-            gtk_tree_model_get_value (model, &iter, 0, &temp);
-
-            const gchar* temp_val = g_value_get_string(&temp);
-
-            int equals = g_strcmp0 (temp_val, (const gchar*)hair_color);
-
-            if (equals==0) {
-                gtk_combo_box_set_active_iter (GTK_COMBO_BOX(ctrls->hgen_hair_color), &iter);
-                break;
-            }
-
-            g_value_unset (&temp);
-
-        } 
-        while (gtk_tree_model_iter_next (model, &iter));
-
-    }
+    alveran_uis_combobox_search_and_set_active(GTK_COMBO_BOX(ctrls->hgen_hair_color), (const gchar*)hair_color);
 
     xmlFree(hair_color);
-
-    xmlSaveFileEnc("-", sel_hero->xml->doc,"UTF-8");
 }
 
 void        
 alveran_hgen_hero_eye_color_changed(hgen_ctx_t *hgen)
 {
-    g_message("eye changed manually");
-
     hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
 
     gchar *sel_value = alveran_uis_get_cb_value_copy(GTK_COMBO_BOX(ctrls->hgen_eye_color));
@@ -282,8 +251,6 @@ alveran_hgen_hero_eye_color_changed(hgen_ctx_t *hgen)
 void        
 alveran_hgen_hero_eye_color_changed_rnd(hgen_ctx_t *hgen)
 {
-    g_message("eye changed random");
-    
     hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
 
     dsa_hero_t * sel_hero = alveran_uis_get_sel_hero_direct(GTK_TREE_VIEW(ctrls->hero_list));
@@ -292,9 +259,9 @@ alveran_hgen_hero_eye_color_changed_rnd(hgen_ctx_t *hgen)
     
     xmlChar * eye_color = dsa_heros_get_eye_col(sel_hero);
 
-    xmlFree(eye_color);
+    alveran_uis_combobox_search_and_set_active(GTK_COMBO_BOX(ctrls->hgen_eye_color), (const gchar*)eye_color);
 
-    xmlSaveFileEnc("-", sel_hero->xml->doc,"UTF-8");
+    xmlFree(eye_color);
 }
 
 
