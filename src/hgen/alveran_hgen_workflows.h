@@ -28,5 +28,6 @@ void        alveran_hgen_hero_look_changed          (hgen_ctx_t *hgen);
 void        alveran_hgen_hero_status_changed        (hgen_ctx_t *hgen);
 void        alveran_hgen_hero_title_changed         (hgen_ctx_t *hgen);
 void        alveran_hgen_hero_story_changed         (hgen_ctx_t *hgen);
+void        alveran_hgen_hero_attribute_changed_manual(hgen_ctx_t *hgen, const gchar* attr_short_name, int new_val);
 
 #endif

@@ -43,7 +43,6 @@
     <property name="upper">10</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
-    <property name="page_size">1</property>
   </object>
   <object class="GtkAdjustment" id="adjustment20">
     <property name="upper">100</property>
@@ -123,14 +122,46 @@
       <column type="gpointer"/>
     </columns>
   </object>
+  <object class="GtkEntryBuffer" id="hgen_ch_ident">
+    <property name="text" translatable="yes">CH</property>
+    <property name="max_length">2</property>
+  </object>
   <object class="GtkListStore" id="hgen_contra_liststore">
     <columns>
       <!-- column-name gchararray1 -->
       <column type="gchararray"/>
     </columns>
   </object>
+  <object class="GtkEntryBuffer" id="hgen_ff_ident">
+    <property name="text" translatable="yes">FF</property>
+    <property name="max_length">2</property>
+  </object>
+  <object class="GtkEntryBuffer" id="hgen_ge_ident">
+    <property name="text" translatable="yes">GE</property>
+    <property name="max_length">2</property>
+  </object>
+  <object class="GtkEntryBuffer" id="hgen_in_ident">
+    <property name="text" translatable="yes">IN</property>
+    <property name="max_length">2</property>
+  </object>
+  <object class="GtkEntryBuffer" id="hgen_kk_ident">
+    <property name="text" translatable="yes">KK</property>
+    <property name="max_length">2</property>
+  </object>
+  <object class="GtkEntryBuffer" id="hgen_kl_ident">
+    <property name="text" translatable="yes">KL</property>
+    <property name="max_length">2</property>
+  </object>
+  <object class="GtkEntryBuffer" id="hgen_ko_ident">
+    <property name="text" translatable="yes">KO</property>
+    <property name="max_length">2</property>
+  </object>
   <object class="GtkTextBuffer" id="hgen_look_buffer">
     <signal name="changed" handler="alveran_hgen_hero_look_changed_cb" swapped="no"/>
+  </object>
+  <object class="GtkEntryBuffer" id="hgen_mu_ident">
+    <property name="text" translatable="yes">MU</property>
+    <property name="max_length">2</property>
   </object>
   <object class="GtkListStore" id="hgen_pro_liststore">
     <columns>
@@ -143,6 +174,10 @@
       <!-- column-name gchararray1 -->
       <column type="gchararray"/>
     </columns>
+  </object>
+  <object class="GtkEntryBuffer" id="hgen_so_ident">
+    <property name="text" translatable="yes">SO</property>
+    <property name="max_length">2</property>
   </object>
   <object class="GtkTextBuffer" id="hgen_status_buffer">
     <signal name="changed" handler="alveran_hgen_hero_status_changed_cb" swapped="no"/>
@@ -1533,11 +1568,13 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkSpinButton">
+                                  <object class="GtkSpinButton" id="hgen_mu">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="text" translatable="yes">0</property>
                                     <property name="adjustment">adjustment3</property>
+                                    <property name="update_policy">if-valid</property>
+                                    <signal name="value-changed" handler="alveran_hgen_hero_attribute_changed_manual_cb" object="hgen_mu_ident" swapped="no"/>
                                   </object>
                                   <packing>
                                     <property name="left_attach">2</property>
@@ -1545,10 +1582,12 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkSpinButton">
+                                  <object class="GtkSpinButton" id="hgen_kl">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="adjustment">adjustment11</property>
+                                    <property name="update_policy">if-valid</property>
+                                    <signal name="value-changed" handler="alveran_hgen_hero_attribute_changed_manual_cb" object="hgen_kl_ident" swapped="no"/>
                                   </object>
                                   <packing>
                                     <property name="left_attach">2</property>
@@ -1556,11 +1595,13 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkSpinButton">
+                                  <object class="GtkSpinButton" id="hgen_in">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="text" translatable="yes">0</property>
                                     <property name="adjustment">adjustment4</property>
+                                    <property name="update_policy">if-valid</property>
+                                    <signal name="value-changed" handler="alveran_hgen_hero_attribute_changed_manual_cb" object="hgen_in_ident" swapped="no"/>
                                   </object>
                                   <packing>
                                     <property name="left_attach">2</property>
@@ -1568,11 +1609,13 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkSpinButton">
+                                  <object class="GtkSpinButton" id="hgen_ch">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="text" translatable="yes">0</property>
                                     <property name="adjustment">adjustment5</property>
+                                    <property name="update_policy">if-valid</property>
+                                    <signal name="value-changed" handler="alveran_hgen_hero_attribute_changed_manual_cb" object="hgen_ch_ident" swapped="no"/>
                                   </object>
                                   <packing>
                                     <property name="left_attach">2</property>
@@ -1580,11 +1623,13 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkSpinButton">
+                                  <object class="GtkSpinButton" id="hgen_ff">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="text" translatable="yes">0</property>
                                     <property name="adjustment">adjustment6</property>
+                                    <property name="update_policy">if-valid</property>
+                                    <signal name="value-changed" handler="alveran_hgen_hero_attribute_changed_manual_cb" object="hgen_ff_ident" swapped="no"/>
                                   </object>
                                   <packing>
                                     <property name="left_attach">2</property>
@@ -1592,11 +1637,13 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkSpinButton">
+                                  <object class="GtkSpinButton" id="hgen_ge">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="text" translatable="yes">0</property>
                                     <property name="adjustment">adjustment7</property>
+                                    <property name="update_policy">if-valid</property>
+                                    <signal name="value-changed" handler="alveran_hgen_hero_attribute_changed_manual_cb" object="hgen_ge_ident" swapped="no"/>
                                   </object>
                                   <packing>
                                     <property name="left_attach">2</property>
@@ -1604,11 +1651,13 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkSpinButton">
+                                  <object class="GtkSpinButton" id="hgen_kk">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="text" translatable="yes">0</property>
                                     <property name="adjustment">adjustment9</property>
+                                    <property name="update_policy">if-valid</property>
+                                    <signal name="value-changed" handler="alveran_hgen_hero_attribute_changed_manual_cb" object="hgen_kk_ident" swapped="no"/>
                                   </object>
                                   <packing>
                                     <property name="left_attach">2</property>
@@ -1616,11 +1665,13 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkSpinButton">
+                                  <object class="GtkSpinButton" id="hgen_ko">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="text" translatable="yes">0</property>
                                     <property name="adjustment">adjustment8</property>
+                                    <property name="update_policy">if-valid</property>
+                                    <signal name="value-changed" handler="alveran_hgen_hero_attribute_changed_manual_cb" object="hgen_ko_ident" swapped="no"/>
                                   </object>
                                   <packing>
                                     <property name="left_attach">2</property>
@@ -1628,11 +1679,13 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkSpinButton">
+                                  <object class="GtkSpinButton" id="hgen_so">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="text" translatable="yes">0</property>
                                     <property name="adjustment">adjustment10</property>
+                                    <property name="update_policy">if-valid</property>
+                                    <signal name="value-changed" handler="alveran_hgen_hero_attribute_changed_manual_cb" object="hgen_so_ident" swapped="no"/>
                                   </object>
                                   <packing>
                                     <property name="left_attach">2</property>
@@ -1640,7 +1693,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkLabel" id="ko_mod1">
+                                  <object class="GtkLabel" id="hgen_gs">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
                                     <property name="label" translatable="yes">-</property>

@@ -305,4 +305,24 @@ alveran_hgen_hero_story_changed(hgen_ctx_t *hgen)
     alveran_hgen_hero_bg_texts(ctrls->hgen_story_buffer, ctrls->hero_list, dsa_heros_set_story);
 }
 
+void        
+alveran_hgen_hero_attribute_changed_manual(hgen_ctx_t *hgen, const gchar* attr_short_name, int new_val)
+{
+    hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
+    dsa_hero_t * sel_hero = alveran_uis_get_sel_hero_direct(GTK_TREE_VIEW(ctrls->hero_list));
+
+    xmlChar * current_attr_val_str = dsa_heros_get_attr(sel_hero, (const unsigned char *)attr_short_name);
+    int current_attr_val = atoi((const char *)current_attr_val_str);
+    xmlFree(current_attr_val_str);
+
+    if (new_val > current_attr_val) 
+    {
+        dsa_heros_attr_inc(sel_hero, (const unsigned char *)attr_short_name);
+    } 
+    else 
+    {
+        dsa_heros_attr_dec(sel_hero, (const unsigned char *)attr_short_name);
+    }
+}
+
   //xmlSaveFileEnc("-", sel_hero->xml->doc,"UTF-8");
