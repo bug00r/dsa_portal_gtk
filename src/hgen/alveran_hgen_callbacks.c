@@ -142,3 +142,8 @@ alveran_hgen_hero_attribute_changed_manual_cb(GtkSpinButton *spin_button, gpoint
                                                  gtk_entry_buffer_get_text(GTK_ENTRY_BUFFER(user_data)),
                                                  (int)gtk_spin_button_get_value(spin_button));
 }
+
+//TOTO here nex is add pro 
+//use this to examine group: dsa_heros_add_pro_calc_group
+//make some centralized logic: firs step examine control and then the logic itself
+

@@ -65,7 +65,7 @@
     </xsl:copy>
 </xsl:template>
 
-<xsl:template match="object[@id = 'hgen_pro_liststore']">  
+<!-- deprecated <xsl:template match="object[@id = 'hgen_pro_liststore']">  
     <xsl:call-template name="copy_node_and_add_rows">
       <xsl:with-param name="nodes" select = "@*|node()" />
       <xsl:with-param name="items" select = "$procontra_doc//pro" />
@@ -84,7 +84,32 @@
       <xsl:with-param name="nodes" select = "@*|node()" />
       <xsl:with-param name="items" select = "$specialabilities_doc//specialability" />
     </xsl:call-template>
+</xsl:template> -->
+
+<!-- here we calling the new pro contra and special abilities  -->
+
+<xsl:template match="object[@id = 'hgen_pro_avail']">  
+    <xsl:call-template name="copy_node_and_add_items">
+      <xsl:with-param name="nodes" select = "@*|node()" />
+      <xsl:with-param name="items" select = "$procontra_doc//pro[not(@usage)]" />
+    </xsl:call-template>
 </xsl:template>
+
+<xsl:template match="object[@id = 'hgen_contra_avail']">  
+    <xsl:call-template name="copy_node_and_add_items">
+      <xsl:with-param name="nodes" select = "@*|node()" />
+      <xsl:with-param name="items" select = "$procontra_doc//contra[not(@usage)]" />
+    </xsl:call-template>
+</xsl:template>
+
+<xsl:template match="object[@id = 'hgen_special_avail']">  
+    <xsl:call-template name="copy_node_and_add_items">
+      <xsl:with-param name="nodes" select = "@*|node()" />
+      <xsl:with-param name="items" select = "$specialabilities_doc//specialability[not(@usage)]" />
+    </xsl:call-template>
+</xsl:template>
+
+<!-- EOF -->
 
 <xsl:template match="object[@id = 'hgen_breed']">  
     <xsl:call-template name="copy_node_and_add_items">
@@ -128,12 +153,12 @@
     </xsl:call-template>
 </xsl:template>
 
-<xsl:template match="object[@id = 'hgen_talent_body']">  
+<!-- seems to be double <xsl:template match="object[@id = 'hgen_talent_body']">  
     <xsl:call-template name="copy_node_and_add_items">
       <xsl:with-param name="nodes" select = "@*|node()" />
       <xsl:with-param name="items" select = "$talents_doc//group[@name = 'Körper']/talent[@type='special']" />
     </xsl:call-template>
-</xsl:template>
+</xsl:template> -->
 
 <xsl:template match="object[@id = 'hgen_talent_society']">  
     <xsl:call-template name="copy_node_and_add_items">
@@ -226,7 +251,7 @@
     </xsl:copy>
 </xsl:template>
 
-<xsl:template name="copy_node_and_add_rows">
+<!--seems to be deprecated <xsl:template name="copy_node_and_add_rows">
     <xsl:param name = "nodes" />
     <xsl:param name = "items" />
     <xsl:copy>
@@ -238,7 +263,7 @@
         </xsl:for-each>
         </data>
     </xsl:copy>
-</xsl:template>
+</xsl:template> -->
 
 <xsl:template name="copy_node_and_add_colums_talent_nf">
     <xsl:param name = "nodes" />
