@@ -325,4 +325,64 @@ alveran_hgen_hero_attribute_changed_manual(hgen_ctx_t *hgen, const gchar* attr_s
     }
 }
 
-  //xmlSaveFileEnc("-", sel_hero->xml->doc,"UTF-8");
+void        
+alveran_hgen_hero_pro_add(hgen_ctx_t *hgen)
+{
+    hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
+    dsa_hero_t * sel_hero = alveran_uis_get_sel_hero_direct(GTK_TREE_VIEW(ctrls->hero_list));
+    alveran_uis_pcs_adding(GTK_COMBO_BOX(ctrls->hgen_pro_avail), GTK_TREE_VIEW(ctrls->hgen_pro_cur_list), 
+                                         hgen->heros, sel_hero,
+                                         dsa_heros_add_pro_calc_group);
+}
+
+void        
+alveran_hgen_hero_contra_add(hgen_ctx_t *hgen)
+{
+    hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
+    dsa_hero_t * sel_hero = alveran_uis_get_sel_hero_direct(GTK_TREE_VIEW(ctrls->hero_list));
+    alveran_uis_pcs_adding(GTK_COMBO_BOX(ctrls->hgen_contra_avail), GTK_TREE_VIEW(ctrls->hgen_contra_cur_list), 
+                                         hgen->heros, sel_hero,
+                                         dsa_heros_add_contra_calc_group);
+}
+
+void        
+alveran_hgen_hero_special_add(hgen_ctx_t *hgen)
+{
+    hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
+    dsa_hero_t * sel_hero = alveran_uis_get_sel_hero_direct(GTK_TREE_VIEW(ctrls->hero_list));
+    alveran_uis_pcs_adding(GTK_COMBO_BOX(ctrls->hgen_special_avail), GTK_TREE_VIEW(ctrls->hgen_special_cur_list), 
+                                         hgen->heros, sel_hero,
+                                         dsa_heros_add_specialability_calc_group);
+}
+
+void        
+alveran_hgen_hero_pro_remove(hgen_ctx_t *hgen)
+{
+    hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
+
+    dsa_hero_t * sel_hero = alveran_uis_get_sel_hero_direct(GTK_TREE_VIEW(ctrls->hero_list));
+
+    alveran_uis_rem_pcs_tv_selection(ctrls->hgen_pro_cur_list, sel_hero, dsa_heros_remove_pro);
+}
+
+void        
+alveran_hgen_hero_contra_remove(hgen_ctx_t *hgen)
+{
+    hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
+
+    dsa_hero_t * sel_hero = alveran_uis_get_sel_hero_direct(GTK_TREE_VIEW(ctrls->hero_list));
+
+    alveran_uis_rem_pcs_tv_selection(ctrls->hgen_contra_cur_list, sel_hero, dsa_heros_remove_contra);
+}
+
+void        
+alveran_hgen_hero_special_remove(hgen_ctx_t *hgen)
+{
+    hgen_ui_ctrls_t *ctrls = &hgen->ctrls;
+
+    dsa_hero_t * sel_hero = alveran_uis_get_sel_hero_direct(GTK_TREE_VIEW(ctrls->hero_list));
+
+    alveran_uis_rem_pcs_tv_selection(ctrls->hgen_special_cur_list, sel_hero, dsa_heros_remove_specialability);
+}
+
+//xmlSaveFileEnc("-", sel_hero->xml->doc,"UTF-8");

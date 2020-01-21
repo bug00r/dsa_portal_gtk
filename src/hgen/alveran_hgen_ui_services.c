@@ -14,9 +14,9 @@ alveran_uis_add_hero_new(GtkWidget *hero_tree_view, dsa_hero_t *new_hero)
 }
 
 void 
-alveran_uis_get_tv_selection(GtkWidget *hero_tree_view, a_uis_selection_t *selection)
+alveran_uis_get_tv_selection(GtkWidget *tree_view, a_uis_selection_t *selection)
 {
-    selection->treeview = GTK_TREE_VIEW(hero_tree_view);
+    selection->treeview = GTK_TREE_VIEW(tree_view);
     selection->selction = gtk_tree_view_get_selection(selection->treeview);
     selection->model = gtk_tree_view_get_model (GTK_TREE_VIEW(selection->treeview));
     selection->sel_did = gtk_tree_selection_get_selected(selection->selction, &selection->model, &selection->iter);
@@ -237,3 +237,39 @@ alveran_ui_txtbuf_get_text_complete(GtkTextBuffer *_buffer)
     return text;
 }
 
+void 
+alveran_uis_pcs_adding(GtkComboBox *avails, GtkTreeView *dest, dsa_heros_t *heros, dsa_hero_t *hero, 
+                       void (*add_func)(dsa_heros_t*, dsa_hero_t*, const unsigned char *))
+{
+    gchar * selected = alveran_uis_get_cb_value_copy(avails);
+
+    add_func(heros, hero, (const unsigned char *)selected);
+
+    GtkListStore *current_list_store = GTK_LIST_STORE(gtk_tree_view_get_model(dest));
+    
+    GtkTreeIter iter;
+    gtk_list_store_append(current_list_store, &iter);
+    gtk_list_store_set(current_list_store, &iter, 
+                       0, selected, -1);
+
+    g_free(selected);
+}
+
+void
+alveran_uis_rem_pcs_tv_selection(GtkWidget *tree_view, dsa_hero_t *hero, void (*rem_func)(dsa_hero_t*, const unsigned char*)) 
+{
+    a_uis_selection_t selection;
+    alveran_uis_get_tv_selection(GTK_WIDGET(tree_view), &selection);
+
+    gchar *selected = NULL;
+    if(selection.sel_did)
+    {
+        gtk_tree_model_get(selection.model, &selection.iter, 0, &selected, -1);
+
+        gtk_list_store_remove(GTK_LIST_STORE(selection.model), &selection.iter);
+
+        rem_func(hero, (const unsigned char*)selected);
+    }
+
+    g_free(selected);
+}

@@ -14,6 +14,12 @@ typedef struct {
 	GObject   *hgen_title_buffer;
 	GObject   *hgen_story_buffer;
 	GObject   *hgen_status_buffer;
+	GtkWidget *hgen_pro_avail;
+	GtkWidget *hgen_pro_cur_list;
+	GtkWidget *hgen_contra_avail;
+	GtkWidget *hgen_contra_cur_list;
+	GtkWidget *hgen_special_avail;
+	GtkWidget *hgen_special_cur_list;
 	GtkWidget *hgen_height_rnd_btn;
 	GtkWidget *hgen_eye_color_rnd_btn;
 	GtkWidget *hgen_hair_color_rnd_btn;

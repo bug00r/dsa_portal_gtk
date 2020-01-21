@@ -2575,6 +2575,7 @@
                                                             <property name="valign">start</property>
                                                             <property name="image">image33</property>
                                                             <property name="always_show_image">True</property>
+                                                            <signal name="clicked" handler="alveran_hgen_hero_pro_add_cb" swapped="no"/>
                                                             </object>
                                                             <packing>
                                                             <property name="expand">False</property>
@@ -2590,6 +2591,7 @@
                                                             <property name="valign">start</property>
                                                             <property name="image">image34</property>
                                                             <property name="always_show_image">True</property>
+                                                            <signal name="clicked" handler="alveran_hgen_hero_pro_remove_cb" swapped="no"/>
                                                             </object>
                                                             <packing>
                                                             <property name="expand">False</property>
@@ -2632,8 +2634,6 @@
                                                             <child>
                                                             <object class="GtkCellRendererText"/>
                                                             <attributes>
-                                                            <attribute name="background-gdk">1</attribute>
-                                                            <attribute name="foreground-gdk">1</attribute>
                                                             <attribute name="text">0</attribute>
                                                             <attribute name="wrap-width">0</attribute>
                                                             </attributes>
@@ -2768,6 +2768,7 @@
                                                             <property name="valign">start</property>
                                                             <property name="image">image35</property>
                                                             <property name="always_show_image">True</property>
+                                                            <signal name="clicked" handler="alveran_hgen_hero_contra_add_cb" swapped="no"/>
                                                             </object>
                                                             <packing>
                                                             <property name="expand">False</property>
@@ -2783,6 +2784,7 @@
                                                             <property name="valign">start</property>
                                                             <property name="image">image36</property>
                                                             <property name="always_show_image">True</property>
+                                                            <signal name="clicked" handler="alveran_hgen_hero_contra_remove_cb" swapped="no"/>
                                                             </object>
                                                             <packing>
                                                             <property name="expand">False</property>
@@ -2825,8 +2827,6 @@
                                                             <child>
                                                             <object class="GtkCellRendererText"/>
                                                             <attributes>
-                                                            <attribute name="background-gdk">1</attribute>
-                                                            <attribute name="foreground-gdk">1</attribute>
                                                             <attribute name="text">0</attribute>
                                                             <attribute name="wrap-width">0</attribute>
                                                             </attributes>
@@ -2961,6 +2961,7 @@
                                                             <property name="valign">start</property>
                                                             <property name="image">image37</property>
                                                             <property name="always_show_image">True</property>
+                                                            <signal name="clicked" handler="alveran_hgen_hero_special_add_cb" swapped="no"/>
                                                             </object>
                                                             <packing>
                                                             <property name="expand">False</property>
@@ -2976,6 +2977,7 @@
                                                             <property name="valign">start</property>
                                                             <property name="image">image38</property>
                                                             <property name="always_show_image">True</property>
+                                                            <signal name="clicked" handler="alveran_hgen_hero_special_remove_cb" swapped="no"/>
                                                             </object>
                                                             <packing>
                                                             <property name="expand">False</property>
@@ -3018,8 +3020,6 @@
                                                             <child>
                                                             <object class="GtkCellRendererText"/>
                                                             <attributes>
-                                                            <attribute name="background-gdk">1</attribute>
-                                                            <attribute name="foreground-gdk">1</attribute>
                                                             <attribute name="text">0</attribute>
                                                             <attribute name="wrap-width">0</attribute>
                                                             </attributes>

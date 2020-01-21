@@ -29,5 +29,11 @@ void        alveran_hgen_hero_status_changed        (hgen_ctx_t *hgen);
 void        alveran_hgen_hero_title_changed         (hgen_ctx_t *hgen);
 void        alveran_hgen_hero_story_changed         (hgen_ctx_t *hgen);
 void        alveran_hgen_hero_attribute_changed_manual(hgen_ctx_t *hgen, const gchar* attr_short_name, int new_val);
+void        alveran_hgen_hero_pro_add               (hgen_ctx_t *hgen);
+void        alveran_hgen_hero_contra_add            (hgen_ctx_t *hgen);
+void        alveran_hgen_hero_special_add           (hgen_ctx_t *hgen);
+void        alveran_hgen_hero_pro_remove            (hgen_ctx_t *hgen);
+void        alveran_hgen_hero_contra_remove         (hgen_ctx_t *hgen);
+void        alveran_hgen_hero_special_remove        (hgen_ctx_t *hgen);
 
 #endif

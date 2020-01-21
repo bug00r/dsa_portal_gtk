@@ -143,7 +143,39 @@ alveran_hgen_hero_attribute_changed_manual_cb(GtkSpinButton *spin_button, gpoint
                                                  (int)gtk_spin_button_get_value(spin_button));
 }
 
-//TOTO here nex is add pro 
-//use this to examine group: dsa_heros_add_pro_calc_group
-//make some centralized logic: firs step examine control and then the logic itself
+G_MODULE_EXPORT void
+alveran_hgen_hero_pro_add_cb(GtkButton *button, gpointer user_data)
+{
+    alveran_hgen_hero_pro_add(_alveran_hgen_get_context());
+}
+
+G_MODULE_EXPORT void
+alveran_hgen_hero_contra_add_cb(GtkButton *button, gpointer user_data)
+{
+    alveran_hgen_hero_contra_add(_alveran_hgen_get_context());
+}
+
+G_MODULE_EXPORT void
+alveran_hgen_hero_special_add_cb(GtkButton *button, gpointer user_data)
+{
+    alveran_hgen_hero_special_add(_alveran_hgen_get_context());
+}
+
+G_MODULE_EXPORT void
+alveran_hgen_hero_pro_remove_cb(GtkButton *button, gpointer user_data)
+{
+    alveran_hgen_hero_pro_remove(_alveran_hgen_get_context());
+}
+
+G_MODULE_EXPORT void
+alveran_hgen_hero_contra_remove_cb(GtkButton *button, gpointer user_data)
+{
+    alveran_hgen_hero_contra_remove(_alveran_hgen_get_context());
+}
+
+G_MODULE_EXPORT void
+alveran_hgen_hero_special_remove_cb(GtkButton *button, gpointer user_data)
+{
+    alveran_hgen_hero_special_remove(_alveran_hgen_get_context());
+}
 

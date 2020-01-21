@@ -39,4 +39,8 @@ void alveran_uis_combobox_search_and_set_active(GtkComboBox *combobox, const gch
 
 gchar * alveran_ui_txtbuf_get_text_complete(GtkTextBuffer *buffer);
 
+void alveran_uis_pcs_adding(GtkComboBox *avails, GtkTreeView *dest, dsa_heros_t *heros, dsa_hero_t *hero, 
+                       void (*add_func)(dsa_heros_t*, dsa_hero_t*, const unsigned char *));
+
+void alveran_uis_rem_pcs_tv_selection(GtkWidget *tree_view, dsa_hero_t *hero, void (*rem_func)(dsa_hero_t*, const unsigned char*));
 #endif

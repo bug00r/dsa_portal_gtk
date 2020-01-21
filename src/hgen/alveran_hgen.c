@@ -91,6 +91,12 @@ GtkWidget* alveran_hgen_widget_new()
 	hctx->ctrls.hgen_status_buffer = G_OBJECT(gtk_builder_get_object (builder, "hgen_status_buffer"));
 	hctx->ctrls.hgen_title_buffer = G_OBJECT(gtk_builder_get_object (builder, "hgen_title_buffer"));
 	hctx->ctrls.hgen_story_buffer = G_OBJECT(gtk_builder_get_object (builder, "hgen_story_buffer"));
+	hctx->ctrls.hgen_pro_avail = GTK_WIDGET(gtk_builder_get_object (builder, "hgen_pro_avail"));
+	hctx->ctrls.hgen_pro_cur_list = GTK_WIDGET(gtk_builder_get_object (builder, "hgen_pro_cur_list"));
+	hctx->ctrls.hgen_contra_avail = GTK_WIDGET(gtk_builder_get_object (builder, "hgen_contra_avail"));
+	hctx->ctrls.hgen_contra_cur_list = GTK_WIDGET(gtk_builder_get_object (builder, "hgen_contra_cur_list"));
+	hctx->ctrls.hgen_special_avail = GTK_WIDGET(gtk_builder_get_object (builder, "hgen_special_avail"));
+	hctx->ctrls.hgen_special_cur_list = GTK_WIDGET(gtk_builder_get_object (builder, "hgen_special_cur_list"));
 
 	return hgen_widget;
 }
