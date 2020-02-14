@@ -2521,15 +2521,6 @@
                                             <property name="orientation">vertical</property>
                                             <property name="homogeneous">True</property>
                                             <child>
-                                              <placeholder/>
-                                            </child>
-                                            <child>
-                                              <placeholder/>
-                                            </child>
-                                            <child>
-                                              <placeholder/>
-                                            </child>
-                                            <child>
                                               <object class="GtkFrame">
                                                 <property name="height_request">200</property>
                                                 <property name="visible">True</property>
@@ -2641,7 +2632,6 @@
                                                             <object class="GtkCellRendererText"/>
                                                             <attributes>
                                                             <attribute name="text">0</attribute>
-                                                            <attribute name="wrap-width">0</attribute>
                                                             </attributes>
                                                             </child>
                                                             </object>
@@ -2662,6 +2652,15 @@
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="valign">start</property>
+                                                            <child>
+                                                            <placeholder/>
+                                                            </child>
+                                                            <child>
+                                                            <placeholder/>
+                                                            </child>
+                                                            <child>
+                                                            <placeholder/>
+                                                            </child>
                                                             <child>
                                                             <placeholder/>
                                                             </child>
@@ -2834,7 +2833,6 @@
                                                             <object class="GtkCellRendererText"/>
                                                             <attributes>
                                                             <attribute name="text">0</attribute>
-                                                            <attribute name="wrap-width">0</attribute>
                                                             </attributes>
                                                             </child>
                                                             </object>
@@ -2855,6 +2853,15 @@
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="valign">start</property>
+                                                            <child>
+                                                            <placeholder/>
+                                                            </child>
+                                                            <child>
+                                                            <placeholder/>
+                                                            </child>
+                                                            <child>
+                                                            <placeholder/>
+                                                            </child>
                                                             <child>
                                                             <placeholder/>
                                                             </child>
@@ -3027,7 +3034,6 @@
                                                             <object class="GtkCellRendererText"/>
                                                             <attributes>
                                                             <attribute name="text">0</attribute>
-                                                            <attribute name="wrap-width">0</attribute>
                                                             </attributes>
                                                             </child>
                                                             </object>
@@ -3048,6 +3054,15 @@
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="valign">start</property>
+                                                            <child>
+                                                            <placeholder/>
+                                                            </child>
+                                                            <child>
+                                                            <placeholder/>
+                                                            </child>
+                                                            <child>
+                                                            <placeholder/>
+                                                            </child>
                                                             <child>
                                                             <placeholder/>
                                                             </child>
