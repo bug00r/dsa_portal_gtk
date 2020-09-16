@@ -4,6 +4,7 @@
     <file preprocess="xml-stripblanks">ui/window.ui</file>
     <file preprocess="xml-stripblanks">ui/taw.ui</file>
     <file preprocess="xml-stripblanks">ui/lexicon.ui</file>
+    <file preprocess="xml-stripblanks">ui/mapeditor.ui</file>
     <file preprocess="xml-stripblanks">ui/hgen_xslt.ui</file>
     <file preprocess="to-pixdata">icons/test.png</file>
     <file>css/default.css</file>

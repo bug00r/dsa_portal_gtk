@@ -1,0 +1,47 @@
+We want to have a most flexibel Map Editor with following Features
+
+BOTH: 
+
+1. The Map Editor should have an extra single Window for presentation on another monitor
+2. if we hover or select an Entity, we want to show an outline of the real pixeldata like
+   2D Skin Marker.
+3. We want to have a optional Movement History we can use or not and activate on every time.
+   As Additional festure we want to have a movement play editor. Every selected Entity
+   should be played in different movement state.
+   
+
+Editor:
+
+2. We want to draw static and dynamic Things like:
+            Backgrounds, Mountains, Rocks, Buildings animals people...
+3. We want to create own Things like, special bridge, we need also an 
+   Drawing entitiy Editor to create, edit and delete Entities
+4. We want to move, resize and rotate Entities for correct directions on the map. for
+   easier editing we want to select single and multiple Entities. Additionaly it would
+   be fine to create Entity Group we could rotate. Also we need to create, edit and 
+   delete Entity Groups. 
+        
+        Selection:
+            - If there are multiple Entities on a Mouse Position, we want to have
+              an more easier selection window as moving the head near in front of
+              the screen.
+
+5. We want to have Library Groups for the Entities for a better overview of opportunities
+   and a search function with realtime filter would be great for easier handling
+   large libraries
+6. We want to display a Raster with correct Sizes like Meters or anything else and 
+   calculation between. It should be scalable like 1cm, 1dm, 1m, 10m....
+7. We want a path tool for measure distances like in google maps for better movement 
+   coordination
+8. We want to have some random Maps with enemies and so on. This should be handled 
+   by standard and editable parameters. This we want to have for an fast an fancy 
+   just in time Map 
+
+Presentation:
+
+1. We want to Hide the inner parts of buildings. Only the people views should 
+   be free the map. A complete view and a memory of viewd part have should be displayed
+   for each char we want to declare, Also we need something like FOG of WAR. Here we
+   have to respect the Air parts for Dragons or Birds.
+
+Datenüberschreibung

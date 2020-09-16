@@ -18,6 +18,11 @@
     <property name="can_focus">False</property>
     <property name="resource">/de/bug0r/alveran/icons/test.png</property>
   </object>
+  <object class="GtkImage" id="image4">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="resource">/de/bug0r/alveran/icons/test.png</property>
+  </object>
   <template class="AlveranAppWindow" parent="GtkApplicationWindow">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Alveran - DSA 4.1 Toolset</property>
@@ -229,6 +234,20 @@
                 <property name="use_underline">True</property>
                 <property name="icon_widget">image3</property>
                 <signal name="clicked" handler="open_hgen_cb" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToolButton" id="_mapeditor">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">mapeditor</property>
+                <property name="use_underline">True</property>
+                <property name="icon_widget">image4</property>
+                <signal name="clicked" handler="open_mapeditor_cb" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>

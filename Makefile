@@ -42,13 +42,14 @@ RESRC:=$(patsubst %,$(BUILDPATH)/%,$(patsubst %,%.c, $(RESFILENAME)))
 INCLUDEDIR=$(GTK_INCLUDE) $(XSLT_INCLUDE) $(XML2_INCLUDE) $(ICU_INCLUDE) $(ICONV_INCLUDE) $(FREETYPE_INCLUDE) \
 			$(ARCHIVE_INCLUDE)
 INCLUDEDIR+=-I./src -I../collections/dl_list -I../utils/src -I../dsa_core/src -I./$(BUILDPATH)
-INCLUDEDIR+=$(patsubst %,-I./src/%, lexicon taw hgen)
+INCLUDEDIR+=$(patsubst %,-I./src/%, lexicon taw hgen mapeditor)
 
 
 _SRC_FILES=run_alveran alveran_app alveran_app_win taw/alveran_taw_widget \
 		   lexicon/alveran_lexicon lexicon/alveran_lexicon_search lexicon/alveran_lexicon_callback lexicon/alveran_lexicon_type \
 		   hgen/alveran_hgen hgen/alveran_hgen_type hgen/alveran_hgen_services hgen/alveran_hgen_ui_services \
-		   hgen/alveran_hgen_callbacks hgen/alveran_hgen_workflows
+		   hgen/alveran_hgen_callbacks hgen/alveran_hgen_workflows \
+		   mapeditor/alveran_mapeditor
 
 
 SRC+=$(patsubst %,src/%,$(patsubst %,%.c,$(_SRC_FILES)))
@@ -103,6 +104,7 @@ mkbuilddir:
 	-mkdir -p $(BUILDPATH)$(PS)taw
 	-mkdir -p $(BUILDPATH)$(PS)lexicon
 	-mkdir -p $(BUILDPATH)$(PS)hgen
+	-mkdir -p $(BUILDPATH)$(PS)mapeditor
 
 small:
 	-strip $(BUILDPATH)$(BIN)
