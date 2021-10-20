@@ -1,11 +1,57 @@
-include ../make_config
+#MAKE?=mingw32-make
+AR?=ar
+ARFLAGS?=rcs
+PATHSEP?=/
+CC=gcc
+BUILDROOT?=build
+
+ifeq ($(CLANG),1)
+	export CC=clang
+endif
+
+BUILDDIR?=$(BUILDROOT)$(PATHSEP)$(CC)
+BUILDPATH?=$(BUILDDIR)$(PATHSEP)
+
+INSTALL_ROOT?=$(BUILDPATH)
+
+ifeq ($(DEBUG),1)
+	export debug=-ggdb -Ddebug=1
+	export isdebug=1
+endif
+
+ifeq ($(ANALYSIS),1)
+	export analysis=-Danalysis=1
+	export isanalysis=1
+endif
+
+ifeq ($(DEBUG),2)
+	export debug=-ggdb -Ddebug=2
+	export isdebug=1
+endif
+
+ifeq ($(DEBUG),3)
+	export debug=-ggdb -Ddebug=3
+	export isdebug=1
+endif
+
+ifeq ($(OUTPUT),1)
+	export outimg= -Doutput=1
+endif
+
+BIT_SUFFIX=
+
+ifeq ($(M32),1)
+	CFLAGS+=-m32
+	BIT_SUFFIX+=32
+endif
+
+CFLAGS+=-std=c11 -Wall $(debug)
 
 COPYDLLS:=
 ifeq ($(DLLS),1)
 	COPYDLLS:=copydlls
 endif
 
-CFLAGS+=-std=c11 -Wall
 
 #-ggdb  -mwindows
 #-pg for profiling 
@@ -41,7 +87,7 @@ RESRC:=$(patsubst %,$(BUILDPATH)/%,$(patsubst %,%.c, $(RESFILENAME)))
 
 INCLUDEDIR=$(GTK_INCLUDE) $(XSLT_INCLUDE) $(XML2_INCLUDE) $(ICU_INCLUDE) $(ICONV_INCLUDE) $(FREETYPE_INCLUDE) \
 			$(ARCHIVE_INCLUDE)
-INCLUDEDIR+=-I./src -I../collections/dl_list -I../utils/src -I../dsa_core/src -I./$(BUILDPATH)
+INCLUDEDIR+=-I./src -I/c/dev/include -I$(BUILDPATH)
 INCLUDEDIR+=$(patsubst %,-I./src/%, lexicon taw hgen mapeditor)
 
 
@@ -66,9 +112,7 @@ USED_LIBS+=$(GTK_LIBS) $(XSLT_LIBS) $(XML2_LIBS) $(ICU_LIBS) $(FREETYPE_LIBS) $(
 USED_LIBSDIR=$(GTK_LIBDIR)
 
 #ownlibs
-USED_LIBSDIR+=-L./../collections/dl_list/$(BUILDPATH)
-USED_LIBSDIR+=-L./../utils/$(BUILDPATH) 
-USED_LIBSDIR+=-L./../dsa_core/$(BUILDPATH)
+USED_LIBSDIR+=-L/c/dev/lib
 
 XML_DIR:=../../../../dsa_core/data/xml/
 X_P=--stringparam
