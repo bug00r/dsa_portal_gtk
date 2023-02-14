@@ -45,7 +45,7 @@ ifeq ($(M32),1)
 	BIT_SUFFIX+=32
 endif
 
-CFLAGS+=-std=c11 -Wall $(debug)
+CFLAGS+= -DIN_LIBXML -std=c11 -Wall $(debug)
 
 COPYDLLS:=
 ifeq ($(DLLS),1)
