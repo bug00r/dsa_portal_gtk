@@ -42,7 +42,7 @@ typedef struct {
 } hgen_ui_ctrls_t;
 
 typedef struct _hgen_ctx_ {
-	dsa_heros_t * heros;
+	DsaHeros * heros;
 	hgen_ui_ctrls_t ctrls;
 } hgen_ctx_t;
 

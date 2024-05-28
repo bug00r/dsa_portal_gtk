@@ -14,8 +14,8 @@ alveran_taw_changed_cb (GtkComboBox *widget,
     gint start = gtk_combo_box_get_active (GTK_COMBO_BOX(g_object_get_data(G_OBJECT(app), "taw_start")));
     gint end = gtk_combo_box_get_active (GTK_COMBO_BOX(g_object_get_data(G_OBJECT(app), "taw_end")));
 
-    taw_col_t column = (taw_col_t)category;
-	taw_result_t *taw_result = taw_calc(&column, start-4, end-3);
+    TawCol column = (TawCol)category;
+	TawResult *taw_result = taw_calc(&column, start-4, end-3);
 
 	if(taw_result->complete) 
     {    

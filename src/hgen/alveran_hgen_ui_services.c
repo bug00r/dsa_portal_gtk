@@ -1,7 +1,7 @@
 #include "alveran_hgen_ui_services.h"
 
 void 
-alveran_uis_add_hero_new(GtkWidget *hero_tree_view, dsa_hero_t *new_hero)
+alveran_uis_add_hero_new(GtkWidget *hero_tree_view, DsaHero *new_hero)
 {
     GtkListStore *hero_list_store = GTK_LIST_STORE(gtk_tree_view_get_model (GTK_TREE_VIEW(hero_tree_view)));
     
@@ -22,10 +22,10 @@ alveran_uis_get_tv_selection(GtkWidget *tree_view, a_uis_selection_t *selection)
     selection->sel_did = gtk_tree_selection_get_selected(selection->selction, &selection->model, &selection->iter);
 }
 
-dsa_hero_t * 
+DsaHero * 
 alveran_uis_get_sel_hero(a_uis_selection_t *selection)
 {
-    dsa_hero_t *found = NULL;
+    DsaHero *found = NULL;
     if(selection->sel_did)
     {
         gtk_tree_model_get(selection->model, &selection->iter, 1, &found, -1);   
@@ -33,13 +33,13 @@ alveran_uis_get_sel_hero(a_uis_selection_t *selection)
     return found;
 }
 
-dsa_hero_t* 
+DsaHero* 
 alveran_uis_get_sel_hero_direct(GtkTreeView *hero_list)
 {
     a_uis_selection_t selection;
     alveran_uis_get_tv_selection(GTK_WIDGET(hero_list), &selection);
 
-    dsa_hero_t * selected_hero = alveran_uis_get_sel_hero(&selection);
+    DsaHero * selected_hero = alveran_uis_get_sel_hero(&selection);
 
     return selected_hero;
 }
@@ -133,7 +133,7 @@ alveran_uis_get_cb_value_copy(GtkComboBox *_comboBox)
 }
 
 static void 
-__init_hero_cb_by_xpath_res(GtkComboBoxText *combobox, dsa_hero_t *hero, xmlXPathObjectPtr (*nodefunc)(dsa_hero_t *hero) ) 
+__init_hero_cb_by_xpath_res(GtkComboBoxText *combobox, DsaHero *hero, xmlXPathObjectPtr (*nodefunc)(DsaHero *hero) ) 
 {
 
 	if ( combobox != NULL && hero != NULL && nodefunc != NULL ) {
@@ -165,19 +165,19 @@ __init_hero_cb_by_xpath_res(GtkComboBoxText *combobox, dsa_hero_t *hero, xmlXPat
 }
 
 void 
-alveran_uis_init_hair_colors(GtkWidget* haircol, dsa_hero_t *hero)
+alveran_uis_init_hair_colors(GtkWidget* haircol, DsaHero *hero)
 {
     __init_hero_cb_by_xpath_res(GTK_COMBO_BOX_TEXT(haircol), hero, dsa_heros_get_hair_colors);
 }
 
 void 
-alveran_uis_init_eye_colors(GtkWidget* eyecol, dsa_hero_t *hero)
+alveran_uis_init_eye_colors(GtkWidget* eyecol, DsaHero *hero)
 {
     __init_hero_cb_by_xpath_res(GTK_COMBO_BOX_TEXT(eyecol), hero, dsa_heros_get_eye_colors);
 }
 
 void 
-alveran_uis_init_height_limits(GtkWidget *heights, dsa_hero_t *hero)
+alveran_uis_init_height_limits(GtkWidget *heights, DsaHero *hero)
 {
     GtkSpinButton *spin = GTK_SPIN_BUTTON(heights);
 
@@ -238,8 +238,8 @@ alveran_ui_txtbuf_get_text_complete(GtkTextBuffer *_buffer)
 }
 
 void 
-alveran_uis_pcs_adding(GtkComboBox *avails, GtkTreeView *dest, dsa_heros_t *heros, dsa_hero_t *hero, 
-                       void (*add_func)(dsa_heros_t*, dsa_hero_t*, const unsigned char *))
+alveran_uis_pcs_adding(GtkComboBox *avails, GtkTreeView *dest, DsaHeros *heros, DsaHero *hero, 
+                       void (*add_func)(DsaHeros*, DsaHero*, const unsigned char *))
 {
     gchar * selected = alveran_uis_get_cb_value_copy(avails);
 
@@ -256,7 +256,7 @@ alveran_uis_pcs_adding(GtkComboBox *avails, GtkTreeView *dest, dsa_heros_t *hero
 }
 
 void
-alveran_uis_rem_pcs_tv_selection(GtkWidget *tree_view, dsa_hero_t *hero, void (*rem_func)(dsa_hero_t*, const unsigned char*)) 
+alveran_uis_rem_pcs_tv_selection(GtkWidget *tree_view, DsaHero *hero, void (*rem_func)(DsaHero*, const unsigned char*)) 
 {
     a_uis_selection_t selection;
     alveran_uis_get_tv_selection(GTK_WIDGET(tree_view), &selection);
