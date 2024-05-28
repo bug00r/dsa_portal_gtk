@@ -7,10 +7,10 @@ static xmlBuffer* __alveran_hgen_get_and_translate_ui(hgen_ctx_t * hctx)
                         						    G_RESOURCE_LOOKUP_FLAGS_NONE, NULL);
 
 	gsize hgen_ui_xslt_size = g_bytes_get_size (hgen_ui_xslt);
-	xml_source_t hgen_ui_xslt_src = { RESOURCE_FILE, &hgen_ui_xslt_size, g_bytes_get_data(hgen_ui_xslt, &hgen_ui_xslt_size), {NULL} };
-	xml_ctx_t *hgen_ui_ctx = xml_ctx_new(&hgen_ui_xslt_src);
+	XmlSource hgen_ui_xslt_src = { RESOURCE_FILE, &hgen_ui_xslt_size, g_bytes_get_data(hgen_ui_xslt, &hgen_ui_xslt_size), {NULL} };
+	XmlCtx *hgen_ui_ctx = xml_ctx_new(&hgen_ui_xslt_src);
 
-	xslt_ctx_t xslt_ctx;
+	XsltCtx xslt_ctx;
 	xslt_ctx_init(&xslt_ctx);
 
 	xslt_ctx.xml = hctx->heros->heros;
@@ -34,7 +34,7 @@ static xmlBuffer* __alveran_hgen_get_and_translate_ui(hgen_ctx_t * hctx)
 
 void alveran_hgen_init_app(GtkApplication *app) 
 {	
-	archive_resource_t *ar = archive_resource_memory(&_binary_zip_resource_7z_start, (size_t)&_binary_zip_resource_7z_size);
+	ArchiveResource *ar = archive_resource_memory(&_binary_zip_resource_7z_start, (size_t)&_binary_zip_resource_7z_size);
 
 	hgen_ctx_t *hctx = alveran_hgen_ctx_new(ar);
 

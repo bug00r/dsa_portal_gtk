@@ -43,8 +43,8 @@ typedef struct {
 } lexicon_ctrls_t;
 
 typedef struct _lexicon_ctx_ {
-	resource_search_result_t *xml_result;
-	xml_ctx_t **ctxs;
+	ResourceSearchResult *xml_result;
+	XmlCtx **ctxs;
 	lexicon_search_selection_t	*lss;
 	lexicon_search_result_selection_t *lsrs;
 	lexicon_ctrls_t ctrls;

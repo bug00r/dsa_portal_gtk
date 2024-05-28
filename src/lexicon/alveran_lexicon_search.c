@@ -84,7 +84,7 @@ void update_group_list(lexicon_ctx_t *lctx) {
 	{
 		for( int cur_file = 0; cur_file < cnt_files ; ++cur_file ) 
 		{
-			xml_ctx_t *xml_ctx = lctx->ctxs[file_offset + cur_file];
+			XmlCtx *xml_ctx = lctx->ctxs[file_offset + cur_file];
 
 			if (xml_ctx == NULL) continue;
 			
@@ -189,7 +189,7 @@ void search(lexicon_ctx_t *lctx) {
 		
 		for( int cur_file = 0; cur_file < cnt_files ; ++cur_file ) 
 		{
-			xml_ctx_t *xml_ctx = lctx->ctxs[file_offset + cur_file];
+			XmlCtx *xml_ctx = lctx->ctxs[file_offset + cur_file];
 
 			if (xml_ctx == NULL) continue;
 			

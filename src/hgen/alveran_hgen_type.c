@@ -3,7 +3,7 @@
 const char * const HGEN_CTX = "hctx";
 
 hgen_ctx_t*
-alveran_hgen_ctx_new(archive_resource_t * ar) 
+alveran_hgen_ctx_new(ArchiveResource * ar) 
 {
     hgen_ctx_t * hctx = malloc(sizeof(hgen_ctx_t));
 	hctx->heros = dsa_heros_new_archiv(ar);

@@ -47,7 +47,7 @@ typedef struct _hgen_ctx_ {
 } hgen_ctx_t;
 
 hgen_ctx_t*
-alveran_hgen_ctx_new(archive_resource_t * ar);
+alveran_hgen_ctx_new(ArchiveResource * ar);
 
 void
 alveran_hgen_ctx_free(hgen_ctx_t** ctx);

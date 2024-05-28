@@ -8,15 +8,15 @@ static void _lexicon_prepare_(lexicon_ctx_t *_lctx)
 
 	gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(categories), "ALL");
 
-	resource_search_result_t *result = lctx->xml_result;
+	ResourceSearchResult *result = lctx->xml_result;
 	
-	lctx->ctxs = malloc(result->cnt*sizeof(xml_ctx_t *));
+	lctx->ctxs = malloc(result->cnt*sizeof(XmlCtx *));
 
 	for(unsigned int cnt_files = 0; cnt_files < result->cnt; ++cnt_files) 
 	{
-		resource_file_t *file = result->files[cnt_files];
+		ResourceFile *file = result->files[cnt_files];
 		
-		xml_source_t * xml_src = xml_source_from_resfile(resource_file_copy_deep(file));
+		XmlSource * xml_src = xml_source_from_resfile(resource_file_copy_deep(file));
 		lctx->ctxs[cnt_files] = xml_ctx_new(xml_src);
 		
 		gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(categories), (gchar*)file->name);
@@ -35,9 +35,9 @@ static void _lexicon_prepare_(lexicon_ctx_t *_lctx)
 void alveran_lexicon_init_app(GtkApplication *app) 
 {
 	
-	archive_resource_t * ar = archive_resource_memory(&_binary_zip_resource_7z_start, (size_t)&_binary_zip_resource_7z_size);
+	ArchiveResource * ar = archive_resource_memory(&_binary_zip_resource_7z_start, (size_t)&_binary_zip_resource_7z_size);
 	
-	resource_search_result_t * result = archive_resource_search(ar, (const unsigned char*)"xml/.*.xml");
+	ResourceSearchResult * result = archive_resource_search(ar, (const unsigned char*)"xml/.*.xml");
 
  	lexicon_ctx_t * lctx = alveran_lexicon_ctx_new();
 	
