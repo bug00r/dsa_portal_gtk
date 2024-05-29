@@ -104,7 +104,7 @@ OBJ=$(patsubst %,$(BUILDPATH)/%,$(patsubst %,%.o, $(RESFILENAME) $(_SRC_FILES)))
 BINNAME=dsa_portal
 BIN=$(BINNAME).exe
 
-ONW_LIBS=dsa_core resource xml_utils pcre2_utils utils dl_list
+ONW_LIBS=dsa_core resource xml_utils pcre2_utils batkit
 
 USED_LIBS=$(patsubst %,-l%, $(ONW_LIBS))
 USED_LIBS+=$(GTK_LIBS) $(XSLT_LIBS) $(XML2_LIBS) $(ICU_LIBS) $(FREETYPE_LIBS) $(ARCHIVE_LIBS) $(PCRE2_LIBS)
